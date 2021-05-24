@@ -32,7 +32,6 @@ function App() {
     <Router>
       <div>
         <Switch>
-          <Nav>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
 
@@ -53,6 +52,7 @@ function App() {
               exact
               path="/search"
             >
+              <Nav />
               <SearchView />
             </ProtectedRoute>
 
@@ -63,6 +63,7 @@ function App() {
               exact
               path="/profile"
             >
+              <Nav />
               <UserPage />
             </ProtectedRoute>
 
@@ -99,11 +100,9 @@ function App() {
               path="/home"
               authRedirect="/search"
             >
+              <Nav />
               <LandingPage />
             </ProtectedRoute>
-
-
-          </Nav>
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
             <h1>404</h1>
