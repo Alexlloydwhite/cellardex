@@ -14,9 +14,10 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserProfile/UserPage';
-import LandingPage from '../WelcomeScreen/LandingPage';
 import LoginPage from '../WelcomeScreen/LoginPage';
+import LandingPage from '../WelcomeScreen/LandingPage';
 import RegisterPage from '../WelcomeScreen/RegisterPage';
+import SearchView from '../SearchView/SearchView';
 
 import './App.css';
 
@@ -51,9 +52,9 @@ function App() {
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
-            path="/user"
+            path="/search"
           >
-            <UserPage />
+            <SearchView />
           </ProtectedRoute>
 
           {/* When a value is supplied for the authRedirect prop the user will
@@ -65,7 +66,7 @@ function App() {
             // - else shows LoginPage at /login
             exact
             path="/login"
-            authRedirect="/user"
+            authRedirect="/search"
           >
             <LoginPage />
           </ProtectedRoute>
@@ -76,18 +77,18 @@ function App() {
             // - else shows RegisterPage at "/registration"
             exact
             path="/registration"
-            authRedirect="/user"
+            authRedirect="/search"
           >
             <RegisterPage />
           </ProtectedRoute>
 
           <ProtectedRoute
             // with authRedirect:
-            // - if logged in, redirects to "/user"
+            // - if logged in, redirects to "/search"
             // - else shows LandingPage at "/home"
             exact
             path="/home"
-            authRedirect="/user"
+            authRedirect="/search"
           >
             <LandingPage />
           </ProtectedRoute>
