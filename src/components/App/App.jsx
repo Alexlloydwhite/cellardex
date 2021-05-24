@@ -8,17 +8,16 @@ import {
 
 import { useDispatch } from 'react-redux';
 
-import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
+import Nav from '../NavBar/Nav';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
-import LandingPage from '../LandingPage/LandingPage';
-import LoginPage from '../LoginPage/LoginPage';
-import RegisterPage from '../RegisterPage/RegisterPage';
+import LandingPage from '../WelcomeScreen/LandingPage';
+import LoginPage from '../WelcomeScreen/LoginPage';
+import RegisterPage from '../WelcomeScreen/RegisterPage';
 
 import './App.css';
 
@@ -107,7 +106,6 @@ function App() {
             <h1>404</h1>
           </Route>
         </Switch>
-        <Footer />
       </div>
     </Router>
   );
