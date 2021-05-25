@@ -5,21 +5,28 @@ import {
   Redirect,
   Switch,
 } from 'react-router-dom';
-
 import { useDispatch } from 'react-redux';
-
 import Nav from '../NavBar/Nav';
-
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserProfile/UserPage';
 import LoginPage from '../WelcomeScreen/LoginPage';
 import LandingPage from '../WelcomeScreen/LandingPage';
 import RegisterPage from '../WelcomeScreen/RegisterPage';
 import SearchView from '../SearchView/SearchView';
-
 import './App.css';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#b85556'
+    },
+    secondary: {
+      main: '#344959'
+    }
+  }
+})
 
 function App() {
   const dispatch = useDispatch();
@@ -29,9 +36,10 @@ function App() {
   }, [dispatch]);
 
   return (
-    <Router>
-      <div>
-        <Switch>
+    <ThemeProvider theme={theme}>
+      <Router>
+        <div>
+          <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
 
@@ -100,16 +108,16 @@ function App() {
               path="/home"
               authRedirect="/search"
             >
-              <Nav />
               <LandingPage />
             </ProtectedRoute>
-          {/* If none of the other routes matched, we will show a 404. */}
-          <Route>
-            <h1>404</h1>
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+            {/* If none of the other routes matched, we will show a 404. */}
+            <Route>
+              <h1>404</h1>
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 }
 
