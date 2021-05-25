@@ -6,12 +6,14 @@ import CurvyLines from './appCurvyLines.png';
 import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
 
+import SearchResults from './SearchResults';
+
 
 const useStyles = makeStyles((theme) => {
     return {
         container: {
-            marginTop: theme.spacing(15),
-            marginBottom: theme.spacing(30),
+            marginTop: theme.spacing(10),
+            marginBottom: theme.spacing(15),
             direction: 'rows',
             display: 'flex',
             position: 'relative',
@@ -38,39 +40,45 @@ const SearchView = () => {
     const classes = useStyles();
 
     return (
-        <section className={classes.root}>
-            <Container className={classes.container}>
-                <img
-                    src={CurvyLines}
-                    className={classes.curvyLines}
-                />
-                <Grid container spacing={1} justify="center">
-                    <Grid item>
-                        <div className={classes.item}>
-                            <Typography variant="h2" align="center">
-                                What's For Dinner?
+        <div>
+            <section className={classes.root}>
+                <Container className={classes.container}>
+                    <img
+                        src={CurvyLines}
+                        className={classes.curvyLines}
+                    />
+                    <Grid container spacing={1} justify="center">
+                        <Grid item>
+                            <div className={classes.item}>
+                                {/* Search View Title */}
+                                <Typography variant="h2" align="center">
+                                    What's For Dinner?
                             </Typography>
-                            <br />
-                            <TextField 
-                                className={classes.margin}
-                                placeholder="Search our collection of pairings"
-                                variant="outlined"
-                                size="large"
-                                type="search"
-                                fullWidth
-                                InputProps={{
-                                    startAdornment: (
-                                        <InputAdornment position="start">
-                                            <SearchIcon />
-                                        </InputAdornment>
-                                    ),
-                                }}
-                            />
-                        </div>
+                                <br />
+                                {/* Search Bar */}
+                                <TextField
+                                    className={classes.margin}
+                                    placeholder="Search our collection of pairings"
+                                    variant="outlined"
+                                    type="search"
+                                    fullWidth
+                                    InputProps={{
+                                        startAdornment: (
+                                            <InputAdornment position="start">
+                                                <SearchIcon />
+                                            </InputAdornment>
+                                        ),
+                                    }}
+                                />
+                            </div>
+                        </Grid>
                     </Grid>
-                </Grid>
-            </Container>
-        </section>
+                </Container>
+            </section>
+            <section className={classes.root}>
+                <SearchResults />
+            </section>
+        </div>
     );
 }
 
