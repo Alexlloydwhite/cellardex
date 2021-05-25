@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import Link from '@material-ui/core/Link';
 
-import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core';
-import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
   form: {
@@ -49,6 +46,7 @@ function LoginForm() {
           {errors.loginMessage}
         </h3>
       )}
+      {/* Input for email address */}
       <TextField
         variant="outlined"
         margin="normal"
@@ -58,10 +56,10 @@ function LoginForm() {
         label="Email Address"
         name="email"
         autoComplete="email"
-        autoFocus
         value={username}
         onChange={(event) => setUsername(event.target.value)}
       />
+      {/* input for password */}
       <TextField
         variant="outlined"
         margin="normal"
@@ -75,6 +73,7 @@ function LoginForm() {
         value={password}
         onChange={(event) => setPassword(event.target.value)}
       />
+      {/* submit button */}
       <Button
         type="submit"
         fullWidth

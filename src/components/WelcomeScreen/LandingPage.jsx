@@ -8,6 +8,7 @@ import LandingImage from './landing-image.jpg'
 import LoginForm from './LoginForm';
 import Link from '@material-ui/core/Link';
 import { useState } from 'react';
+import RegisterForm from './RegisterForm';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -69,7 +70,17 @@ function LandingPage() {
             </div>
             :
             <div>
-              <h2>Toggled!</h2>
+              <RegisterForm />
+              <Grid container>
+                <Grid item>
+                  <Typography>
+                    Already have an account?{' '}
+                    <Link onClick={() => setToggle(true)} style={{ cursor: 'pointer' }}>
+                      {"Login"}
+                    </Link>
+                  </Typography>
+                </Grid>
+              </Grid>
             </div>
           }
         </div>
