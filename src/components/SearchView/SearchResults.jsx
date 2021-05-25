@@ -4,6 +4,8 @@ import List from '@material-ui/core/List';
 import FoodList from './FoodList';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 
 const useStyles = makeStyles((theme) => {
@@ -21,6 +23,11 @@ const useStyles = makeStyles((theme) => {
 const SearchResults = () => {
     // hook for using custom classes
     const classes = useStyles();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch({ type: 'FETCH_PAIRING' });
+    })
 
     const items = [
         { name: 'a', id: 1 },
