@@ -5,21 +5,26 @@ import {
   Redirect,
   Switch,
 } from 'react-router-dom';
-
 import { useDispatch } from 'react-redux';
-
 import Nav from '../NavBar/Nav';
-
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserProfile/UserPage';
-import LoginPage from '../WelcomeScreen/LoginPage';
 import LandingPage from '../WelcomeScreen/LandingPage';
-import RegisterPage from '../WelcomeScreen/RegisterPage';
 import SearchView from '../SearchView/SearchView';
-
 import './App.css';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#b85556'
+    },
+    secondary: {
+      main: '#344959'
+    }
+  }
+})
 
 function App() {
   const dispatch = useDispatch();
@@ -29,67 +34,29 @@ function App() {
   }, [dispatch]);
 
   return (
-    <Router>
-      <div>
-        <Switch>
+    <ThemeProvider theme={theme}>
+      <Router>
+        <div>
+          <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
 
-            {/* Visiting localhost:3000/about will show the about page. */}
-            <Route
-              // shows AboutPage at all times (logged in or not)
-              exact
-              path="/about"
-            >
-              <AboutPage />
-            </Route>
-            {/* For protected routes, the view could show one of several things on the same route.
-            Visiting localhost:3000/user will show the UserPage if the user is logged in.
-            If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
-            Even though it seems like they are different pages, the user is always on localhost:3000/user */}
             <ProtectedRoute
-              // logged in shows UserPage else shows LoginPage
-              exact
-              path="/search"
-            >
-              <Nav />
-              <SearchView />
-            </ProtectedRoute>
-
-            <ProtectedRoute
-              // with authRedirect:
-              // - if logged in, redirects to "/search"
-              // - else shows LandingPage at "/home"
               exact
               path="/profile"
             >
-              <Nav />
-              <UserPage />
+              <Nav>
+                <UserPage />
+              </Nav>
             </ProtectedRoute>
-
-            {/* When a value is supplied for the authRedirect prop the user will
-            be redirected to the path supplied when logged in, otherwise they will
-            be taken to the component and path supplied. */}
+            
             <ProtectedRoute
-              // with authRedirect:
-              // - if logged in, redirects to "/user"
-              // - else shows LoginPage at /login
               exact
-              path="/login"
-              authRedirect="/search"
+              path="/search"
             >
-              <LoginPage />
-            </ProtectedRoute>
-
-            <ProtectedRoute
-              // with authRedirect:
-              // - if logged in, redirects to "/user"
-              // - else shows RegisterPage at "/registration"
-              exact
-              path="/registration"
-              authRedirect="/search"
-            >
-              <RegisterPage />
+              <Nav>
+                <SearchView />
+              </Nav>
             </ProtectedRoute>
 
             <ProtectedRoute
@@ -100,16 +67,17 @@ function App() {
               path="/home"
               authRedirect="/search"
             >
-              <Nav />
               <LandingPage />
             </ProtectedRoute>
-          {/* If none of the other routes matched, we will show a 404. */}
-          <Route>
-            <h1>404</h1>
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+
+            {/* If none of the other routes matched, we will show a 404. */}
+            <Route>
+              <h1>404</h1>
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 }
 
