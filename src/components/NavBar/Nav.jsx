@@ -39,7 +39,7 @@ function Nav({ children }) {
           <Typography className={classes.welcome} variant="h5" >
             CellarDex
           </Typography>
-          <Avatar src="images/logo-red-background.png" className={classes.avatar} />
+          <Avatar src="images/logo-white-background.png" className={classes.avatar} />
         </Toolbar>
       </AppBar>
       {/* this layout sit on top of the rest of the app. */}
