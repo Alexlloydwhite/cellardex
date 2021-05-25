@@ -57,7 +57,7 @@ function LoginForm() {
         id="email"
         label="Email Address"
         name="email"
-        autocomplete="email"
+        autoComplete="email"
         autoFocus
         value={username}
         onChange={(event) => setUsername(event.target.value)}
@@ -84,16 +84,6 @@ function LoginForm() {
       >
         Login
       </Button>
-      <Grid container>
-        <Grid item>
-          <Typography>
-            Don't have an account?
-                  <Link href="#">
-              {" Create an account"}
-            </Link>
-          </Typography>
-        </Grid>
-      </Grid>
     </form>
   );
 }

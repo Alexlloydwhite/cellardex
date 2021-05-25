@@ -5,8 +5,9 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import LandingImage from './landing-image.jpg'
-
 import LoginForm from './LoginForm';
+import Link from '@material-ui/core/Link';
+import { useState } from 'react';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
 
 function LandingPage() {
   const classes = useStyles();
+  const [toggle, setToggle] = useState(true);
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -51,9 +53,25 @@ function LandingPage() {
           <Typography component="h1" variant="h6">
             Empowering Your Meals
           </Typography>
-          <div>
-            <LoginForm />
-          </div>
+          {toggle ?
+            <div>
+              <LoginForm />
+              <Grid container>
+                <Grid item>
+                  <Typography>
+                    Don't have an account?{' '}
+                    <Link onClick={() => setToggle(false)} style={{ cursor: 'pointer' }}>
+                      {"Create an account"}
+                    </Link>
+                  </Typography>
+                </Grid>
+              </Grid>
+            </div>
+            :
+            <div>
+              <h2>Toggled!</h2>
+            </div>
+          }
         </div>
       </Grid>
     </Grid>
