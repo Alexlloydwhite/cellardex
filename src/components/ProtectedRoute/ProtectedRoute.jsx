@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import LoginPage from '../WelcomeScreen/LoginPage';
+import LandingPage from '../WelcomeScreen/LandingPage';
 import {useSelector} from 'react-redux';
 
 // A Custom Wrapper Component -- This will keep our code DRY.
@@ -35,8 +35,8 @@ function ProtectedRoute(props) {
     ComponentToShow = ComponentToProtect;
   } else {
     // if they are not logged in, check the loginMode on Redux State
-    // if the mode is 'login', show the LoginPage
-    ComponentToShow = LoginPage;
+    // if the mode is 'login', show the Landing Page
+    ComponentToShow = LandingPage;
   }
 
 
