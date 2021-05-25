@@ -5,17 +5,16 @@ import FoodList from './FoodList';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
+
 const useStyles = makeStyles((theme) => {
     return {
+        root: {
+            display: 'flex',
+            overflow: 'hidden',
+        },
         container: {
-            marginRight: theme.spacing(30),
-            marginLeft: theme.spacing(30),
-            // border: 'solid',
-            // borderColor: 'black',
-            direction: 'rows',
-            // position: 'relative',
-            alignItems: 'center',
-            justify: 'center'
+            marginRight: theme.spacing(20),
+            marginLeft: theme.spacing(20),
         }
     }
 })
@@ -31,22 +30,22 @@ const SearchResults = () => {
     ];
 
     return (
-        <Container className={classes.container}>
-            <Grid container spacing={1}>
-                <Grid item>
-                    <Typography>
-                        Suggested:
-                    </Typography>
+        <section className={classes.root}>
+                <Grid container className={classes.container}>
+                    <Grid item>
+                        <Typography align="left">
+                            Suggested:
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <List>
+                            {items.map(item => {
+                                return <FoodList item={item} />
+                            })}
+                        </List>
+                    </Grid>
                 </Grid>
-                <Grid item>
-                    <List>
-                        {items.map(item => {
-                            return <FoodList item={item} />
-                        })}
-                    </List>
-                </Grid>
-            </Grid>
-        </Container>
+        </section>
     );
 }
 
