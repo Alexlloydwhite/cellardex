@@ -54,7 +54,6 @@ function LandingPage() {
           <div>
             <LoginForm />
           </div>
-
         </div>
       </Grid>
     </Grid>
