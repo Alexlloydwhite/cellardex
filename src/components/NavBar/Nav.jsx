@@ -1,14 +1,10 @@
 import { makeStyles } from "@material-ui/core";
 import React from "react";
 import Typography from '@material-ui/core/Typography';
-import { useHistory, useLocation } from "react-router";
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Avatar from '@material-ui/core/Avatar'
-import { useDispatch } from "react-redux";
 
-// storing drawer width in variable as it is used more than once.
-const drawerWidth = 240
 //  soo many variations on the global theme :)
 const useStyles = makeStyles((theme) => {
   return {
@@ -17,20 +13,8 @@ const useStyles = makeStyles((theme) => {
       width: '100%',
       padding: theme.spacing(3)
     },
-    drawer: {
-      width: drawerWidth,
-    },
-    drawerPaper: {
-      width: drawerWidth,
-    },
     root: {
       display: 'flex'
-    },
-    active: {
-      background: '#f4f4f4'
-    },
-    title: {
-      padding: theme.spacing(2)
     },
     toolbar: theme.mixins.toolbar,
     welcome: {
@@ -49,7 +33,7 @@ function Nav({ children }) {
   return (
     <div className={classes.root}>
       {/* App Bar! */}
-      <AppBar elevation={0}>
+      <AppBar elevation={0} style={{ background: '#28282a' }}>
         <Toolbar>
           {/* page title */}
           <Typography className={classes.welcome} variant="h5" >
