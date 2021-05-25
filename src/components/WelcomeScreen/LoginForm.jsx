@@ -52,9 +52,9 @@ function LoginForm() {
         margin="normal"
         required
         fullWidth
-        id="email"
-        label="Email Address"
-        name="email"
+        id="Username"
+        label="Username"
+        name="Username"
         autoComplete="email"
         value={username}
         onChange={(event) => setUsername(event.target.value)}
