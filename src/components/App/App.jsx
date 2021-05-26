@@ -12,6 +12,7 @@ import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserProfile/UserPage';
 import LandingPage from '../WelcomeScreen/LandingPage';
 import SearchView from '../SearchView/SearchView';
+import PairingDescriptionView from '../PairingDescription/PairingDescription';
 import './App.css';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 
@@ -64,7 +65,7 @@ function App() {
               path="/pairing/:id"
             >
               <Nav>
-                {/* <ParingDetails /> */}
+                <PairingDescriptionView />
               </Nav>
             </ProtectedRoute>
 
