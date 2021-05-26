@@ -10,7 +10,7 @@ import setSavedPairing from './setSavedPairing.saga';
 export default function* rootSaga() {
   yield takeEvery('FETCH_PAIRING', pairingSaga);
   yield takeEvery('SET_PAIRING_CLICK', getPairingById);
-  yield takeEvery('SET_SAVED_PAIRING', setSavedPairing);
+  yield takeEvery('POST_SAVED_PAIRING', setSavedPairing);
   // the registration triggers a login
   // and login triggers setting the user
   yield all([

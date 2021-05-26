@@ -15,7 +15,7 @@ const PairingBody = ({ item }) => {
         // send user to profile view
         history.push('/profile');
         // Save pairing to user
-        dispatch({ type: 'SET_SAVED_PAIRING', userId: user.id, pairingId: id });
+        dispatch({ type: 'POST_SAVED_PAIRING', userId: user.id, pairingId: id });
     }
 
     return (

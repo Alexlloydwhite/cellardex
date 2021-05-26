@@ -3,6 +3,7 @@ import errors from './errors.reducer';
 import user from './user.reducer';
 import pairing from './pairing.reducer';
 import pairingClick from './pairingClick.reducer';
+import savedPairing from './savedPairing.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -11,6 +12,7 @@ import pairingClick from './pairingClick.reducer';
 // Lets make a bigger object for our store, with the objects from our reducers.
 // This is what we get when we use 'state' inside of 'mapStateToProps'
 const rootReducer = combineReducers({
+  savedPairing, // holds array of a users saved pairings
   pairing, // array of pairings from database
   pairingClick, // details of pairing clicked on search view
   errors, // contains registrationMessage and loginMessage
