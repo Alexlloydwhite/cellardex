@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import PairingHeader from './PairingHeader';
-import PairingBody from './PairingBody'
+import PairingBody from './PairingBody';
 
 const PairingDescription = () => {
     const dispatch = useDispatch();
