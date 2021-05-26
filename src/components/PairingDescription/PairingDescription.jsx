@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import PairingHeader from './PairingHeader';
+import PairingBody from './PairingBody'
 
 const PairingDescription = () => {
     const dispatch = useDispatch();
@@ -12,16 +13,16 @@ const PairingDescription = () => {
     useEffect(() => {
         dispatch({ type: 'SET_PAIRING_CLICK', payload: params.id });
     }, [])
-    return (  
+    return (
         <div>
             {pairing.map(item => {
                 return <div key={item.id}>
-                <PairingHeader item={item}/>
-                {/* <Typography>{item.description}</Typography> */}
+                    <PairingHeader item={item} />
+                    <PairingBody item={item} />
                 </div>
             })}
         </div>
     );
 }
- 
+
 export default PairingDescription;
