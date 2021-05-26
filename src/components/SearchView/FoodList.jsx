@@ -18,7 +18,7 @@ const FoodList = ({ item }) => {
         // debug log
         console.log('Clicked!', id);
         // Uncomment this when view is established
-        // history.push('/pairing/${id});
+        history.push(`/pairing/${id}`);
         // Dispatch store to set the pairing click to the id of click
         dispatch({ type: 'SET_PAIRING_CLICK', payload: id });
     }

@@ -4,6 +4,8 @@ import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Avatar from '@material-ui/core/Avatar'
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
 
 //  soo many variations on the global theme :)
 const useStyles = makeStyles((theme) => {
@@ -11,7 +13,6 @@ const useStyles = makeStyles((theme) => {
     page: {
       background: '#f9f9f9',
       width: '100%',
-      padding: theme.spacing(3)
     },
     root: {
       display: 'flex'
@@ -23,6 +24,10 @@ const useStyles = makeStyles((theme) => {
     avatar: {
       marginLeft: theme.spacing(2),
       marginRight: theme.spacing(1)
+    },
+    links: {
+      marginRight: theme.spacing(2),
+      cursor: 'pointer'
     }
   }
 })
@@ -30,6 +35,8 @@ const useStyles = makeStyles((theme) => {
 function Nav({ children }) {
   // hook for using custom classes
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   return (
     <div className={classes.root}>
@@ -38,8 +45,24 @@ function Nav({ children }) {
         <Toolbar>
           {/* page title */}
           <Avatar src="images/logo-white-background.png" className={classes.avatar} />
-          <Typography className={classes.welcome} variant="h5" >
+          <Typography 
+            className={classes.welcome} 
+            variant="h5"
+          >
             CellarDex
+          </Typography>
+          {/* Nav Links */}
+          <Typography 
+            className={classes.links}
+            onClick={() => history.push('/')}
+          >
+            Home
+          </Typography>
+          <Typography 
+            className={classes.links}
+            onClick={() => dispatch({ type: 'LOGOUT' })}
+          >
+            Logout
           </Typography>
         </Toolbar>
       </AppBar>
