@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
+import Typography from '@material-ui/core/Typography';
+import PairingHeader from './PairingHeader';
 
 const PairingDescription = () => {
     const dispatch = useDispatch();
@@ -13,7 +15,12 @@ const PairingDescription = () => {
     })
     return (  
         <div>
-            {JSON.stringify(pairing)}
+            {pairing.map(item => {
+                return <div key={item.id}>
+                <PairingHeader item={item}/>
+                {/* <Typography>{item.description}</Typography> */}
+                </div>
+            })}
         </div>
     );
 }
