@@ -1,21 +1,10 @@
+import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from "@material-ui/core";
-const useStyles = makeStyles((theme) => {
-    return {
-        root: {
-            height: '80vh',
-            minHeight: 500,
-            maxHeight: 1300
-        }
-    }
-})
 
-const PairingHeader = ({ item }) => {
-    // hook for using custom classes
-    const classes = useStyles();
+const PairingHeader = ({item}) => {
 
     return (
-        <section className={classes.root}>
+        <Container>
             <img src="/images/wineglasses.jpg" />
             <Typography
                 variant="h3"
@@ -25,8 +14,9 @@ const PairingHeader = ({ item }) => {
                 {' & '} <br />
                 {item.wine} <br />
             </Typography>
-        </section>
+        </Container>
     );
 }
 
 export default PairingHeader;
+

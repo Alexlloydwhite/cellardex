@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import Typography from '@material-ui/core/Typography';
 import PairingHeader from './PairingHeader';
 
 const PairingDescription = () => {
@@ -12,7 +11,7 @@ const PairingDescription = () => {
 
     useEffect(() => {
         dispatch({ type: 'SET_PAIRING_CLICK', payload: params.id });
-    })
+    }, [])
     return (  
         <div>
             {pairing.map(item => {
