@@ -5,7 +5,7 @@ import FoodList from './FoodList';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 const useStyles = makeStyles((theme) => {
@@ -24,10 +24,11 @@ const SearchResults = () => {
     // hook for using custom classes
     const classes = useStyles();
     const dispatch = useDispatch();
+    const pairing = useSelector(store => store.pairing);
 
     useEffect(() => {
         dispatch({ type: 'FETCH_PAIRING' });
-    })
+    }, []);
 
     const items = [
         { name: 'a', id: 1 },
@@ -46,7 +47,7 @@ const SearchResults = () => {
                     </Grid>
                     <Grid item xs={12}>
                         <List>
-                            {items.map(item => {
+                            {pairing.map(item => {
                                 return <FoodList item={item} />
                             })}
                         </List>

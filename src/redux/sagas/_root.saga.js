@@ -12,7 +12,7 @@ import pairingSaga from './pairing.saga';
 // the registration triggers a login
 // and login triggers setting the user
 export default function* rootSaga() {
-  yield takeEvery('FETCH_PAIRING', pairingSaga())
+  yield takeEvery('FETCH_PAIRING', pairingSaga)
   yield all([
     loginSaga(), // login saga is now registered
     registrationSaga(),

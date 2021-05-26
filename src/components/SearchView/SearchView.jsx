@@ -5,7 +5,7 @@ import { InputAdornment, makeStyles } from "@material-ui/core";
 import CurvyLines from './appCurvyLines.png';
 import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
-
+import './SearchView.css';
 import SearchResults from './SearchResults';
 
 
@@ -51,8 +51,8 @@ const SearchView = () => {
                         <Grid item>
                             <div>
                                 {/* Search View Title */}
-                                <Typography variant="h2" align="center">
-                                    What's For Dinner?
+                                <Typography id="header" variant="h2" align="center">
+                                    What's for dinner?
                             </Typography>
                                 <br />
                                 {/* Search Bar */}

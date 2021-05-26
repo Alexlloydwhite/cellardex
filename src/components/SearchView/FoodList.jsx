@@ -12,7 +12,7 @@ const FoodList = ({ item }) => {
         <Grid container>
             <Grid item xs={12}>
                 <ListItem key={item.id}>
-                    <ListItemText primary={item.name} />
+                    <ListItemText primary={item.food} />
                     <ListItemSecondaryAction>
                         <IconButton edge="end">
                             <KeyboardArrowRightIcon />
