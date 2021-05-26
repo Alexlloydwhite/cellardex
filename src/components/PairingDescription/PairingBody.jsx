@@ -7,6 +7,11 @@ const PairingBody = ({ item }) => {
 
     const history = useHistory();
 
+    const handleAddClick = () => {
+        console.log('Clicked! Add to my pairings btn');
+        history.push('/profile');
+    }
+
     return (
         <Container style={{ marginTop: 50, marginBottom: 25 }}>
             <Typography 
@@ -24,7 +29,7 @@ const PairingBody = ({ item }) => {
                 Back
             </Button>
             <Button
-                onClick={() => console.log('clicked!')}
+                onClick={handleAddClick}
                 color="primary"
                 variant="contained"
             >
