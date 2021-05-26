@@ -19,7 +19,8 @@ const useStyles = makeStyles((theme) => {
             marginLeft: theme.spacing(20),
         }
     }
-})
+});
+
 const SearchResults = () => {
     // hook for using custom classes
     const classes = useStyles();
@@ -29,13 +30,6 @@ const SearchResults = () => {
     useEffect(() => {
         dispatch({ type: 'FETCH_PAIRING' });
     }, []);
-
-    const items = [
-        { name: 'a', id: 1 },
-        { name: 'b', id: 2 },
-        { name: 'c', id: 3 },
-        { name: 'd', id: 4 },
-    ];
 
     return (
         <section className={classes.root}>
