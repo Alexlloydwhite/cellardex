@@ -69,7 +69,7 @@ function RegisterForm() {
         type="submit"
         fullWidth
         variant="contained"
-        color="secondary"
+        color="primary"
         className={classes.submit}
       >
         Join Now

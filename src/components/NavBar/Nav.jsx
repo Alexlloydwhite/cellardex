@@ -33,7 +33,7 @@ function Nav({ children }) {
   return (
     <div className={classes.root}>
       {/* App Bar! */}
-      <AppBar elevation={0} style={{ background: '#28282a' }}>
+      <AppBar elevation={0} style={{ background: '#344959' }}>
         <Toolbar>
           {/* page title */}
           <Typography className={classes.welcome} variant="h5" >
