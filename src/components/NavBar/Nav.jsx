@@ -5,6 +5,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Avatar from '@material-ui/core/Avatar'
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
 
 //  soo many variations on the global theme :)
 const useStyles = makeStyles((theme) => {
@@ -36,6 +37,7 @@ function Nav({ children }) {
   // hook for using custom classes
   const classes = useStyles();
   const dispatch = useDispatch();
+  const history = useHistory();
 
   return (
     <div className={classes.root}>
@@ -44,10 +46,19 @@ function Nav({ children }) {
         <Toolbar>
           {/* page title */}
           <Avatar src="images/logo-white-background.png" className={classes.avatar} />
-          <Typography className={classes.welcome} variant="h5" >
+          <Typography 
+            className={classes.welcome} 
+            variant="h5"
+          >
             CellarDex
           </Typography>
           {/* Nav Links */}
+          <Typography 
+            className={classes.links}
+            onClick={() => history.push('/')}
+          >
+            Home
+          </Typography>
           <Typography 
             className={classes.links}
             onClick={() => dispatch({ type: 'LOGOUT' })}
