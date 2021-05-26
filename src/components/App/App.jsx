@@ -60,6 +60,15 @@ function App() {
             </ProtectedRoute>
 
             <ProtectedRoute
+              exact
+              path="/pairing/:id"
+            >
+              <Nav>
+                {/* <ParingDetails /> */}
+              </Nav>
+            </ProtectedRoute>
+
+            <ProtectedRoute
               // with authRedirect:
               // - if logged in, redirects to "/search"
               // - else shows LandingPage at "/home"

@@ -16,11 +16,22 @@ router.get('/', (req, res) => {
     })
 });
 
-/**
- * POST route template
- */
-router.post('/', (req, res) => {
-  // POST route code here
+// Get pairing by ID
+router.get('/:id', (req,res) => {
+  // grab id from request params
+  const pairingId = req.params.id;
+  console.log(`In get pairing by id router, Id is ${pairingId}`);
+  // sql query 
+  const sqlQuery = `SELECT * FROM pairing WHERE id=$1`
+  // send query to db
+  pool.query(sqlQuery, [pairingId])
+    .then(result => {
+      res.send(result.rows);
+      console.log(result.rows);
+    })
+    .catch(err => {
+      console.log(`error making sql query ${sqlQuery}: ${err}`);
+    })
 });
 
 module.exports = router;
