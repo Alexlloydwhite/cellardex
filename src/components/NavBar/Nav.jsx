@@ -21,7 +21,8 @@ const useStyles = makeStyles((theme) => {
       flexGrow: 1,
     },
     avatar: {
-      marginLeft: theme.spacing(2)
+      marginLeft: theme.spacing(2),
+      marginRight: theme.spacing(1)
     }
   }
 })
@@ -36,10 +37,10 @@ function Nav({ children }) {
       <AppBar elevation={0} style={{ background: '#344959' }}>
         <Toolbar>
           {/* page title */}
+          <Avatar src="images/logo-white-background.png" className={classes.avatar} />
           <Typography className={classes.welcome} variant="h5" >
             CellarDex
           </Typography>
-          <Avatar src="images/logo-white-background.png" className={classes.avatar} />
         </Toolbar>
       </AppBar>
       {/* this layout sit on top of the rest of the app. */}
