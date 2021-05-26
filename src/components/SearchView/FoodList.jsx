@@ -26,7 +26,7 @@ const FoodList = ({ item }) => {
     return (
         <Grid container>
             <Grid item xs={12}>
-                <ListItem key={item.id}>
+                <ListItem>
                     <ListItemText primary={item.food} />
                     <ListItemSecondaryAction>
                         <IconButton edge="end" onClick={() => handleClick(item.id)}>

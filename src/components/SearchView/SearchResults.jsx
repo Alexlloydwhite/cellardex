@@ -48,7 +48,7 @@ const SearchResults = () => {
                     <Grid item xs={12}>
                         <List>
                             {pairing.map(item => {
-                                return <FoodList item={item} />
+                                return <FoodList key={item.id} item={item} />
                             })}
                         </List>
                     </Grid>
