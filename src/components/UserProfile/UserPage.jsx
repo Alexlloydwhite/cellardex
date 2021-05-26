@@ -6,14 +6,18 @@ const UserPage = () => {
   const dispatch = useDispatch();
   // grab user details from store
   const user = useSelector(store => store.user);
+  const savedPairing = useSelector(store => store.savedPairing);
 
   useEffect(() => {
     dispatch({ type: 'GET_SAVED_PAIRING' });
-  })
+  }, [])
 
   return (
-    // page header
-    <UserPageHeader user={user}/>
+    <div>
+      {/* Page Header */}
+      <UserPageHeader user={user} />
+      {JSON.stringify(savedPairing)}
+    </div>
   );
 }
 

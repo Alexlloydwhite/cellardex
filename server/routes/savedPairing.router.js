@@ -3,12 +3,26 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 // GET users saved pairings
-router.get('/', (req,res) => {
-    
+router.get('/', (req, res) => {
+    // id of user getting saved pairings
+    const userId = req.user.id;
+    // SQL query
+    const sqlQuery = `SELECT p.food, p.wine, p.description FROM saved_pairing sp
+                        JOIN pairing p ON p.id = sp.pairing_id
+                        JOIN "user" u ON u.id=sp.user_id
+                        WHERE u.id = $1;`;
+    pool.query(sqlQuery, [userId])
+        .then(result => {
+            res.send(result.rows);
+        })
+        .catch(err => {
+            res.sendStatus(500);
+            console.log(`IN savedPairing router, ERROR getting saved pairings for user ${userId}. ERROR: ${err}`);
+        })
 });
 
 // POST a pairing to the users saved pairings
-router.post('/', (req,res) => {
+router.post('/', (req, res) => {
     // SQL query
     const sqlQuery = `INSERT INTO saved_pairing ("pairing_id", "user_id") VALUES ($1,$2);`;
     pool.query(sqlQuery, [req.body.pairing_id, req.body.user_id])
