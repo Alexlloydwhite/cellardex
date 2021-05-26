@@ -73,12 +73,12 @@ const UsePageHeader = ({ user, savedPairing }) => {
       <div className={classes.root}>
         <AppBar position="static" style={{ alignItems: 'center' }}>
           <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-            <Tab label="My Pairings" {...a11yProps(0)} />
+            <Tab label="My Saved Pairings" {...a11yProps(0)} />
             <Tab label="My Insights" {...a11yProps(1)} />
           </Tabs>
         </AppBar>
         <TabPanel value={value} index={0}>
-          <UserPairing />
+          <UserPairing savedPairing = {savedPairing} />
         </TabPanel>
         <TabPanel value={value} index={1}>
           Item Two

@@ -7,6 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
+import { Typography } from '@material-ui/core/';
 
 
 const FoodList = ({ item }) => {
@@ -27,7 +28,15 @@ const FoodList = ({ item }) => {
         <Grid container>
             <Grid item xs={12}>
                 <ListItem>
-                    <ListItemText primary={item.food} />
+                    <Typography 
+                        variant="h5"
+                        color="textPrimary"
+                    >
+                        <ListItemText 
+                            disableTypography 
+                            primary={item.food} 
+                        />
+                    </Typography>
                     <ListItemSecondaryAction>
                         <IconButton edge="end" onClick={() => handleClick(item.id)}>
                             <KeyboardArrowRightIcon />

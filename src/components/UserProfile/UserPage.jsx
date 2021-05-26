@@ -11,7 +11,7 @@ const UserPage = () => {
 
   useEffect(() => {
     dispatch({ type: 'GET_SAVED_PAIRING' });
-  }, [])
+  }, [savedPairing])
 
   return (
     <div>
