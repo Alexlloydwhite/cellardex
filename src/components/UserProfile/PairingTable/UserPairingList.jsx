@@ -9,29 +9,38 @@ import { Typography } from '@material-ui/core/';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 
-
 const UserPairingList = ({ item }) => {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const handleClick = () => {
-        console.log(`clicked!`);
+    const handleClick = (id) => {
+        console.log(`clicked!`, id);
+        // Dispatch store to set the pairing click to the id of click
+        dispatch({ type: 'SET_PAIRING_CLICK', payload: id });
+        // Bring user to Create Insight View
+        history.push(`/insights/create/${id}`)
     }
 
     return (
         <Grid container>
             <Grid item xs={12}>
-                <ListItem key ={item.id}>
+                <ListItem>
                     <Typography variant="h5">
-                        <ListItemText 
-                            disableTypography 
-                            primary={`${item.food} & ${item.wine}`} 
-                            key={item.id}
-                            />
+                        <ListItemText
+                            disableTypography
+                            primary={`${item.food} & ${item.wine}`}
+                        />
                     </Typography>
                     <ListItemSecondaryAction>
-                        <Grid container direction="row" alignItems="center">
-                            <IconButton edge="end" onClick={() => handleClick}>
+                        <Grid
+                            container
+                            direction="row"
+                            alignItems="center"
+                        >
+                            <IconButton
+                                edge="end"
+                                onClick={() => handleClick(item.id)}
+                            >
                                 <NoteAddIcon /> create an insight
                             </IconButton>
                         </Grid>
