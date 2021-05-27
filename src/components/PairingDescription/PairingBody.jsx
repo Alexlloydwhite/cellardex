@@ -30,7 +30,7 @@ const PairingBody = ({ item }) => {
             {/* Back button takes user back home*/}
             <Button
                 onClick={() => history.push('/')}
-                color="Secondary"
+                color="secondary"
                 variant="contained"
                 style={{marginRight: 5}}
             >

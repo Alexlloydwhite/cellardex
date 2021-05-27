@@ -18,7 +18,7 @@ const FoodList = ({ item }) => {
     const handleClick = (id) => {
         // debug log
         console.log('Clicked!', id);
-        // Uncomment this when view is established
+        // bring user to pairing description view
         history.push(`/pairing/${id}`);
         // Dispatch store to set the pairing click to the id of click
         dispatch({ type: 'SET_PAIRING_CLICK', payload: id });
@@ -28,13 +28,13 @@ const FoodList = ({ item }) => {
         <Grid container>
             <Grid item xs={12}>
                 <ListItem>
-                    <Typography 
+                    <Typography
                         variant="h5"
                         color="textPrimary"
                     >
-                        <ListItemText 
-                            disableTypography 
-                            primary={item.food} 
+                        <ListItemText
+                            disableTypography
+                            primary={item.food}
                         />
                     </Typography>
                     <ListItemSecondaryAction>

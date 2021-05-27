@@ -8,11 +8,11 @@ import {
 import { useDispatch } from 'react-redux';
 import Nav from '../NavBar/Nav';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserProfile/UserPage/UserPage';
 import LandingPage from '../WelcomeScreen/LandingPage';
 import SearchView from '../SearchView/SearchView';
 import PairingDescriptionView from '../PairingDescription/PairingDescription';
+import CreateInsight from '../UserProfile/CreateInsight';
 import './App.css';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 
@@ -69,6 +69,15 @@ function App() {
             >
               <Nav>
                 <PairingDescriptionView />
+              </Nav>
+            </ProtectedRoute>
+
+            <ProtectedRoute
+              exact
+              path="/insights/create/:id"
+            >
+              <Nav>
+                <CreateInsight />
               </Nav>
             </ProtectedRoute>
 
