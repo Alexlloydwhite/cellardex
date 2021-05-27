@@ -62,7 +62,6 @@ const CreateInsight = () => {
                             {i.food}{' & '}{i.wine}
                         </Typography>
                     })}
-
                     <InsightForm />
                 </Paper>
             </main>
