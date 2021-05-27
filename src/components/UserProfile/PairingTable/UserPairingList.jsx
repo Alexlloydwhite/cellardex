@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import { Typography } from '@material-ui/core/';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 
 const UserPairingList = ({ item }) => {
@@ -16,6 +17,10 @@ const UserPairingList = ({ item }) => {
 
     const handleClick = (id) => {
         console.log(`clicked!`, id);
+        // Dispatch store to set the pairing click to the id of click
+        dispatch({ type: 'SET_PAIRING_CLICK', payload: id });
+        // Bring user to Create Insight View
+        history.push(`/insights/create/${id}`)
     }
 
     return (
@@ -23,22 +28,22 @@ const UserPairingList = ({ item }) => {
             <Grid item xs={12}>
                 <ListItem>
                     <Typography variant="h5">
-                        <ListItemText 
-                            disableTypography 
-                            primary={`${item.food} & ${item.wine}`} 
+                        <ListItemText
+                            disableTypography
+                            primary={`${item.food} & ${item.wine}`}
                         />
                     </Typography>
                     <ListItemSecondaryAction>
-                        <Grid 
-                            container 
-                            direction="row" 
+                        <Grid
+                            container
+                            direction="row"
                             alignItems="center"
                         >
-                            <IconButton 
+                            <IconButton
                                 edge="end"
-                                onClick={() => handleClick(item.id)}    
+                                onClick={() => handleClick(item.id)}
                             >
-                                <NoteAddIcon/> create an insight
+                                <NoteAddIcon /> create an insight
                             </IconButton>
                         </Grid>
                     </ListItemSecondaryAction>

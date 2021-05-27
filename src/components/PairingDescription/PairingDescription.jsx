@@ -12,7 +12,8 @@ const PairingDescription = () => {
 
     useEffect(() => {
         dispatch({ type: 'SET_PAIRING_CLICK', payload: params.id });
-    }, [])
+    }, []);
+
     return (
         <div>
             {pairing.map(item => {
