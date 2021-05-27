@@ -8,8 +8,6 @@ import IconButton from '@material-ui/core/IconButton';
 import { Typography } from '@material-ui/core/';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-
 
 const UserPairingList = ({ item }) => {
     const history = useHistory();
