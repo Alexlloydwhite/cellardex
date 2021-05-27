@@ -3,6 +3,9 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
 import { Typography } from '@material-ui/core/';
 import InsightForm from './InsightForm';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useParams } from 'react-router';
 
 const useStyles = makeStyles((theme) => ({
     layout: {
@@ -29,6 +32,14 @@ const useStyles = makeStyles((theme) => ({
 
 const CreateInsight = () => {
     const classes = useStyles();
+    const dispatch = useDispatch();
+    const params = useParams();
+
+    useEffect(() => {
+        dispatch({ type: 'SET_PAIRING_CLICK', payload: params.id });
+    }, []);
+
+    const pairingClicked = useSelector(store => store.pairingClick);
 
     return (
         <CssBaseline>
@@ -38,10 +49,21 @@ const CreateInsight = () => {
                         component="h1"
                         variant="h4"
                         align="center"
+                        gutterBottom
                     >
-                        Create a New Insight
+                        New Insight
+                    </Typography>
+                    {pairingClicked.map(i => {
+                        return <Typography
+                            component="h2"
+                            variant="h6"
+                            align="center"
+                        >
+                            {i.food}{' & '}{i.wine}
                         </Typography>
-                        <InsightForm />
+                    })}
+
+                    <InsightForm />
                 </Paper>
             </main>
         </CssBaseline>
