@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 import Nav from '../NavBar/Nav';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserProfile/UserPage';
+import UserPage from '../UserProfile/UserPage/UserPage';
 import LandingPage from '../WelcomeScreen/LandingPage';
 import SearchView from '../SearchView/SearchView';
 import PairingDescriptionView from '../PairingDescription/PairingDescription';

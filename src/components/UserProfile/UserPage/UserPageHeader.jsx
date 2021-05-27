@@ -1,4 +1,4 @@
-import UserPairing from './UserPairing';
+import UserPairing from '../PairingTable/UserPairing';
 import Container from '@material-ui/core/Container';
 
 import PropTypes from 'prop-types';
