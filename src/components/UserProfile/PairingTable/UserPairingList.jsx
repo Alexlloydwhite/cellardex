@@ -14,25 +14,31 @@ const UserPairingList = ({ item }) => {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const handleClick = () => {
-        console.log(`clicked!`);
+    const handleClick = (id) => {
+        console.log(`clicked!`, id);
     }
 
     return (
         <Grid container>
             <Grid item xs={12}>
-                <ListItem key ={item.id}>
+                <ListItem>
                     <Typography variant="h5">
                         <ListItemText 
                             disableTypography 
                             primary={`${item.food} & ${item.wine}`} 
-                            key={item.id}
-                            />
+                        />
                     </Typography>
                     <ListItemSecondaryAction>
-                        <Grid container direction="row" alignItems="center">
-                            <IconButton edge="end" onClick={() => handleClick}>
-                                <NoteAddIcon /> create an insight
+                        <Grid 
+                            container 
+                            direction="row" 
+                            alignItems="center"
+                        >
+                            <IconButton 
+                                edge="end"
+                                onClick={() => handleClick(item.id)}    
+                            >
+                                <NoteAddIcon/> create an insight
                             </IconButton>
                         </Grid>
                     </ListItemSecondaryAction>

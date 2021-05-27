@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
     // id of user getting saved pairings
     const userId = req.user.id;
     // SQL query
-    const sqlQuery = `SELECT p.food, p.wine, p.description FROM saved_pairing sp
+    const sqlQuery = `SELECT p.id, p.food, p.wine, p.description FROM saved_pairing sp
                         JOIN pairing p ON p.id = sp.pairing_id
                         JOIN "user" u ON u.id=sp.user_id
                         WHERE u.id = $1;`;
