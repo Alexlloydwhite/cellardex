@@ -32,10 +32,20 @@ const registrationMessage = (state = '', action) => {
   }
 };
 
+const savedPairingMessage = (state = '', action) => {
+  switch (action.type) {
+    case 'DUPLICATE_ENTRY_ERROR':
+      return `You've already saved this pairing!`;
+    default: 
+      return state;
+  }
+}
+
 // make one object that has keys loginMessage, registrationMessage
 // these will be on the redux state at:
 // state.errors.loginMessage and state.errors.registrationMessage
 export default combineReducers({
   loginMessage,
   registrationMessage,
+  savedPairingMessage,
 });

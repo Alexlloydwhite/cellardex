@@ -60,6 +60,12 @@ function Nav({ children }) {
           </Typography>
           <Typography 
             className={classes.links}
+            onClick={() => history.push('/profile')}
+          >
+            Your Profile
+          </Typography>
+          <Typography 
+            className={classes.links}
             onClick={() => dispatch({ type: 'LOGOUT' })}
           >
             Logout

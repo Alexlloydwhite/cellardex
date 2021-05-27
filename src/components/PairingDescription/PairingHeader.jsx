@@ -18,7 +18,6 @@ const PairingHeader = ({ item }) => {
             container
             direction="column"
             justify="space-evenly"
-            textAlign="center"
         >
             <Grid item>
                 <Typography
@@ -26,7 +25,7 @@ const PairingHeader = ({ item }) => {
                     id="header"
                     style={{ textAlign: 'center' }}
                     gutterBottom
-                    color="Secondary"
+                    color="secondary"
                 >
                     {item.food}{' & '}{item.wine}
                 </Typography>
