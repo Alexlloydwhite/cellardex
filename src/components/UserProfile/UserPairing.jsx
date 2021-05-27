@@ -8,9 +8,6 @@ import UserPairingList from './UserPairingList';
 const UserPairing = ({ savedPairing }) => {
     return (
         <Grid item xs={12}>
-            <Typography style={{ textAlign: 'center' }} variant="h6">
-                Tap <NoteAddIcon /> to create an insight!
-            </Typography>
             <List>
                 {savedPairing.map(item => {
                     return <UserPairingList key={item.id} item={item}/>

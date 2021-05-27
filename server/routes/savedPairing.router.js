@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
         .then(() => res.sendStatus(201))
         .catch((err) => {
             console.log(`In savedPairingRouter. ERROR on post request with SQL query ${sqlQuery}. ERROR: ${err}`);
-            res.sendStatus(500);
+            res.status(500).send({ message: 'Hello From The Server!' });
         });
 });
 

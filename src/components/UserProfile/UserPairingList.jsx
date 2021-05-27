@@ -7,6 +7,7 @@ import NoteAddIcon from '@material-ui/icons/NoteAdd';
 import IconButton from '@material-ui/core/IconButton';
 import { Typography } from '@material-ui/core/';
 
+
 const UserPairingList = ({ item }) => {
 
     const handleClick = (id) => {
@@ -21,9 +22,11 @@ const UserPairingList = ({ item }) => {
                         <ListItemText disableTypography primary={`${item.food} & ${item.wine}`} />
                     </Typography>
                     <ListItemSecondaryAction>
-                        <IconButton edge="end" onClick={() => handleClick(item.id)}>
-                            <NoteAddIcon />
-                        </IconButton>
+                        <Grid container direction="row" alignItems="center">
+                            <IconButton edge="end" onClick={() => handleClick(item.id)}>
+                                <NoteAddIcon /> create an insight
+                            </IconButton>
+                        </Grid>
                     </ListItemSecondaryAction>
                 </ListItem>
                 <Divider />
