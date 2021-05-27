@@ -11,6 +11,7 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const pairingRouter = require('./routes/pairing.router');
 const savedPairingRouter = require('./routes/savedPairing.router');
+const insightRouter = require('./routes/insight.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -27,6 +28,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/pairing', pairingRouter);
 app.use('/api/savedpairing', savedPairingRouter);
+app.use('/api/insight', insightRouter);
 
 // Serve static files
 app.use(express.static('build'));
