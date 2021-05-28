@@ -51,6 +51,19 @@ router.post('/', (req, res) => {
             console.log(err);
             res.sendStatus(500);
         });
+});
+
+router.delete('/:id', (req,res) => {
+    console.log(`IN delete insight Router!`);
+    // SQL query to delete insight based on ID
+    const sqlQuery = `DELETE FROM "user_insights" WHERE id=$1;`;
+    // Send query to DB 
+    pool.query(sqlQuery, [req.params.id])
+        .then(() => res.sendStatus(201))
+        .catch((err) => {
+            console.log(`IN delete insight router. ${err}`);
+            res.sendStatus(500);
+        })
 })
 
 module.exports = router;
