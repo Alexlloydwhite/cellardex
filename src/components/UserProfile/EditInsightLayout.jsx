@@ -54,7 +54,7 @@ const EditInsightLayout = () => {
                         Edit Insight
                     </Typography>
                     {JSON.stringify(insightClicked)}
-                    <EditInsightForm />
+                    <EditInsightForm insightClicked={insightClicked}/>
                 </Paper>
             </main>
         </CssBaseline>
