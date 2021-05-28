@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { useEffect } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -34,6 +34,13 @@ const EditInsightLayout = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const params = useParams();
+
+    useEffect(() => {
+        dispatch({ type: 'FETCH_INSIGHT_BY_ID', id: params.id })
+    }, []);
+
+    const insightClicked = useSelector(store => store.insightById);
+
     return (  
         <CssBaseline>
             <main className={classes.layout}>
@@ -46,6 +53,7 @@ const EditInsightLayout = () => {
                     >
                         Edit Insight
                     </Typography>
+                    {JSON.stringify(insightClicked)}
                     <EditInsightForm />
                 </Paper>
             </main>

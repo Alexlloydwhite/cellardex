@@ -1,4 +1,5 @@
 const EditInsightForm = () => {
+
     return (  
         <h5>Form here!</h5>
     );
