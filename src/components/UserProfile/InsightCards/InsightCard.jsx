@@ -2,12 +2,12 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { useState } from 'react';
+import DeleteMenuItem from './DeleteMenuItem';
 
 const useStyles = makeStyles({
     cardDetails: {
@@ -26,11 +26,11 @@ const useStyles = makeStyles({
 const InsightCard = ({ insight }) => {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = useState(null);
-
+    // Handles click of kebab menu, opens menu
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     }
-
+    // Handles click of kebab menu, closes menu
     const handleClose = () => {
         setAnchorEl(null);
     }
@@ -58,10 +58,12 @@ const InsightCard = ({ insight }) => {
                     anchorEl={anchorEl}
                     keepMounted
                     open={Boolean(anchorEl)}
-                    onClose={handleClose}
+                    onClose={() => handleClose(insight.id)}
                 >
-                    <MenuItem>Edit</MenuItem>
-                    <MenuItem>Delete</MenuItem>
+                    <MenuItem onClick={handleClose}>Edit</MenuItem>
+                    <MenuItem onClick={handleClose}>
+                        <DeleteMenuItem insight={insight} />
+                    </MenuItem>
                 </Menu>
             </CardContent>
         </div>
