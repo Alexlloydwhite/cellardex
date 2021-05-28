@@ -5,7 +5,7 @@ const router = express.Router();
 // POST new insight
 router.post('/', (req, res) => {
     console.log(req.body);
-    // SQL query
+    // SQL query to get the ID of saved pairing.
     const getIdQuery = `SELECT * FROM "saved_pairing" sp WHERE sp.pairing_id = $1;`;
     // first get id of saved_pairing
     pool.query(getIdQuery, [req.body.saved_pairing_id])

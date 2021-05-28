@@ -44,6 +44,8 @@ const InsightForm = () => {
             enjoyed_with: companion,
             image: photo,
         });
+        // Bring use to the profile view
+        history.push('/profile');
     }
 
     return (
