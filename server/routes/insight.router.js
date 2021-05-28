@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/', (req,res) => {
     const userId = req.user.id;
     // SQL query to send to DB
-    const sqlQuery = `SELECT p.food, p.wine, ui.wine_drank, ui.enjoyed_with, ui.image, ui.location, ui.thoughts
+    const sqlQuery = `SELECT ui.id, p.food, p.wine, ui.wine_drank, ui.enjoyed_with, ui.image, ui.location, ui.thoughts
                         FROM "user_insights" ui
                         JOIN "user" u ON u.id = ui.user_id
                         JOIN saved_pairing sp ON sp.id = ui.saved_pairing_id
