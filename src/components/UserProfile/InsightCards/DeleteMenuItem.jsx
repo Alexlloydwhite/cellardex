@@ -5,15 +5,20 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { useState } from 'react';
 import Button from '@material-ui/core/Button';
+import { useDispatch } from 'react-redux';
 
 
 const DeleteMenuItem = ({ insight }) => {
+    const dispatch = useDispatch();
     // state for dialog
     const [open, setOpen] = useState(false);
     // click handler for delete 
     const handleDelete = (id) => {
+        // fact checking
         console.log(`Clicked! ${id}`);
+        // closes dialog after click
         setOpen(false);
+        dispatch({ type: 'DELETE_INSIGHT', id: id });
     }
     // click handles for opening dialog
     const handleOpenClick = () => {

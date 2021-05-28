@@ -8,9 +8,11 @@ import setSavedPairing from './setSavedPairing.saga';
 import fetchSavedPairing from './fetchSavedPairing.saga';
 import postInsight from './postInsight.saga';
 import fetchInsights from './fetchInsights.saga';
+import deleteInsight from './deleteInsight.saga';
 
 // This is imported in index.js as rootSaga
 export default function* rootSaga() {
+  yield takeEvery('DELETE_INSIGHT', deleteInsight);
   yield takeEvery('FETCH_INSIGHTS', fetchInsights);
   yield takeEvery('POST_INSIGHT', postInsight);
   yield takeEvery('FETCH_PAIRING', pairingSaga);
