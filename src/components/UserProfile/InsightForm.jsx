@@ -2,8 +2,8 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core';
 import { useState } from 'react';
-import { useHistory } from 'react-router';
-
+import { useHistory, useParams } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
     form: {
@@ -18,16 +18,34 @@ const useStyles = makeStyles((theme) => ({
 const InsightForm = () => {
     const history = useHistory();
     const classes = useStyles();
+    const params = useParams();
+    const dispatch = useDispatch();
     // State for form inputs
     const [wineName, setWineName] = useState('');
     const [thoughts, setThoughts] = useState('');
     const [location, setLocation] = useState('');
     const [companion, setCompanion] = useState('');
     const [photo, setPhoto] = useState('');
+    // user data from store
+    const user = useSelector(store => store.user);
+    // pairing clicked data from store
+    const pairingClicked = useSelector(store => store.pairingClick);
     // Clicked handle for submit insight
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log('clicked submit!');
+        // send form data to the postInsight saga
+        dispatch({ 
+            type: 'POST_INSIGHT', 
+            user_id: user.id, 
+            saved_pairing_id: Number(params.id), 
+            wine: wineName, 
+            thoughts: thoughts,
+            location: location,
+            enjoyed_with: companion,
+            image: photo,
+        });
+        // Bring use to the profile view
+        history.push('/profile');
     }
 
     return (

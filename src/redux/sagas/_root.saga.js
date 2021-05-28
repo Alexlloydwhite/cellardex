@@ -6,9 +6,13 @@ import pairingSaga from './fetchPairing.saga';
 import getPairingById from './fetchPairingById.saga';
 import setSavedPairing from './setSavedPairing.saga';
 import fetchSavedPairing from './fetchSavedPairing.saga';
+import postInsight from './postInsight.saga';
+import fetchInsights from './fetchInsights.saga';
 
 // This is imported in index.js as rootSaga
 export default function* rootSaga() {
+  yield takeEvery('FETCH_INSIGHTS', fetchInsights);
+  yield takeEvery('POST_INSIGHT', postInsight);
   yield takeEvery('FETCH_PAIRING', pairingSaga);
   yield takeEvery('SET_PAIRING_CLICK', getPairingById);
   yield takeEvery('POST_SAVED_PAIRING', setSavedPairing);
