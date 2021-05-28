@@ -9,7 +9,6 @@ const useStyles = makeStyles({
     card: {
         margin: 10
     },
-
 });
 
 const InsightCardsLayout = () => {
@@ -21,22 +20,20 @@ const InsightCardsLayout = () => {
     useEffect(() => {
         // get saved insights
         dispatch({ type: 'FETCH_INSIGHTS' });
-    }, [insights])
+    }, [])
 
     return (
-        <Grid container spacing={1}>
-            <Grid item xs={6}>
-                {insights.map(insight => {
-                    return <Card
+        <Grid container>
+            {insights.map(insight => {
+                return <Grid item xs={12} md={6} key={insight.id}>
+                    <Card
                         className={classes.card}
                         variant="outlined"
-                        key={insight.id} 
                     >
                         <InsightCard insight={insight} />
                     </Card>
-                })}
-
-            </Grid>
+                </Grid>
+            })}
         </Grid>
     );
 }
