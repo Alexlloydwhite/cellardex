@@ -21,7 +21,7 @@ const InsightCardsLayout = () => {
     useEffect(() => {
         // get saved insights
         dispatch({ type: 'FETCH_INSIGHTS' });
-    }, [])
+    }, [insights])
 
     return (
         <Grid container spacing={1}>

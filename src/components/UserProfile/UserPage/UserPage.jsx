@@ -11,6 +11,7 @@ const UserPage = () => {
 
   useEffect(() => {
     dispatch({ type: 'GET_SAVED_PAIRING' });
+    dispatch({ type: 'FETCH_INSIGHTS'});
   }, [])
 
   return (
