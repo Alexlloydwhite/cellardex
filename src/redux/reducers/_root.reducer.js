@@ -5,6 +5,7 @@ import pairing from './pairing.reducer';
 import pairingClick from './pairingClick.reducer';
 import savedPairing from './savedPairing.reducer';
 import insights from './insights.reducer';
+import insightById from './insightById.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -13,6 +14,7 @@ import insights from './insights.reducer';
 // Lets make a bigger object for our store, with the objects from our reducers.
 // This is what we get when we use 'state' inside of 'mapStateToProps'
 const rootReducer = combineReducers({
+  insightById, // holds information about insight based on id 
   insights, // holds array of a users insights
   savedPairing, // holds array of a users saved pairings
   pairing, // array of pairings from database

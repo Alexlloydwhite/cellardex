@@ -1,6 +1,6 @@
 const EditInsightForm = () => {
     return (  
-        <h3>Editing Insights is fun!</h3>
+        <h5>Form here!</h5>
     );
 }
  
