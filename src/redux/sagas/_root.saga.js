@@ -11,7 +11,7 @@ import fetchInsights from './fetchInsights.saga';
 
 // This is imported in index.js as rootSaga
 export default function* rootSaga() {
-  yield takeEvery('FETCH_INSIGHT', fetchInsights);
+  yield takeEvery('FETCH_INSIGHTS', fetchInsights);
   yield takeEvery('POST_INSIGHT', postInsight);
   yield takeEvery('FETCH_PAIRING', pairingSaga);
   yield takeEvery('SET_PAIRING_CLICK', getPairingById);
