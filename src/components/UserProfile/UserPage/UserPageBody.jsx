@@ -8,6 +8,9 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import UserInsights from '../InsightCards/InsightsCardsLayout';
+import Container from '@material-ui/core/Container'
+import Grid from '@material-ui/core/Grid';
+
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -21,9 +24,9 @@ function TabPanel(props) {
             {...other}
         >
             {value === index && (
-                <Box p={3}>
-                    <Typography component="div">{children}</Typography>
-                </Box>
+                <>
+                    {children}
+                </>
             )}
         </div>
     );
@@ -31,7 +34,6 @@ function TabPanel(props) {
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        flexGrow: 1,
         backgroundColor: theme.palette.background.paper,
     },
 }));

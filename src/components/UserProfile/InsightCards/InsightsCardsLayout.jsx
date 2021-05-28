@@ -1,16 +1,13 @@
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import InsightCard from './InsightCard';
 
 const useStyles = makeStyles({
     card: {
-        display: 'flex',
-    },
-    cardDetails: {
-        flex: 1,
+        margin: 10
     },
 });
 
@@ -23,17 +20,20 @@ const InsightCardsLayout = () => {
     useEffect(() => {
         // get saved insights
         dispatch({ type: 'FETCH_INSIGHTS' });
-    },[])
+    }, [])
 
     return (
-        <Grid item xs={12} md={6}>
-            <Card className={classes.card}>
-                <div className={classes.cardDetail}>
-                    <Typography>
-                        {JSON.stringify(insights)}
-                    </Typography>
-                </div>
-            </Card>
+        <Grid container>
+            {insights.map(insight => {
+                return <Grid item xs={12} md={6} key={insight.id}>
+                    <Card
+                        className={classes.card}
+                        variant="outlined"
+                    >
+                        <InsightCard insight={insight} />
+                    </Card>
+                </Grid>
+            })}
         </Grid>
     );
 }

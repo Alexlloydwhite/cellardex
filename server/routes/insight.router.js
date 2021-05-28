@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/', (req,res) => {
     const userId = req.user.id;
     // SQL query to send to DB
-    const sqlQuery = `SELECT p.food, p.wine, ui.wine_drank, ui.enjoyed_with, ui.image, ui.location, ui.thoughts
+    const sqlQuery = `SELECT ui.id, p.food, p.wine, ui.wine_drank, ui.enjoyed_with, ui.image, ui.location, ui.thoughts
                         FROM "user_insights" ui
                         JOIN "user" u ON u.id = ui.user_id
                         JOIN saved_pairing sp ON sp.id = ui.saved_pairing_id
@@ -15,11 +15,26 @@ router.get('/', (req,res) => {
     // Send this query the DB to get insights report for user
     pool.query(sqlQuery, [userId])
         .then(result => {
-            res.send(result.rows)
+            res.send(result.rows);
         })
         .catch(err => {
             console.log(`IN get insight router. ERROR on get request: ${err}`);
             res.sendStatus(500);
+        })
+});
+
+// GET insight with id from params
+router.get('/:id', (req,res) => {
+    // SQL query gets the user insight data based on id of insight edit click & id of user
+    const sqlQuery = `SELECT * FROM "user_insights" ui WHERE id=$1 AND ui.user_id=$2;`;
+    // send SQL query to the database
+    pool.query(sqlQuery, [req.params.id, req.user.id])
+        .then(result => {
+            res.send(result.rows);
+        })
+        .catch(err => {
+            res.sendStatus(500);
+            console.log(`IN get insight by ID. ERROR: ${err}`);
         })
 })
 
@@ -51,6 +66,20 @@ router.post('/', (req, res) => {
             console.log(err);
             res.sendStatus(500);
         });
+});
+
+// DELETE insight by ID
+router.delete('/:id', (req,res) => {
+    console.log(`IN delete insight Router!`);
+    // SQL query to delete insight based on ID
+    const sqlQuery = `DELETE FROM "user_insights" WHERE id=$1 AND "user_id"=$2;`;
+    // Send query to DB 
+    pool.query(sqlQuery, [req.params.id, req.user.id])
+        .then(() => res.sendStatus(201))
+        .catch((err) => {
+            console.log(`IN delete insight router. ${err}`);
+            res.sendStatus(500);
+        })
 })
 
 module.exports = router;

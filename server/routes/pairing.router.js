@@ -5,7 +5,9 @@ const router = express.Router();
 // GET all pairings
 router.get('/', (req, res) => {
   // Query to send to db
-  const sqlQuery = `SELECT * FROM pairing ORDER BY Random();`;
+  const sqlQuery = `SELECT * FROM pairing 
+                    ORDER BY Random() 
+                    LIMIT 10;`;
 
   pool.query(sqlQuery)
     .then(result => {

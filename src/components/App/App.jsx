@@ -13,6 +13,7 @@ import LandingPage from '../WelcomeScreen/LandingPage';
 import SearchView from '../SearchView/SearchView';
 import PairingDescriptionView from '../PairingDescription/PairingDescription';
 import CreateInsight from '../UserProfile/CreateInsight';
+import EditInsightLayout from '../UserProfile/EditInsightLayout';
 import './App.css';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 
@@ -78,6 +79,15 @@ function App() {
             >
               <Nav>
                 <CreateInsight />
+              </Nav>
+            </ProtectedRoute>
+
+            <ProtectedRoute
+              exact
+              path="/insights/edit/:id"
+            >
+              <Nav>
+                <EditInsightLayout />
               </Nav>
             </ProtectedRoute>
 
