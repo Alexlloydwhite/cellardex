@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 
 const useStyles = makeStyles((theme) => ({
     form: {
@@ -18,17 +19,26 @@ const EditInsightForm = ({ insightClicked }) => {
     const classes = useStyles();
     const history = useHistory();
     const dispatch = useDispatch();
+
     // handle form submit
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(`clicked submit!`);
     }
 
-    const handleChange = (e, field) => {
+    const [state, setState] = useState({
+        wine: insightClicked.wine_drank
+    });
+    const handleChange = (e) => {
+        const value = e.target.value;
         dispatch({
             type: 'EDIT_ONCHANGE',
-            payload: { property: `${field}`, value: e.target.value }
-        })
+            payload: { property: e.target.name, value: value }
+        });
+        setState({
+            ...state,
+            [e.target.name]: value
+        });
     }
     return (
         <form className={classes.form} onSubmit={handleSubmit} noValidate>
@@ -36,9 +46,9 @@ const EditInsightForm = ({ insightClicked }) => {
             <TextField
                 margin="normal"
                 fullWidth
-                helperText="Include both vintage and name of producer"
-                value={insightClicked.wine_drank}
-                onChange={(e, value) => handleChange(e, value)}
+                name="wine_drank"
+                value={state.wine}
+                onChange={handleChange}
                 variant="outlined"
             />
             {/* Thoughts */}

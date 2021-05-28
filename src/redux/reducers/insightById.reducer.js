@@ -12,6 +12,11 @@ const insightById = (state = [], action) => {
                 enjoyed_with: action.payload[0].enjoyed_with,
                 image: action.payload[0].image
             }
+        case 'EDIT_ONCHANGE':
+            return {
+                ...state,
+                [action.payload.property]: action.payload.value
+            }
         default:
             return state;
     }
