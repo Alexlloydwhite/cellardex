@@ -8,6 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { useState } from 'react';
 import DeleteMenuItem from './DeleteMenuItem';
+import EditMenuItem from './EditMenuItem';
 
 const useStyles = makeStyles({
     cardDetails: {
@@ -48,7 +49,7 @@ const InsightCard = ({ insight }) => {
                     Bottle of wine: {insight.wine_drank}
                 </Typography>
 
-                <IconButton 
+                <IconButton
                     className={classes.actions}
                     onClick={handleClick}
                 >
@@ -60,7 +61,12 @@ const InsightCard = ({ insight }) => {
                     open={Boolean(anchorEl)}
                     onClose={() => handleClose(insight.id)}
                 >
-                    <MenuItem onClick={handleClose}>Edit</MenuItem>
+                    <MenuItem>
+                        View
+                    </MenuItem>
+                    <MenuItem onClick={handleClose}>
+                        <EditMenuItem insight={insight} />
+                    </MenuItem>
                     <MenuItem onClick={handleClose}>
                         <DeleteMenuItem insight={insight} />
                     </MenuItem>

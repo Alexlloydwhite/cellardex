@@ -31,11 +31,9 @@ const DeleteMenuItem = ({ insight }) => {
 
     return (
         <div>
-            <div
-                onClick={handleOpenClick}
-            >
+            <div onClick={handleOpenClick}>
                 Delete
-        </div>
+            </div>
             <Dialog
                 open={open}
                 onClose={handleClose}
@@ -53,7 +51,7 @@ const DeleteMenuItem = ({ insight }) => {
                     >
                         Cancel
                     </Button>
-                    <Button 
+                    <Button
                         onClick={() => handleDelete(insight.id)}
                         color="secondary"
                     >
