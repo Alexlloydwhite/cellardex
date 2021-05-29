@@ -27,8 +27,13 @@ const EditInsightForm = ({ insightClicked }) => {
     }
 
     const [state, setState] = useState({
-        wine: insightClicked.wine_drank
+        wine_drank: insightClicked.wine_drank,
+        thoughts: insightClicked.thoughts,
+        location: insightClicked.location,
+        enjoyed_with: insightClicked.enjoyed_with,
+        image: insightClicked.image
     });
+    
     const handleChange = (e) => {
         const value = e.target.value;
         dispatch({
@@ -40,14 +45,16 @@ const EditInsightForm = ({ insightClicked }) => {
             [e.target.name]: value
         });
     }
+    
     return (
         <form className={classes.form} onSubmit={handleSubmit} noValidate>
             {/* Wine Name */}
             <TextField
                 margin="normal"
                 fullWidth
+                label="Wine Drank"
                 name="wine_drank"
-                value={state.wine}
+                value={state.wine_drank}
                 onChange={handleChange}
                 variant="outlined"
             />
@@ -55,38 +62,42 @@ const EditInsightForm = ({ insightClicked }) => {
             <TextField
                 margin="normal"
                 fullWidth
-                required
-                label="Thoughts on pairing?"
                 multiline
                 rows={4}
-                onChange={(event) => setThoughts(event.target.value)}
+                label="Thoughts"
+                name="thoughts"
+                value={state.thoughts}
+                onChange={handleChange}
                 variant="outlined"
             />
             {/* Location */}
             <TextField
                 margin="normal"
                 fullWidth
-                required
                 label="Location"
-                onChange={(event) => setLocation(event.target.value)}
+                name="location"
+                value={state.location}
+                onChange={handleChange}
                 variant="outlined"
             />
             {/* Companion */}
             <TextField
                 margin="normal"
                 fullWidth
-                required
                 label="Who did you enjoy this with?"
-                onChange={(event) => setCompanion(event.target.value)}
+                name="enjoyed_with"
+                value={state.enjoyed_with}
+                onChange={handleChange}
                 variant="outlined"
             />
             {/* Photo */}
             <TextField
                 margin="normal"
                 fullWidth
-                required
                 label="Do you have a photo? Enter the image URL here"
-                onChange={(event) => setPhoto(event.target.value)}
+                name="image"
+                value={state.image}
+                onChange={handleChange}
                 variant="outlined"
                 style={{ marginBottom: 15 }}
             />
