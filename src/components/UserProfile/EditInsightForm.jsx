@@ -2,8 +2,9 @@ import { makeStyles } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router';
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 
 const useStyles = makeStyles((theme) => ({
     form: {
@@ -15,26 +16,50 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const EditInsightForm = ({ insightClicked }) => {
+const EditInsightForm = () => {
     const classes = useStyles();
     const history = useHistory();
     const dispatch = useDispatch();
+    const params = useParams();
+    const insightClicked = useSelector(store => store.insightById);
+
+    useEffect(() => {
+        dispatch({ type: 'FETCH_INSIGHT_BY_ID', id: params.id });
+    }, []);
 
     // handle form submit
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(`clicked submit!`);
+        dispatch({
+            type: 'EDIT_INSIGHT',
+            id: insightClicked.id,
+            wine_drank: insightClicked.wine_drank,
+            thoughts: insightClicked.thoughts,
+            location: insightClicked.location,
+            enjoyed_with: insightClicked.enjoyed_with,
+            image: insightClicked.image
+        });
+        history.push('/profile');
     }
-
+    // Hold state of insight to edit
     const [state, setState] = useState({
-        wine: insightClicked.wine_drank
+        wine_drank: insightClicked.wine_drank,
+        thoughts: insightClicked.thoughts,
+        location: insightClicked.location,
+        enjoyed_with: insightClicked.enjoyed_with,
+        image: insightClicked.image
     });
+    // Handles change of inputs
     const handleChange = (e) => {
+        // Value is the contents of the input
         const value = e.target.value;
+        // Changes State of edit reducer
         dispatch({
             type: 'EDIT_ONCHANGE',
             payload: { property: e.target.name, value: value }
         });
+        // Spread state, set state to edit by getting the name property 
+        // of the inputs, change state to value of input.
         setState({
             ...state,
             [e.target.name]: value
@@ -42,12 +67,15 @@ const EditInsightForm = ({ insightClicked }) => {
     }
     return (
         <form className={classes.form} onSubmit={handleSubmit} noValidate>
+            {JSON.stringify(insightClicked)}
+            {JSON.stringify(state)}
             {/* Wine Name */}
             <TextField
                 margin="normal"
                 fullWidth
+                label="Wine Drank"
                 name="wine_drank"
-                value={state.wine}
+                value={insightClicked.wine_drank}
                 onChange={handleChange}
                 variant="outlined"
             />
@@ -55,38 +83,42 @@ const EditInsightForm = ({ insightClicked }) => {
             <TextField
                 margin="normal"
                 fullWidth
-                required
-                label="Thoughts on pairing?"
                 multiline
                 rows={4}
-                onChange={(event) => setThoughts(event.target.value)}
+                label="Thoughts"
+                name="thoughts"
+                value={insightClicked.thoughts}
+                onChange={handleChange}
                 variant="outlined"
             />
             {/* Location */}
             <TextField
                 margin="normal"
                 fullWidth
-                required
                 label="Location"
-                onChange={(event) => setLocation(event.target.value)}
+                name="location"
+                value={insightClicked.location}
+                onChange={handleChange}
                 variant="outlined"
             />
             {/* Companion */}
             <TextField
                 margin="normal"
                 fullWidth
-                required
                 label="Who did you enjoy this with?"
-                onChange={(event) => setCompanion(event.target.value)}
+                name="enjoyed_with"
+                value={insightClicked.enjoyed_with}
+                onChange={handleChange}
                 variant="outlined"
             />
             {/* Photo */}
             <TextField
                 margin="normal"
                 fullWidth
-                required
                 label="Do you have a photo? Enter the image URL here"
-                onChange={(event) => setPhoto(event.target.value)}
+                name="image"
+                value={insightClicked.image}
+                onChange={handleChange}
                 variant="outlined"
                 style={{ marginBottom: 15 }}
             />
