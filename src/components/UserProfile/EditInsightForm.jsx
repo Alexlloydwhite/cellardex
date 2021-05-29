@@ -25,7 +25,7 @@ const EditInsightForm = ({ insightClicked }) => {
         e.preventDefault();
         console.log(`clicked submit!`);
     }
-
+    // Hold state of insight to edit
     const [state, setState] = useState({
         wine_drank: insightClicked.wine_drank,
         thoughts: insightClicked.thoughts,
@@ -33,19 +33,23 @@ const EditInsightForm = ({ insightClicked }) => {
         enjoyed_with: insightClicked.enjoyed_with,
         image: insightClicked.image
     });
-    
+    // Handles change of inputs
     const handleChange = (e) => {
+        // Value is the contents of the input
         const value = e.target.value;
+        // Changes State of edit reducer
         dispatch({
             type: 'EDIT_ONCHANGE',
             payload: { property: e.target.name, value: value }
         });
+        // Spread state, set state to edit by getting the name property 
+        // of the inputs, change state to value of input.
         setState({
             ...state,
             [e.target.name]: value
         });
     }
-    
+
     return (
         <form className={classes.form} onSubmit={handleSubmit} noValidate>
             {/* Wine Name */}
