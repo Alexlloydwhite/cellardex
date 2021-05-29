@@ -14,7 +14,9 @@ router.get('/', (req, res) => {
                         JOIN "user" u ON u.id = ui.user_id
                         JOIN saved_pairing sp ON sp.id = ui.saved_pairing_id
                         JOIN pairing p ON p.id = sp.pairing_id
-                        WHERE u.id = $1;`;
+                        WHERE u.id = $1
+                        ORDER BY ui.id;`;
+
     // Send this query the DB to get insights report for user
     pool.query(sqlQuery, [userId])
         .then(result => {
@@ -33,7 +35,8 @@ router.get('/:id', (req, res) => {
     // send SQL query to the database
     pool.query(sqlQuery, [req.params.id, req.user.id])
         .then(result => {
-            res.send(result.rows);
+            console.log(result.rows[0]);
+            res.send(result.rows[0]);
         })
         .catch(err => {
             res.sendStatus(500);
@@ -85,14 +88,15 @@ router.put('/:id', (req, res) => {
     const wine_drank = req.body.wine_drank;
     const thoughts = req.body.thoughts;
     const location = req.body.location;
+    const enjoyed_with = req.body.enjoyed_with;
     const image = req.body.image;
     // Log for bug check
     console.log(`IN insight put router. Editing id ${insightId}`);
     // SQL query
     const sqlQuery = `UPDATE "user_insights" 
-                        SET wine_drank=$3, thoughts=$4, location=$5, image=$6
+                        SET wine_drank=$3, thoughts=$4, location=$5, enjoyed_with=$6, image=$7
                         WHERE id=$1 AND user_id=$2;`;
-    pool.query(sqlQuery, [insightId, userId, wine_drank, thoughts, location, image])
+    pool.query(sqlQuery, [insightId, userId, wine_drank, thoughts, location, enjoyed_with, image])
         .then(() => res.sendStatus(201))
         .catch(err => {
             console.log(`IN insight PUT router. Editing id ${insightId}. !ERROR! ${err}`);

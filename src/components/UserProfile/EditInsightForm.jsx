@@ -2,8 +2,9 @@ import { makeStyles } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router';
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 
 const useStyles = makeStyles((theme) => ({
     form: {
@@ -15,10 +16,16 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const EditInsightForm = ({ insightClicked }) => {
+const EditInsightForm = () => {
     const classes = useStyles();
     const history = useHistory();
     const dispatch = useDispatch();
+    const params = useParams();
+    const insightClicked = useSelector(store => store.insightById);
+
+    useEffect(() => {
+        dispatch({ type: 'FETCH_INSIGHT_BY_ID', id: params.id });
+    }, []);
 
     // handle form submit
     const handleSubmit = (e) => {
@@ -60,13 +67,15 @@ const EditInsightForm = ({ insightClicked }) => {
     }
     return (
         <form className={classes.form} onSubmit={handleSubmit} noValidate>
+            {JSON.stringify(insightClicked)}
+            {JSON.stringify(state)}
             {/* Wine Name */}
             <TextField
                 margin="normal"
                 fullWidth
                 label="Wine Drank"
                 name="wine_drank"
-                value={state.wine_drank}
+                value={insightClicked.wine_drank}
                 onChange={handleChange}
                 variant="outlined"
             />
@@ -78,7 +87,7 @@ const EditInsightForm = ({ insightClicked }) => {
                 rows={4}
                 label="Thoughts"
                 name="thoughts"
-                value={state.thoughts}
+                value={insightClicked.thoughts}
                 onChange={handleChange}
                 variant="outlined"
             />
@@ -88,7 +97,7 @@ const EditInsightForm = ({ insightClicked }) => {
                 fullWidth
                 label="Location"
                 name="location"
-                value={state.location}
+                value={insightClicked.location}
                 onChange={handleChange}
                 variant="outlined"
             />
@@ -98,7 +107,7 @@ const EditInsightForm = ({ insightClicked }) => {
                 fullWidth
                 label="Who did you enjoy this with?"
                 name="enjoyed_with"
-                value={state.enjoyed_with}
+                value={insightClicked.enjoyed_with}
                 onChange={handleChange}
                 variant="outlined"
             />
@@ -108,7 +117,7 @@ const EditInsightForm = ({ insightClicked }) => {
                 fullWidth
                 label="Do you have a photo? Enter the image URL here"
                 name="image"
-                value={state.image}
+                value={insightClicked.image}
                 onChange={handleChange}
                 variant="outlined"
                 style={{ marginBottom: 15 }}
