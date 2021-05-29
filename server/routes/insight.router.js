@@ -3,10 +3,13 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 // GET insights
-router.get('/', (req,res) => {
+router.get('/', (req, res) => {
     const userId = req.user.id;
     // SQL query to send to DB
-    const sqlQuery = `SELECT ui.id, p.food, p.wine, ui.wine_drank, ui.enjoyed_with, ui.image, ui.location, ui.thoughts
+    const sqlQuery = `SELECT 
+                        ui.id, p.food, p.wine, 
+                        ui.wine_drank, ui.enjoyed_with, 
+                        ui.image, ui.location, ui.thoughts
                         FROM "user_insights" ui
                         JOIN "user" u ON u.id = ui.user_id
                         JOIN saved_pairing sp ON sp.id = ui.saved_pairing_id
@@ -24,7 +27,7 @@ router.get('/', (req,res) => {
 });
 
 // GET insight with id from params
-router.get('/:id', (req,res) => {
+router.get('/:id', (req, res) => {
     // SQL query gets the user insight data based on id of insight edit click & id of user
     const sqlQuery = `SELECT * FROM "user_insights" ui WHERE id=$1 AND ui.user_id=$2;`;
     // send SQL query to the database
@@ -75,7 +78,7 @@ router.post('/', (req, res) => {
         });
 });
 
-router.put('/:id', (req,res) => {
+router.put('/:id', (req, res) => {
     // Making const for readability.
     const insightId = req.params.id;
     const userId = req.user.id;
@@ -90,16 +93,14 @@ router.put('/:id', (req,res) => {
                         SET wine_drank=$3, thoughts=$4, location=$5, image=$6
                         WHERE id=$1 AND user_id=$2;`;
     pool.query(sqlQuery, [insightId, userId, wine_drank, thoughts, location, image])
-        .then(result => {
-            res.send(result.rows);
-        })
+        .then(() => res.sendStatus(201))
         .catch(err => {
             console.log(`IN insight PUT router. Editing id ${insightId}. !ERROR! ${err}`);
         });
 });
 
 // DELETE insight by ID
-router.delete('/:id', (req,res) => {
+router.delete('/:id', (req, res) => {
     console.log(`IN delete insight Router!`);
     // SQL query to delete insight based on ID
     const sqlQuery = `DELETE FROM "user_insights" WHERE id=$1 AND "user_id"=$2;`;
