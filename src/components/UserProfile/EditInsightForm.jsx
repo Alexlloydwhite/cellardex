@@ -23,7 +23,16 @@ const EditInsightForm = ({ insightClicked }) => {
     // handle form submit
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(`clicked submit!`);
+        dispatch({
+            type: 'EDIT_INSIGHT',
+            id: insightClicked.id,
+            wine_drank: insightClicked.wine_drank,
+            thoughts: insightClicked.thoughts,
+            location: insightClicked.location,
+            enjoyed_with: insightClicked.enjoyed_with,
+            image: insightClicked.image
+        });
+        history.push('/profile');
     }
     // Hold state of insight to edit
     const [state, setState] = useState({
@@ -49,7 +58,6 @@ const EditInsightForm = ({ insightClicked }) => {
             [e.target.name]: value
         });
     }
-
     return (
         <form className={classes.form} onSubmit={handleSubmit} noValidate>
             {/* Wine Name */}

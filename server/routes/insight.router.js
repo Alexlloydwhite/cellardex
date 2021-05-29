@@ -20,7 +20,7 @@ router.get('/', (req,res) => {
         .catch(err => {
             console.log(`IN get insight router. ERROR on get request: ${err}`);
             res.sendStatus(500);
-        })
+        });
 });
 
 // GET insight with id from params
@@ -35,8 +35,8 @@ router.get('/:id', (req,res) => {
         .catch(err => {
             res.sendStatus(500);
             console.log(`IN get insight by ID. ERROR: ${err}`);
-        })
-})
+        });
+});
 
 // POST new insight
 router.post('/', (req, res) => {
@@ -47,8 +47,15 @@ router.post('/', (req, res) => {
         .then(result => {
             const savedPairingId = result.rows[0].id;
             // SQL query to add Insight
-            const sqlQuery = `INSERT INTO "user_insights" ("user_id", "saved_pairing_id", "wine_drank", "thoughts", "location", "enjoyed_with", "image")
-            VALUES ($1,$2,$3,$4,$5,$6,$7);`;
+            const sqlQuery = `INSERT INTO "user_insights" 
+                                ("user_id", 
+                                "saved_pairing_id", 
+                                "wine_drank", 
+                                "thoughts", 
+                                "location", 
+                                "enjoyed_with", 
+                                "image")
+                                VALUES ($1,$2,$3,$4,$5,$6,$7);`;
             // now use the saved pairing id to add new insight
             pool.query(sqlQuery, [
                 req.body.user_id,
@@ -68,6 +75,29 @@ router.post('/', (req, res) => {
         });
 });
 
+router.put('/:id', (req,res) => {
+    // Making const for readability.
+    const insightId = req.params.id;
+    const userId = req.user.id;
+    const wine_drank = req.body.wine_drank;
+    const thoughts = req.body.thoughts;
+    const location = req.body.location;
+    const image = req.body.image;
+    // Log for bug check
+    console.log(`IN insight put router. Editing id ${insightId}`);
+    // SQL query
+    const sqlQuery = `UPDATE "user_insights" 
+                        SET wine_drank=$3, thoughts=$4, location=$5, image=$6
+                        WHERE id=$1 AND user_id=$2;`;
+    pool.query(sqlQuery, [insightId, userId, wine_drank, thoughts, location, image])
+        .then(result => {
+            res.send(result.rows);
+        })
+        .catch(err => {
+            console.log(`IN insight PUT router. Editing id ${insightId}. !ERROR! ${err}`);
+        });
+});
+
 // DELETE insight by ID
 router.delete('/:id', (req,res) => {
     console.log(`IN delete insight Router!`);
@@ -79,7 +109,7 @@ router.delete('/:id', (req,res) => {
         .catch((err) => {
             console.log(`IN delete insight router. ${err}`);
             res.sendStatus(500);
-        })
-})
+        });
+});
 
 module.exports = router;
