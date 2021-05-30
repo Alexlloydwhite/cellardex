@@ -97,7 +97,9 @@ const SearchView = () => {
                                 <br />
                                 {/* Search Bar */}
                                 <TextField
+                                    value={search}
                                     className={classes.margin}
+                                    onChange={(e) => handleSearch(e)}
                                     placeholder="Search our collection of pairings"
                                     variant="outlined"
                                     type="search"
