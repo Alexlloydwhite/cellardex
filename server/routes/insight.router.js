@@ -16,7 +16,6 @@ router.get('/', (req, res) => {
                         JOIN pairing p ON p.id = sp.pairing_id
                         WHERE u.id = $1
                         ORDER BY ui.id;`;
-
     // Send this query the DB to get insights report for user
     pool.query(sqlQuery, [userId])
         .then(result => {

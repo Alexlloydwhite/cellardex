@@ -8,12 +8,12 @@ import {
 import { useDispatch } from 'react-redux';
 import Nav from '../NavBar/Nav';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-import UserPage from '../UserProfile/UserPage/UserPage';
+import Profile from '../Profile/_Profile';
 import LandingPage from '../WelcomeScreen/LandingPage';
-import SearchView from '../SearchView/SearchView';
-import PairingDescriptionView from '../PairingDescription/PairingDescription';
-import CreateInsight from '../UserProfile/CreateInsight';
-import EditInsightLayout from '../UserProfile/EditInsightLayout';
+import Search from '../Search/_Search';
+import PairingDescription from '../PairingDescription/_PairingDescription';
+import CreateInsight from '../CreateInsight/CreateInsight';
+import EditInsight from '../EditInsight/_EditInsight';
 import './App.css';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 
@@ -51,7 +51,7 @@ function App() {
               path="/profile"
             >
               <Nav>
-                <UserPage />
+                <Profile />
               </Nav>
             </ProtectedRoute>
             
@@ -60,7 +60,7 @@ function App() {
               path="/search"
             >
               <Nav>
-                <SearchView />
+                <Search />
               </Nav>
             </ProtectedRoute>
 
@@ -69,7 +69,7 @@ function App() {
               path="/pairing/:id"
             >
               <Nav>
-                <PairingDescriptionView />
+                <PairingDescription />
               </Nav>
             </ProtectedRoute>
 
@@ -87,7 +87,7 @@ function App() {
               path="/insights/edit/:id"
             >
               <Nav>
-                <EditInsightLayout />
+                <EditInsight />
               </Nav>
             </ProtectedRoute>
 

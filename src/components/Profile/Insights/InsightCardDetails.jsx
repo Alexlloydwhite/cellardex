@@ -24,7 +24,7 @@ const useStyles = makeStyles({
     }
 })
 
-const InsightCard = ({ insight }) => {
+const InsightCardDetails = ({ insight }) => {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = useState(null);
     // Handles click of kebab menu, opens menu
@@ -76,4 +76,4 @@ const InsightCard = ({ insight }) => {
     );
 }
 
-export default InsightCard;
+export default InsightCardDetails;
