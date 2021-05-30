@@ -1,6 +1,6 @@
-const search = (state=[], action) => {
-    console.log(`IN search reducer!`);
-    switch(action.type) {
+const searchReducer = (state = [], action) => {
+    console.log(`IN search reducer! ${action.payload}`); 
+    switch (action.type) {
         case 'SET_SEARCH':
             return action.payload;
         default:
@@ -8,4 +8,4 @@ const search = (state=[], action) => {
     }
 }
 
-export default search;
+export default searchReducer;

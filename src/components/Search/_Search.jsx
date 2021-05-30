@@ -54,7 +54,7 @@ const SearchView = () => {
     // array of pairings from store
     const pairing = useSelector(store => store.pairing);
     // Search results from reducer
-    const searchResults = useSelector(store => store.searchResults);
+    const searchResults = useSelector(store => store.search);
     // State for search input
     const [search, setSearch] = useState('');
     // State for toggling search and conditional render
@@ -140,11 +140,11 @@ const SearchView = () => {
                             </Typography>
                         </Grid>
                         <Grid item xs={12}>
-                                <List>
-                                    {pairing.map(item => {
-                                        return <FoodList key={item.id} item={item} /> 
-                                    })}
-                                </List>
+                            <List>
+                                {pairing.map(item => {
+                                    return <FoodList key={item.id} item={item} />
+                                })}
+                            </List>
                         </Grid>
                     </Grid>
                 }
