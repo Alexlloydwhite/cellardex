@@ -39,7 +39,7 @@ const SearchView = () => {
     const classes = useStyles();
 
     return (
-        <div>
+        <div >
             <section className={classes.root}>
                 <Container className={classes.container}>
                     <img

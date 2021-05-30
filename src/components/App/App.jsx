@@ -16,6 +16,7 @@ import CreateInsight from '../CreateInsight/CreateInsight';
 import EditInsight from '../EditInsight/_EditInsight';
 import './App.css';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 const theme = createMuiTheme({
   palette: {
@@ -39,77 +40,79 @@ function App() {
   }, [dispatch]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <Router>
-        <div>
-          <Switch>
-            {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
-            <Redirect exact from="/" to="/home" />
+    <CssBaseline>
+      <ThemeProvider theme={theme}>
+        <Router>
+          <div>
+            <Switch>
+              {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
+              <Redirect exact from="/" to="/home" />
 
-            <ProtectedRoute
-              exact
-              path="/profile"
-            >
-              <Nav>
-                <Profile />
-              </Nav>
-            </ProtectedRoute>
-            
-            <ProtectedRoute
-              exact
-              path="/search"
-            >
-              <Nav>
-                <Search />
-              </Nav>
-            </ProtectedRoute>
+              <ProtectedRoute
+                exact
+                path="/profile"
+              >
+                <Nav>
+                  <Profile />
+                </Nav>
+              </ProtectedRoute>
 
-            <ProtectedRoute
-              exact
-              path="/pairing/:id"
-            >
-              <Nav>
-                <PairingDescription />
-              </Nav>
-            </ProtectedRoute>
+              <ProtectedRoute
+                exact
+                path="/search"
+              >
+                <Nav>
+                  <Search />
+                </Nav>
+              </ProtectedRoute>
 
-            <ProtectedRoute
-              exact
-              path="/insights/create/:id"
-            >
-              <Nav>
-                <CreateInsight />
-              </Nav>
-            </ProtectedRoute>
+              <ProtectedRoute
+                exact
+                path="/pairing/:id"
+              >
+                <Nav>
+                  <PairingDescription />
+                </Nav>
+              </ProtectedRoute>
 
-            <ProtectedRoute
-              exact
-              path="/insights/edit/:id"
-            >
-              <Nav>
-                <EditInsight />
-              </Nav>
-            </ProtectedRoute>
+              <ProtectedRoute
+                exact
+                path="/insights/create/:id"
+              >
+                <Nav>
+                  <CreateInsight />
+                </Nav>
+              </ProtectedRoute>
 
-            <ProtectedRoute
-              // with authRedirect:
-              // - if logged in, redirects to "/search"
-              // - else shows LandingPage at "/home"
-              exact
-              path="/home"
-              authRedirect="/search"
-            >
-              <LandingPage />
-            </ProtectedRoute>
+              <ProtectedRoute
+                exact
+                path="/insights/edit/:id"
+              >
+                <Nav>
+                  <EditInsight />
+                </Nav>
+              </ProtectedRoute>
 
-            {/* If none of the other routes matched, we will show a 404. */}
-            <Route>
-              <h1>404</h1>
-            </Route>
-          </Switch>
-        </div>
-      </Router>
-    </ThemeProvider>
+              <ProtectedRoute
+                // with authRedirect:
+                // - if logged in, redirects to "/search"
+                // - else shows LandingPage at "/home"
+                exact
+                path="/home"
+                authRedirect="/search"
+              >
+                <LandingPage />
+              </ProtectedRoute>
+
+              {/* If none of the other routes matched, we will show a 404. */}
+              <Route>
+                <h1>404</h1>
+              </Route>
+            </Switch>
+          </div>
+        </Router>
+      </ThemeProvider>
+    </CssBaseline>
   );
 }
 

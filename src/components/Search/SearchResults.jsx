@@ -10,14 +10,16 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const useStyles = makeStyles((theme) => {
     return {
-        root: {
-            display: 'flex',
-            overflow: 'hidden',
+        layout: {
+            width: 'auto',
+            marginLeft: theme.spacing(2),
+            marginRight: theme.spacing(2),
+            [theme.breakpoints.up(1000 + theme.spacing(2) * 2)]: {
+                width: 1000,
+                marginLeft: 'auto',
+                marginRight: 'auto',
+            },
         },
-        container: {
-            marginRight: theme.spacing(20),
-            marginLeft: theme.spacing(20),
-        }
     }
 });
 
@@ -32,8 +34,8 @@ const SearchResults = () => {
     }, []);
 
     return (
-        <section className={classes.root}>
-                <Grid container className={classes.container}>
+        <section className={classes.layout}>
+                <Grid container>
                     <Grid item>
                         <Typography align="left">
                             Suggested:
