@@ -72,7 +72,7 @@ const SearchView = () => {
 
     useEffect(() => {
         dispatch({ type: 'FETCH_PAIRING' });
-        if(search) {
+        if (search) {
             setToggleSearch(true);
         } else {
             setToggleSearch(false);
@@ -118,20 +118,36 @@ const SearchView = () => {
                 </Container>
             </section>
             <section>
-                <Grid container>
-                    <Grid item>
-                        <Typography align="left">
-                            Suggested:
-                        </Typography>
+
+                {/* conditional rendering for search results
+                        IF search bar is active, display results
+                        ELSE, display suggested */}
+                {toggleSearch ?
+                    <Grid container>
+                        <Grid item xs={12}>
+                            <List>
+                                {searchResults.map(item => {
+                                    return <FoodList key={item.id} item={item} />
+                                })}
+                            </List>
+                        </Grid>
                     </Grid>
-                    <Grid item xs={12}>
-                        <List>
-                            {pairing.map(item => {
-                                return <FoodList key={item.id} item={item} />
-                            })}
-                        </List>
+                    :
+                    <Grid container>
+                        <Grid item>
+                            <Typography align="left">
+                                Suggested:
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={12}>
+                                <List>
+                                    {pairing.map(item => {
+                                        return <FoodList key={item.id} item={item} /> 
+                                    })}
+                                </List>
+                        </Grid>
                     </Grid>
-                </Grid>
+                }
             </section>
         </div>
     );
