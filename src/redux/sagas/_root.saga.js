@@ -11,9 +11,11 @@ import fetchInsights from './fetchInsights.saga';
 import deleteInsight from './deleteInsight.saga';
 import fetchInsightById from './fetchInsightById.saga';
 import editInsight from './editInsight.saga';
+import search from './search.saga';
 
 // This is imported in index.js as rootSaga
 export default function* rootSaga() {
+  yield takeEvery('FETCH_SEARCH', search);
   yield takeEvery('EDIT_INSIGHT', editInsight);
   yield takeEvery('DELETE_INSIGHT', deleteInsight);
   yield takeEvery('FETCH_INSIGHTS', fetchInsights);
