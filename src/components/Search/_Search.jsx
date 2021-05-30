@@ -5,7 +5,6 @@ import { InputAdornment, makeStyles } from "@material-ui/core";
 import CurvyLines from './appCurvyLines.png';
 import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
-import './SearchView.css';
 import SearchResults from './SearchResults';
 
 

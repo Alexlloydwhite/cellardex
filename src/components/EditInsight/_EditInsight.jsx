@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const EditInsightLayout = () => {
+const EditInsight = () => {
     const classes = useStyles();
     return (  
         <CssBaseline>
@@ -49,4 +49,4 @@ const EditInsightLayout = () => {
     );
 }
  
-export default EditInsightLayout;
+export default EditInsight;

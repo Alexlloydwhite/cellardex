@@ -3,7 +3,7 @@ import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import InsightCard from './InsightCard';
+import InsightCardDetails from './InsightCardDetails';
 
 const useStyles = makeStyles({
     card: {
@@ -11,7 +11,7 @@ const useStyles = makeStyles({
     },
 });
 
-const InsightCardsLayout = () => {
+const InsightCards = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
 
@@ -30,7 +30,7 @@ const InsightCardsLayout = () => {
                         className={classes.card}
                         variant="outlined"
                     >
-                        <InsightCard insight={insight} />
+                        <InsightCardDetails insight={insight} />
                     </Card>
                 </Grid>
             })}
@@ -38,4 +38,4 @@ const InsightCardsLayout = () => {
     );
 }
 
-export default InsightCardsLayout;
+export default InsightCards;
