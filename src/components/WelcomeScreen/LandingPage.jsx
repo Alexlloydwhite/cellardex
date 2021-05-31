@@ -11,6 +11,7 @@ import Divider from '@material-ui/core/Divider';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import SearchIcon from '@material-ui/icons/Search';
 import CreateIcon from '@material-ui/icons/Create';
+import Avatar from '@material-ui/core/Avatar';
 
 const useStyles = makeStyles((theme) => ({
   mainFeaturedPost: {
@@ -56,6 +57,11 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     marginBottom: theme.spacing(10),
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    width: 200,
+    height: 200
   },
 }));
 
@@ -126,7 +132,7 @@ const LandingPage = () => {
                 <div className={classes.item}>
                   <Typography variant="h5" align="center">
                     <CreateIcon /><br />
-                    Create and publish pairing insights 
+                    Create and publish pairing insights
                   </Typography>
                 </div>
               </Grid>
@@ -146,9 +152,22 @@ const LandingPage = () => {
             </Grid>
             <Grid item xs={12} md={4}>
               <div className={classes.item}>
-                <Typography>
-                  Customer testimony goes here!
-                </Typography>
+                <Paper>
+                  <Avatar className={classes.avatar}>
+                    <img src="https://www.whitehouse.gov/wp-content/uploads/2021/01/44_barack_obama.jpg" />
+                  </Avatar>
+                  <div style={{ textAlign: 'center' }}> 
+                    <Typography color="primary">
+                      Barack Obama
+                  </Typography>
+                  <Typography color="secondary" gutterBottom>
+                      44th President
+                  </Typography>
+                  <Typography variant="body2">
+                    I LOVE CellarDex! This app improved my life and saved my marriage!
+                  </Typography>
+                  </div>
+                </Paper>
               </div>
             </Grid>
           </Grid>
