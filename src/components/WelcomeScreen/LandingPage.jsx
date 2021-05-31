@@ -72,7 +72,7 @@ const LandingPage = () => {
                     marked="center"
                     id="landingHero"
                   >
-                    EMPOWERING YOUR MEALS <br />WITH EXPERTLY CRAFTED WINE PAIRINGS
+                    EMPOWERING YOUR MEALS
                 </Typography>
                   <Typography
                     variant="h5"
@@ -80,8 +80,8 @@ const LandingPage = () => {
                     marked="center"
                     id="landingHero"
                   >
-                    Scroll to learn more
-                  <br />
+                    WITH EXPERTLY CRAFTED WINE PAIRINGS
+                    <br />
                     <ArrowDownwardIcon />
                   </Typography>
                 </div>
