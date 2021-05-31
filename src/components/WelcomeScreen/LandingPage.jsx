@@ -1,91 +1,127 @@
-import Avatar from '@material-ui/core/Avatar';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import { Grid } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import LandingImage from './landing-image.jpg'
-import LoginForm from './LoginForm';
-import Link from '@material-ui/core/Link';
-import { useState } from 'react';
-import RegisterForm from './RegisterForm';
+import LandingImage from './landing-image.jpg';
+import Typography from '@material-ui/core/Typography';
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    height: '100vh',
-  },
-  image: {
+  mainFeaturedPost: {
+    position: 'relative',
+    backgroundColor: theme.palette.grey[800],
+    color: theme.palette.common.white,
     backgroundImage: `url(${LandingImage})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
     backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
+    height: 800,
   },
-  paper: {
-    margin: theme.spacing(8, 4),
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    right: 0,
+    left: 0,
+    backgroundColor: 'rgba(0,0,0,.3)',
+  },
+  mainFeaturedPostContent: {
+    position: 'relative',
+    marginTop: theme.spacing(30),
+  },
+  root: {
+    display: 'flex',
+    backgroundColor: theme.palette.primary.light,
+    overflow: 'hidden',
+  },
+  container: {
+    marginTop: theme.spacing(10),
+    marginBottom: theme.spacing(15),
+    position: 'relative',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
   },
-  avatar: {
-    margin: theme.spacing(1),
-    width: 200,
-    height: 200
+  item: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: theme.spacing(0, 5),
+  },
+  title: {
+    marginBottom: theme.spacing(14),
   },
 }));
 
-function LandingPage() {
+const LandingPage = () => {
   const classes = useStyles();
-  const [toggle, setToggle] = useState(true);
-
   return (
-    <Grid container component="main" className={classes.root}>
-      <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className={classes.image} />
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-        <div className={classes.paper}>
-          <Typography component="h1" variant="h3">
-            CellarDex
-          </Typography>
-          <Avatar className={classes.avatar}>
-            <img src="images/logo-white-background.png" />
-          </Avatar>
-          <Typography component="h1" variant="h6">
-            Empowering Your Meals
-          </Typography>
-          {toggle ?
-            <div>
-              <LoginForm />
-              <Grid container>
-                <Grid item>
-                  <Typography>
-                    Don't have an account?{' '}
-                    <Link onClick={() => setToggle(false)} style={{ cursor: 'pointer' }}>
-                      {"Create an account"}
-                    </Link>
+    <div>
+      <section>
+        <Paper className={classes.mainFeaturedPost} style={{ backgroundImage: `url(${LandingImage})` }}>
+          <div className={classes.overlay}>
+            <Grid container>
+              <Grid item xs={12}>
+                <div className={classes.mainFeaturedPostContent}>
+                  <Typography
+                    variant="h3"
+                    align="center"
+                    marked="center"
+                  >
+                    Empowering your meals with expertly crafted wine pairings
+                </Typography>
+                  <Typography
+                    variant="h5"
+                    align="center"
+                    marked="center"
+                  >
+                    Scroll to learn more
+                  <br />
+                    <ArrowDownwardIcon />
                   </Typography>
-                </Grid>
+                </div>
               </Grid>
-            </div>
-            :
-            <div>
-              <RegisterForm />
-              <Grid container>
-                <Grid item>
-                  <Typography>
-                    Already have an account?{' '}
-                    <Link onClick={() => setToggle(true)} style={{ cursor: 'pointer' }}>
-                      {"Login"}
-                    </Link>
+            </Grid>
+          </div>
+        </Paper>
+      </section>
+      <section className={classes.root}>
+        <Container className={classes.container}>
+          <Typography variant="h4" marked="center" className={classes.title} component="h2">
+            How it works
+          </Typography>
+          <div>
+            <Grid container spacing={5}>
+              <Grid item xs={12} md={4}>
+                <div className={classes.item}>
+                  <div className={classes.number}>1.</div>
+                  <Typography variant="h5" align="center">
+                    Appointment every Wednesday 9am.
+                </Typography>
+                </div>
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <div className={classes.item}>
+                  <div className={classes.number}>2.</div>
+                  <Typography variant="h5" align="center">
+                    First come, first served. Our offers are in limited quantities, so be quick.
+                </Typography>
+                </div>
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <div className={classes.item}>
+                  <div className={classes.number}>3.</div>
+                  <Typography variant="h5" align="center">
+                    {'New offers every week. New experiences, new surprises. '}
+                    {'Your Sundays will no longer be alike.'}
                   </Typography>
-                </Grid>
+                </div>
               </Grid>
-            </div>
-          }
-        </div>
-      </Grid>
-    </Grid>
+            </Grid>
+          </div>
+        </Container>
+      </section>
+    </div>
   );
 }
 
