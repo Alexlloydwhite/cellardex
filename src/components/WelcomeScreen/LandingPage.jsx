@@ -6,7 +6,8 @@ import Typography from '@material-ui/core/Typography';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import Container from '@material-ui/core/Container';
 import LandingNav from '../NavBar/LandingNax';
-
+import Footer from '../Footer/Footer';
+import Button from '@material-ui/core/Button'
 const useStyles = makeStyles((theme) => ({
   mainFeaturedPost: {
     position: 'relative',
@@ -28,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
   mainFeaturedPostContent: {
     position: 'relative',
-    marginTop: theme.spacing(30),
+    marginTop: theme.spacing(35),
   },
   root: {
     display: 'flex',
@@ -71,7 +72,7 @@ const LandingPage = () => {
                     marked="center"
                     id="landingHero"
                   >
-                    EMPOWERING YOUR MEALS WITH EXPERTLY CRAFTED WINE PAIRINGS
+                    EMPOWERING YOUR MEALS <br />WITH EXPERTLY CRAFTED WINE PAIRINGS
                 </Typography>
                   <Typography
                     variant="h5"
@@ -116,14 +117,38 @@ const LandingPage = () => {
                 <div className={classes.item}>
                   <div className={classes.number}>3.</div>
                   <Typography variant="h5" align="center">
-                      CellarDex is awesome :)
+                    CellarDex is awesome :)
                   </Typography>
                 </div>
               </Grid>
             </Grid>
           </div>
+          <div style={{ marginTop: 50 }}>
+            <Button variant="contained">Join Today</Button>
+          </div>
         </Container>
       </section>
+      <section>
+        <Container className={classes.container}>
+          <Grid container spacing={5}>
+            <Grid item xs={12} md={4}>
+              <div className={classes.item}>
+                <Typography>
+                  What our users are saying
+            </Typography>
+              </div>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <div className={classes.item}>
+                <Typography>
+                  Customer testimony goes here!
+            </Typography>
+              </div>
+            </Grid>
+          </Grid>
+        </Container>
+      </section>
+      <Footer />
     </div>
   );
 }
