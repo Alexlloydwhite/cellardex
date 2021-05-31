@@ -7,7 +7,11 @@ import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import Container from '@material-ui/core/Container';
 import LandingNav from '../NavBar/LandingNax';
 import Footer from '../Footer/Footer';
-import Button from '@material-ui/core/Button'
+import Divider from '@material-ui/core/Divider';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import SearchIcon from '@material-ui/icons/Search';
+import CreateIcon from '@material-ui/icons/Create';
+
 const useStyles = makeStyles((theme) => ({
   mainFeaturedPost: {
     position: 'relative',
@@ -17,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
-    height: 800,
+    height: 900,
   },
   overlay: {
     position: 'absolute',
@@ -33,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     display: 'flex',
-    backgroundColor: 'rgba(0,0,0,.3)',
+    backgroundColor: 'rgba(0,0,0,.1)',
     overflow: 'hidden',
   },
   container: {
@@ -51,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(0, 5),
   },
   title: {
-    marginBottom: theme.spacing(14),
+    marginBottom: theme.spacing(10),
   },
 }));
 
@@ -79,11 +83,13 @@ const LandingPage = () => {
                     align="center"
                     marked="center"
                     id="landingHero"
+                    style={{ marginBottom: 10 }}
                   >
                     WITH EXPERTLY CRAFTED WINE PAIRINGS
-                    <br />
-                    <ArrowDownwardIcon />
                   </Typography>
+                  <div style={{ textAlign: 'center' }}>
+                    <ArrowDownwardIcon />
+                  </div>
                 </div>
               </Grid>
             </Grid>
@@ -92,39 +98,39 @@ const LandingPage = () => {
       </section>
       <section className={classes.root}>
         <Container className={classes.container}>
-          <Typography variant="h4" marked="center" className={classes.title} component="h2">
-            How it works
-          </Typography>
+          <div className={classes.title}>
+            <Typography variant="h4" align="center" gutterBottom>
+              Say hello to your personal sommelier
+            </Typography>
+            <Divider />
+          </div>
           <div>
             <Grid container spacing={5}>
               <Grid item xs={12} md={4}>
                 <div className={classes.item}>
-                  <div className={classes.number}>1.</div>
                   <Typography variant="h5" align="center">
-                    Describe main feature
-                </Typography>
+                    <SearchIcon /><br />
+                    Browse through our extensive collection of food and wine pairings
+                  </Typography>
                 </div>
               </Grid>
               <Grid item xs={12} md={4}>
                 <div className={classes.item}>
-                  <div className={classes.number}>2.</div>
                   <Typography variant="h5" align="center">
-                    Why should the user sign up?
-                </Typography>
+                    <FavoriteIcon /><br />
+                    Keep a running list of your favorite pairings
+                  </Typography>
                 </div>
               </Grid>
               <Grid item xs={12} md={4}>
                 <div className={classes.item}>
-                  <div className={classes.number}>3.</div>
                   <Typography variant="h5" align="center">
-                    CellarDex is awesome :)
+                    <CreateIcon /><br />
+                    Create and publish pairing insights 
                   </Typography>
                 </div>
               </Grid>
             </Grid>
-          </div>
-          <div style={{ marginTop: 50 }}>
-            <Button variant="contained">Join Today</Button>
           </div>
         </Container>
       </section>
@@ -133,16 +139,16 @@ const LandingPage = () => {
           <Grid container spacing={5}>
             <Grid item xs={12} md={4}>
               <div className={classes.item}>
-                <Typography>
-                  What our users are saying
-            </Typography>
+                <Typography variant="h4">
+                  What our users <br />are saying
+                </Typography>
               </div>
             </Grid>
             <Grid item xs={12} md={4}>
               <div className={classes.item}>
                 <Typography>
                   Customer testimony goes here!
-            </Typography>
+                </Typography>
               </div>
             </Grid>
           </Grid>
