@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => {
     }
 });
 
-const LandingNav = ({ children }) => {
+const LandingNav = () => {
     const classes = useStyles();
 
     return (
@@ -60,11 +60,6 @@ const LandingNav = ({ children }) => {
                     </Typography>
                 </Toolbar>
             </AppBar>
-            {/* this layout sit on top of the rest of the app. */}
-            <div className={classes.page}>
-                <div className={classes.toolbar}></div>
-                {children}
-            </div>
         </div>
     );
 }

@@ -14,7 +14,6 @@ import Search from '../Search/_Search';
 import PairingDescription from '../PairingDescription/_PairingDescription';
 import CreateInsight from '../CreateInsight/CreateInsight';
 import EditInsight from '../EditInsight/_EditInsight';
-import LandingNav from '../NavBar/LandingNax';
 import './App.css';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -102,9 +101,7 @@ function App() {
                 path="/home"
                 authRedirect="/search"
               >
-                <LandingNav>
                   <LandingPage />
-                </LandingNav>
               </ProtectedRoute>
 
               {/* If none of the other routes matched, we will show a 404. */}

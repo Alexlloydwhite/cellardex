@@ -5,6 +5,7 @@ import LandingImage from './landing-image.jpg';
 import Typography from '@material-ui/core/Typography';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import Container from '@material-ui/core/Container';
+import LandingNav from '../NavBar/LandingNax';
 
 const useStyles = makeStyles((theme) => ({
   mainFeaturedPost: {
@@ -31,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     display: 'flex',
-    backgroundColor: theme.palette.primary.light,
+    backgroundColor: 'rgba(0,0,0,.3)',
     overflow: 'hidden',
   },
   container: {
@@ -57,6 +58,7 @@ const LandingPage = () => {
   const classes = useStyles();
   return (
     <div>
+      <LandingNav />
       <section>
         <Paper className={classes.mainFeaturedPost} style={{ backgroundImage: `url(${LandingImage})` }}>
           <div className={classes.overlay}>
@@ -67,13 +69,15 @@ const LandingPage = () => {
                     variant="h3"
                     align="center"
                     marked="center"
+                    id="landingHero"
                   >
-                    Empowering your meals with expertly crafted wine pairings
+                    EMPOWERING YOUR MEALS WITH EXPERTLY CRAFTED WINE PAIRINGS
                 </Typography>
                   <Typography
                     variant="h5"
                     align="center"
                     marked="center"
+                    id="landingHero"
                   >
                     Scroll to learn more
                   <br />
@@ -96,7 +100,7 @@ const LandingPage = () => {
                 <div className={classes.item}>
                   <div className={classes.number}>1.</div>
                   <Typography variant="h5" align="center">
-                    Appointment every Wednesday 9am.
+                    Describe main feature
                 </Typography>
                 </div>
               </Grid>
@@ -104,7 +108,7 @@ const LandingPage = () => {
                 <div className={classes.item}>
                   <div className={classes.number}>2.</div>
                   <Typography variant="h5" align="center">
-                    First come, first served. Our offers are in limited quantities, so be quick.
+                    Why should the user sign up?
                 </Typography>
                 </div>
               </Grid>
@@ -112,8 +116,7 @@ const LandingPage = () => {
                 <div className={classes.item}>
                   <div className={classes.number}>3.</div>
                   <Typography variant="h5" align="center">
-                    {'New offers every week. New experiences, new surprises. '}
-                    {'Your Sundays will no longer be alike.'}
+                      CellarDex is awesome :)
                   </Typography>
                 </div>
               </Grid>
