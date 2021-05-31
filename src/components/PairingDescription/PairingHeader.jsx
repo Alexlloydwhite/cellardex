@@ -1,38 +1,58 @@
 import Typography from '@material-ui/core/Typography';
 import WineGlasses from './wineglasses.jpg';
 import { Grid } from '@material-ui/core';
+import Paper from '@material-ui/core/Paper';
+import { makeStyles } from '@material-ui/core/styles';
 
-const sectionStyle = {
-    height: '100vh',
-    backgroundImage: `url(${WineGlasses})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    position: 'relative'
-}
+const useStyles = makeStyles((theme) => ({
+    mainFeaturedPost: {
+        position: 'relative',
+        backgroundColor: theme.palette.grey[800],
+        color: theme.palette.common.white,
+        marginTop: theme.spacing(1),
+        marginBottom: theme.spacing(2),
+        backgroundImage: `url(${WineGlasses})`,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        height: 200,
+    },
+    overlay: {
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        right: 0,
+        left: 0,
+        backgroundColor: 'rgba(0,0,0,.3)',
+    },
+    mainFeaturedPostContent: {
+        position: 'relative',
+        padding: theme.spacing(3),
+        [theme.breakpoints.up('md')]: {
+            padding: theme.spacing(1),
+            paddingRight: 0,
+        },
+    },
+}));
 
-const PairingHeader = ({ item }) => {
+const PairingHeader = ({ pairing }) => {
+    const classes = useStyles();
 
     return (
-        <Grid
-            style={sectionStyle}
-            container
-            direction="column"
-            justify="space-evenly"
-        >
-            <Grid item>
-                <Typography
-                    variant="h2"
-                    id="header"
-                    style={{ textAlign: 'center' }}
-                    gutterBottom
-                    color="secondary"
-                >
-                    {item.food}{' & '}{item.wine}
-                </Typography>
-            </Grid>
-        </Grid>
+        <Paper className={classes.mainFeaturedPost} style={{ backgroundImage: `url(${WineGlasses})` }}>
+            <div className={classes.overlay}>
+                <Grid container>
+                    <Grid item md={6}>
+                        <div className={classes.mainFeaturedPostContent}>
+                            <Typography component="h1" variant="h3" id="header">
+                                Pairing Description
+                            </Typography>
+                        </div>
+                    </Grid>
+                </Grid>
+            </div>
+        </Paper>
     );
 }
 
 export default PairingHeader;
-

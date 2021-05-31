@@ -17,32 +17,32 @@ function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
   return (
-      <div
-          role="tabpanel"
-          hidden={value !== index}
-          id={`simple-tabpanel-${index}`}
-          aria-labelledby={`simple-tab-${index}`}
-          {...other}
-      >
-          {value === index && (
-              <>
-                  {children}
-              </>
-          )}
-      </div>
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <>
+          {children}
+        </>
+      )}
+    </div>
   );
 }
 
 const useStyles = makeStyles((theme) => ({
   root: {
-      backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.background.paper,
   },
 }));
 
 function a11yProps(index) {
   return {
-      id: `simple-tab-${index}`,
-      'aria-controls': `simple-tabpanel-${index}`,
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
   };
 }
 
@@ -67,7 +67,7 @@ const Profile = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  
+
   useEffect(() => {
     dispatch({ type: 'GET_SAVED_PAIRING' });
     dispatch({ type: 'FETCH_INSIGHTS' });
@@ -91,23 +91,25 @@ const Profile = () => {
       </Typography>
       </Container>
       {/* Page Body */}
-      <div className={classes.root}>
-        {/* AppBar contains tabs to switch between saved pairings and insights */}
-        <AppBar position="static" style={{ alignItems: 'center' }}>
-          <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-            <Tab label="My Saved Pairings" {...a11yProps(0)} />
-            <Tab label="My Insights" {...a11yProps(1)} />
-          </Tabs>
-        </AppBar>
-        {/* Tab index 0 contains saved pairings */}
-        <TabPanel value={value} index={0}>
-          <UserPairing savedPairing={savedPairing} />
-        </TabPanel>
-        {/* Tab index 1 contains insights */}
-        <TabPanel value={value} index={1}>
-          <UserInsights />
-        </TabPanel>
-      </div>
+      <Container>
+        <div className={classes.root}>
+          {/* AppBar contains tabs to switch between saved pairings and insights */}
+          <AppBar position="static" style={{ alignItems: 'center' }}>
+            <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
+              <Tab label="My Saved Pairings" {...a11yProps(0)} />
+              <Tab label="My Insights" {...a11yProps(1)} />
+            </Tabs>
+          </AppBar>
+          {/* Tab index 0 contains saved pairings */}
+          <TabPanel value={value} index={0}>
+            <UserPairing savedPairing={savedPairing} />
+          </TabPanel>
+          {/* Tab index 1 contains insights */}
+          <TabPanel value={value} index={1}>
+            <UserInsights />
+          </TabPanel>
+        </div>
+      </Container>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
+import Divider from '@material-ui/core/Divider';
 
 const PairingBody = ({ item }) => {
 
@@ -19,10 +20,17 @@ const PairingBody = ({ item }) => {
     }
 
     return (
-        <Container style={{ marginTop: 50, marginBottom: 25 }}>
+        <Container>
             {/* Pairing Description */}
-            <Typography 
-                style={{ marginBottom: 15 }}
+            <Typography variant="h3" color="secondary">
+                {item.food}{' & '}<br />
+            </Typography>
+            <Typography variant="h4" color="secondary">
+                {item.wine}
+            </Typography>
+            <Divider />
+            <Typography
+                style={{ marginBottom: 15, marginTop: 15 }}
                 variant="h5"
             >
                 {item.description}
@@ -32,7 +40,7 @@ const PairingBody = ({ item }) => {
                 onClick={() => history.push('/')}
                 color="secondary"
                 variant="contained"
-                style={{marginRight: 5}}
+                style={{ marginRight: 5 }}
             >
                 Back
             </Button>
