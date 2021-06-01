@@ -1,5 +1,8 @@
 import { Grid } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
 import { makeStyles } from '@material-ui/core/styles';
 import LandingImage from './landing-image.jpg';
 import Typography from '@material-ui/core/Typography';
@@ -60,13 +63,42 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    width: 200,
-    height: 200
+    textAlign: 'center',
+    width: 130,
+    height: 130
   },
+  cardContent: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'baseline',
+    marginBottom: theme.spacing(2)
+  }
 }));
 
 const LandingPage = () => {
   const classes = useStyles();
+
+  const reviews = [
+    {
+      image: 'https://www.whitehouse.gov/wp-content/uploads/2021/01/44_barack_obama.jpg',
+      name: 'Barack Obama',
+      title: '44th President',
+      review: 'I love CellarDex!'
+    },
+    {
+      image: 'https://www.whitehouse.gov/wp-content/uploads/2021/01/44_barack_obama.jpg',
+      name: 'Barack Obama',
+      title: '44th President',
+      review: 'I love CellarDex!'
+    },
+    {
+      image: 'https://www.whitehouse.gov/wp-content/uploads/2021/01/44_barack_obama.jpg',
+      name: 'Barack Obama',
+      title: '44th President',
+      review: 'I love CellarDex!'
+    },
+  ];
+
   return (
     <div>
       <LandingNav />
@@ -141,40 +173,36 @@ const LandingPage = () => {
         </Container>
       </section>
       <section>
-        <Container className={classes.container}>
-          <Grid container spacing={5}>
-            <Grid item xs={12} md={4}>
-              <div className={classes.item}>
-                <Typography variant="h4">
-                  What our users <br />are saying
-                </Typography>
-              </div>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <div className={classes.item}>
-                <Paper>
-                  <Avatar className={classes.avatar}>
-                    <img src="https://www.whitehouse.gov/wp-content/uploads/2021/01/44_barack_obama.jpg" />
-                  </Avatar>
-                  <div style={{ textAlign: 'center' }}> 
-                    <Typography color="primary">
-                      Barack Obama
-                  </Typography>
-                  <Typography color="secondary" gutterBottom>
-                      44th President
-                  </Typography>
-                  <Typography variant="body2">
-                    I LOVE CellarDex! This app improved my life and saved my marriage!
-                  </Typography>
-                  </div>
-                </Paper>
-              </div>
-            </Grid>
+        <Container maxWidth="sm" component="main">
+          <Typography variant="h4" align="center" gutterBottom>
+            What our users are saying
+          </Typography>
+        </Container>
+        <Container maxWidth="md" component="main">
+          <Grid container spacing={5} alignItems="flex-end">
+            {reviews.map((review) => (
+              <Grid item key={review.name} xs={12} sm={6} md={4}>
+                <Card variant="outlined">
+                  <CardContent>
+                    <div className={classes.cardContent}>
+                      <Avatar className={classes.avatar}>
+                        <img src={review.image} />
+                      </Avatar>
+
+                        <Typography>
+                          {review.name}
+                        </Typography>
+
+                    </div>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
           </Grid>
         </Container>
-      </section>
+      </section >
       <Footer />
-    </div>
+    </div >
   );
 }
 
