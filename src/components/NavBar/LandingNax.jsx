@@ -53,7 +53,7 @@ const LandingNav = () => {
                         id="landingHero"
                         onClick={() => history.push('/signin')}
                         >
-                        Sign In
+                        Log In
                     </Typography>
                     <Typography
                         className={classes.links}
