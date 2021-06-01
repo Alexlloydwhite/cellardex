@@ -2,6 +2,7 @@ import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import { makeStyles } from "@material-ui/core";
+import { useHistory } from 'react-router';
 
 const useStyles = makeStyles((theme) => {
     return {
@@ -30,6 +31,7 @@ const useStyles = makeStyles((theme) => {
 
 const LandingNav = () => {
     const classes = useStyles();
+    const history = useHistory();
 
     return (
         <div>
@@ -48,14 +50,16 @@ const LandingNav = () => {
                     {/* Nav Links */}
                     <Typography
                         className={classes.links}
-                        id="header"
-                    >
-                        Sign In
+                        id="landingHero"
+                        onClick={() => history.push('/signin')}
+                        >
+                        Log In
                     </Typography>
                     <Typography
                         className={classes.links}
-                        id="header"
-                    >
+                        id="landingHero"
+                        onClick={() => history.push('/signup')}
+                        >
                         Sign Up
                     </Typography>
                 </Toolbar>

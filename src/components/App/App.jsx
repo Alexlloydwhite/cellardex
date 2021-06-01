@@ -17,6 +17,8 @@ import EditInsight from '../EditInsight/_EditInsight';
 import './App.css';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import LogIn from '../WelcomeScreen/LogIn';
+import SignUp from '../WelcomeScreen/SignUp';
 
 const theme = createMuiTheme({
   palette: {
@@ -101,7 +103,23 @@ function App() {
                 path="/home"
                 authRedirect="/search"
               >
-                  <LandingPage />
+                <LandingPage />
+              </ProtectedRoute>
+
+              <ProtectedRoute
+                exact
+                path="/signin"
+                authRedirect="/search"
+              >
+                <LogIn />
+              </ProtectedRoute>
+
+              <ProtectedRoute
+                exact
+                path="/signup"
+                authRedirect="/search"
+              >
+                <SignUp />
               </ProtectedRoute>
 
               {/* If none of the other routes matched, we will show a 404. */}
