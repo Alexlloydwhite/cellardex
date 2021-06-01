@@ -1,21 +1,27 @@
-import { Grid } from '@material-ui/core';
-import Paper from '@material-ui/core/Paper';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import { makeStyles } from '@material-ui/core/styles';
-import LandingImage from './landing-image.jpg';
-import Typography from '@material-ui/core/Typography';
+// MUI imports
+import {
+  Grid,
+  Paper,
+  Card,
+  CardContent,
+  CardMedia,
+  CardHeader,
+  makeStyles,
+  Typography,
+  Container,
+  Divider,
+  Avatar
+} from '@material-ui/core';
+// MUI icon imports
+import SearchIcon from '@material-ui/icons/Search';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import CreateIcon from '@material-ui/icons/Create';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
-import Container from '@material-ui/core/Container';
+// Local imports
+import LandingImage from './landing-image.jpg';
 import LandingNav from '../NavBar/LandingNax';
 import Footer from '../Footer/Footer';
-import Divider from '@material-ui/core/Divider';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import SearchIcon from '@material-ui/icons/Search';
-import CreateIcon from '@material-ui/icons/Create';
-import Avatar from '@material-ui/core/Avatar';
-
+// Styles
 const useStyles = makeStyles((theme) => ({
   mainFeaturedPost: {
     position: 'relative',
@@ -62,7 +68,6 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(10),
   },
   avatar: {
-    margin: theme.spacing(1),
     textAlign: 'center',
     width: 130,
     height: 130
@@ -71,7 +76,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'baseline',
-    marginBottom: theme.spacing(2)
   },
   reviewContainer: {
     marginTop: theme.spacing(10),
@@ -81,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
 
 const LandingPage = () => {
   const classes = useStyles();
-
+  // Array of reviews to map over w/ cards
   const reviews = [
     {
       image: 'https://www.whitehouse.gov/wp-content/uploads/2021/01/44_barack_obama.jpg',
@@ -90,27 +94,30 @@ const LandingPage = () => {
       review: 'I love CellarDex!'
     },
     {
-      image: 'https://www.whitehouse.gov/wp-content/uploads/2021/01/44_barack_obama.jpg',
-      name: 'Barack Obama',
-      title: '44th President',
-      review: 'I love CellarDex!'
+      image: 'https://image.cnbcfm.com/api/v1/image/106635601-1595938600994SG-Gates-072820-04-jpg?v=1605891431',
+      name: 'Bill Gates',
+      title: 'CEO Microsoft',
+      review: 'Innovative'
     },
     {
-      image: 'https://www.whitehouse.gov/wp-content/uploads/2021/01/44_barack_obama.jpg',
-      name: 'Barack Obama',
-      title: '44th President',
-      review: 'I love CellarDex!'
+      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Oprah_in_2014.jpg/220px-Oprah_in_2014.jpg',
+      name: 'Oprah Winfrey',
+      title: 'Television Host',
+      review: 'I recommend this app'
     },
   ];
 
   return (
     <div>
+      {/* Nav Bar */}
       <LandingNav />
+      {/* Hero Image */}
       <section>
         <Paper
           className={classes.mainFeaturedPost}
           style={{ backgroundImage: `url(${LandingImage})` }}
         >
+          {/* Hero Overlay */}
           <div className={classes.overlay}>
             <Grid container>
               <Grid item xs={12}>
@@ -140,6 +147,7 @@ const LandingPage = () => {
             </Grid>
           </div>
         </Paper>
+        {/* Introduction Section */}
       </section>
       <section className={classes.root}>
         <Container className={classes.container}>
@@ -183,7 +191,9 @@ const LandingPage = () => {
           </div>
         </Container>
       </section>
+      {/* User Reviews */}
       <section className={classes.reviewContainer}>
+        {/* User Reviews Header */}
         <Container
           maxWidth="sm"
           component="main"
@@ -198,39 +208,42 @@ const LandingPage = () => {
           </Typography>
           <Divider />
         </Container>
-        <Container
-          maxWidth="md"
-          component="main"
-        >
-          <Grid
-            container
-            spacing={5}
-            alignItems="flex-end"
-          >
+        {/* User Review Cards */}
+        <Container maxWidth="md" component="main">
+          <Grid container spacing={5} alignItems="flex-end">
             {reviews.map((review) => (
-              <Grid
-                item
-                key={review.name}
-                xs={12} sm={6} md={4}
-              >
-                <Card variant="outlined" className={classes.cardContent}>
-                  <CardMedia>
-                      <Avatar className={classes.avatar}>
-                        <img src={review.image} />
-                      </Avatar>
-                  </CardMedia>
+              <Grid item key={review.title} xs={12} sm={6} md={4}>
+                <Card>
+                  <CardContent align="center">
+                    <Avatar className={classes.avatar}>
+                      <img src={review.image} />
+                    </Avatar>
+                  </CardContent>
                   <CardContent>
-                    <Typography>
-                      {review.name}
-                    </Typography>
+                    <div className={classes.cardContent}>
+                      <Typography variant="h6">
+                        {review.name}
+                      </Typography>
+                    </div>
+                    <div className={classes.cardContent}>
+                      <Typography color="secondary" gutterBottom>
+                        {review.title}
+                      </Typography>
+                    </div>
+                    <div className={classes.cardContent}>
+                      <Typography variant="body1">
+                        {review.review}
+                      </Typography>
+                    </div>
                   </CardContent>
                 </Card>
               </Grid>
             ))}
-              </Grid>
+          </Grid>
         </Container>
       </section >
-        <Footer />
+      {/* Footer */}
+      <Footer />
     </div >
   );
 }
