@@ -72,6 +72,10 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'baseline',
     marginBottom: theme.spacing(2)
+  },
+  reviewContainer: {
+    marginTop: theme.spacing(10),
+    marginBottom: theme.spacing(15),
   }
 }));
 
@@ -103,7 +107,10 @@ const LandingPage = () => {
     <div>
       <LandingNav />
       <section>
-        <Paper className={classes.mainFeaturedPost} style={{ backgroundImage: `url(${LandingImage})` }}>
+        <Paper
+          className={classes.mainFeaturedPost}
+          style={{ backgroundImage: `url(${LandingImage})` }}
+        >
           <div className={classes.overlay}>
             <Grid container>
               <Grid item xs={12}>
@@ -137,7 +144,11 @@ const LandingPage = () => {
       <section className={classes.root}>
         <Container className={classes.container}>
           <div className={classes.title}>
-            <Typography variant="h4" align="center" gutterBottom>
+            <Typography
+              variant="h4"
+              align="center"
+              gutterBottom
+            >
               Say hello to your personal sommelier
             </Typography>
             <Divider />
@@ -172,36 +183,54 @@ const LandingPage = () => {
           </div>
         </Container>
       </section>
-      <section>
-        <Container maxWidth="sm" component="main">
-          <Typography variant="h4" align="center" gutterBottom>
-            What our users are saying
+      <section className={classes.reviewContainer}>
+        <Container
+          maxWidth="sm"
+          component="main"
+          style={{ marginBottom: 50 }}
+        >
+          <Typography
+            variant="h4"
+            align="center"
+            gutterBottom
+          >
+            What are our users saying?
           </Typography>
+          <Divider />
         </Container>
-        <Container maxWidth="md" component="main">
-          <Grid container spacing={5} alignItems="flex-end">
+        <Container
+          maxWidth="md"
+          component="main"
+        >
+          <Grid
+            container
+            spacing={5}
+            alignItems="flex-end"
+          >
             {reviews.map((review) => (
-              <Grid item key={review.name} xs={12} sm={6} md={4}>
-                <Card variant="outlined">
-                  <CardContent>
-                    <div className={classes.cardContent}>
+              <Grid
+                item
+                key={review.name}
+                xs={12} sm={6} md={4}
+              >
+                <Card variant="outlined" className={classes.cardContent}>
+                  <CardMedia>
                       <Avatar className={classes.avatar}>
                         <img src={review.image} />
                       </Avatar>
-
-                        <Typography>
-                          {review.name}
-                        </Typography>
-
-                    </div>
+                  </CardMedia>
+                  <CardContent>
+                    <Typography>
+                      {review.name}
+                    </Typography>
                   </CardContent>
                 </Card>
               </Grid>
             ))}
-          </Grid>
+              </Grid>
         </Container>
       </section >
-      <Footer />
+        <Footer />
     </div >
   );
 }

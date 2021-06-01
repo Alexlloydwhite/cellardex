@@ -48,14 +48,14 @@ const LandingNav = () => {
                     {/* Nav Links */}
                     <Typography
                         className={classes.links}
-                        id="header"
-                    >
+                        id="landingHero"
+                        >
                         Sign In
                     </Typography>
                     <Typography
                         className={classes.links}
-                        id="header"
-                    >
+                        id="landingHero"
+                        >
                         Sign Up
                     </Typography>
                 </Toolbar>
