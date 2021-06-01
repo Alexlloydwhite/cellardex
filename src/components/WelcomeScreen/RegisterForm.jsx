@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function RegisterForm() {
-  const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const errors = useSelector((store) => store.errors);

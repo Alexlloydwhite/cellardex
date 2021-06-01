@@ -15,7 +15,11 @@ img {
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Pattaya&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@300&display=swap');
 
 #header {
-    font-family: 'Pattaya', serif
+  font-family: 'Pattaya', serif
+}
+#landingHero {
+  font-family: 'Alegreya'
 }

@@ -1,91 +1,208 @@
-import Avatar from '@material-ui/core/Avatar';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import { Grid } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
 import { makeStyles } from '@material-ui/core/styles';
-import LandingImage from './landing-image.jpg'
-import LoginForm from './LoginForm';
-import Link from '@material-ui/core/Link';
-import { useState } from 'react';
-import RegisterForm from './RegisterForm';
+import LandingImage from './landing-image.jpg';
+import Typography from '@material-ui/core/Typography';
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import Container from '@material-ui/core/Container';
+import LandingNav from '../NavBar/LandingNax';
+import Footer from '../Footer/Footer';
+import Divider from '@material-ui/core/Divider';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import SearchIcon from '@material-ui/icons/Search';
+import CreateIcon from '@material-ui/icons/Create';
+import Avatar from '@material-ui/core/Avatar';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    height: '100vh',
-  },
-  image: {
+  mainFeaturedPost: {
+    position: 'relative',
+    backgroundColor: theme.palette.grey[800],
+    color: theme.palette.common.white,
     backgroundImage: `url(${LandingImage})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
     backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
+    height: 900,
   },
-  paper: {
-    margin: theme.spacing(8, 4),
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    right: 0,
+    left: 0,
+    backgroundColor: 'rgba(0,0,0,.3)',
+  },
+  mainFeaturedPostContent: {
+    position: 'relative',
+    marginTop: theme.spacing(35),
+  },
+  root: {
+    display: 'flex',
+    backgroundColor: 'rgba(0,0,0,.1)',
+    overflow: 'hidden',
+  },
+  container: {
+    marginTop: theme.spacing(10),
+    marginBottom: theme.spacing(15),
+    position: 'relative',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
   },
+  item: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: theme.spacing(0, 5),
+  },
+  title: {
+    marginBottom: theme.spacing(10),
+  },
   avatar: {
     margin: theme.spacing(1),
-    width: 200,
-    height: 200
+    textAlign: 'center',
+    width: 130,
+    height: 130
   },
+  cardContent: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'baseline',
+    marginBottom: theme.spacing(2)
+  }
 }));
 
-function LandingPage() {
+const LandingPage = () => {
   const classes = useStyles();
-  const [toggle, setToggle] = useState(true);
+
+  const reviews = [
+    {
+      image: 'https://www.whitehouse.gov/wp-content/uploads/2021/01/44_barack_obama.jpg',
+      name: 'Barack Obama',
+      title: '44th President',
+      review: 'I love CellarDex!'
+    },
+    {
+      image: 'https://www.whitehouse.gov/wp-content/uploads/2021/01/44_barack_obama.jpg',
+      name: 'Barack Obama',
+      title: '44th President',
+      review: 'I love CellarDex!'
+    },
+    {
+      image: 'https://www.whitehouse.gov/wp-content/uploads/2021/01/44_barack_obama.jpg',
+      name: 'Barack Obama',
+      title: '44th President',
+      review: 'I love CellarDex!'
+    },
+  ];
 
   return (
-    <Grid container component="main" className={classes.root}>
-      <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className={classes.image} />
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-        <div className={classes.paper}>
-          <Typography component="h1" variant="h3">
-            CellarDex
-          </Typography>
-          <Avatar className={classes.avatar}>
-            <img src="images/logo-white-background.png" />
-          </Avatar>
-          <Typography component="h1" variant="h6">
-            Empowering Your Meals
-          </Typography>
-          {toggle ?
-            <div>
-              <LoginForm />
-              <Grid container>
-                <Grid item>
-                  <Typography>
-                    Don't have an account?{' '}
-                    <Link onClick={() => setToggle(false)} style={{ cursor: 'pointer' }}>
-                      {"Create an account"}
-                    </Link>
+    <div>
+      <LandingNav />
+      <section>
+        <Paper className={classes.mainFeaturedPost} style={{ backgroundImage: `url(${LandingImage})` }}>
+          <div className={classes.overlay}>
+            <Grid container>
+              <Grid item xs={12}>
+                <div className={classes.mainFeaturedPostContent}>
+                  <Typography
+                    variant="h3"
+                    align="center"
+                    marked="center"
+                    id="landingHero"
+                  >
+                    EMPOWERING YOUR MEALS
+                </Typography>
+                  <Typography
+                    variant="h5"
+                    align="center"
+                    marked="center"
+                    id="landingHero"
+                    style={{ marginBottom: 10 }}
+                  >
+                    WITH EXPERTLY CRAFTED WINE PAIRINGS
                   </Typography>
-                </Grid>
+                  <div style={{ textAlign: 'center' }}>
+                    <ArrowDownwardIcon />
+                  </div>
+                </div>
               </Grid>
-            </div>
-            :
-            <div>
-              <RegisterForm />
-              <Grid container>
-                <Grid item>
-                  <Typography>
-                    Already have an account?{' '}
-                    <Link onClick={() => setToggle(true)} style={{ cursor: 'pointer' }}>
-                      {"Login"}
-                    </Link>
+            </Grid>
+          </div>
+        </Paper>
+      </section>
+      <section className={classes.root}>
+        <Container className={classes.container}>
+          <div className={classes.title}>
+            <Typography variant="h4" align="center" gutterBottom>
+              Say hello to your personal sommelier
+            </Typography>
+            <Divider />
+          </div>
+          <div>
+            <Grid container spacing={5}>
+              <Grid item xs={12} md={4}>
+                <div className={classes.item}>
+                  <Typography variant="h5" align="center">
+                    <SearchIcon /><br />
+                    Browse through our extensive collection of food and wine pairings
                   </Typography>
-                </Grid>
+                </div>
               </Grid>
-            </div>
-          }
-        </div>
-      </Grid>
-    </Grid>
+              <Grid item xs={12} md={4}>
+                <div className={classes.item}>
+                  <Typography variant="h5" align="center">
+                    <FavoriteIcon /><br />
+                    Keep a running list of your favorite pairings
+                  </Typography>
+                </div>
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <div className={classes.item}>
+                  <Typography variant="h5" align="center">
+                    <CreateIcon /><br />
+                    Create and publish pairing insights
+                  </Typography>
+                </div>
+              </Grid>
+            </Grid>
+          </div>
+        </Container>
+      </section>
+      <section>
+        <Container maxWidth="sm" component="main">
+          <Typography variant="h4" align="center" gutterBottom>
+            What our users are saying
+          </Typography>
+        </Container>
+        <Container maxWidth="md" component="main">
+          <Grid container spacing={5} alignItems="flex-end">
+            {reviews.map((review) => (
+              <Grid item key={review.name} xs={12} sm={6} md={4}>
+                <Card variant="outlined">
+                  <CardContent>
+                    <div className={classes.cardContent}>
+                      <Avatar className={classes.avatar}>
+                        <img src={review.image} />
+                      </Avatar>
+
+                        <Typography>
+                          {review.name}
+                        </Typography>
+
+                    </div>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </section >
+      <Footer />
+    </div >
   );
 }
 
