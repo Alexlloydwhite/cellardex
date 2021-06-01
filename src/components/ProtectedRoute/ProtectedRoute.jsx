@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import LandingPage from '../WelcomeScreen/LandingPage';
+import LandingPage from '../WelcomeScreen/_LandingPage';
 import {useSelector} from 'react-redux';
 
 // A Custom Wrapper Component -- This will keep our code DRY.
