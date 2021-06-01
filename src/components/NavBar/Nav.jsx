@@ -53,22 +53,20 @@ function Nav({ children }) {
   // Toggle the hamburger menu on mobile devices
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
-
-  const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
-
+  // State for menu icon
+  const [open, setOpen] = useState(false);
+  // Toggles menu icon open / closed
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
-
+  // Handles close of menu
   const handleClose = (event) => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
-
     setOpen(false);
   };
-
   function handleListKeyDown(event) {
     if (event.key === 'Tab') {
       event.preventDefault();
@@ -90,9 +88,12 @@ function Nav({ children }) {
           >
             CellarDex
           </Typography>
+          {/* Checks if user is on mobile device */}
           {isMobile ? (
+            // IF TRUE: display hamburger menu icon
             <div>
               <IconButton onClick={handleToggle} ref={anchorRef}>
+                {/* Toggles between hamburger icon and X icon */}
                 {open ? <CloseIcon style={{ color: 'white' }} /> : <MenuIcon style={{ color: 'white' }} />}
               </IconButton>
               <Popper
@@ -109,9 +110,13 @@ function Nav({ children }) {
                   >
                     <Paper>
                       <ClickAwayListener onClickAway={handleClose}>
+                        {/* Menu displays options */}
                         <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
+                          {/* Home BTN, brings user home */}
                           <MenuItem onClick={() => history.push('/')}>Home</MenuItem>
+                          {/* Profile BTN, brings user to profile */}
                           <MenuItem onClick={() => history.push('/profile')}>Your Profile</MenuItem>
+                          {/* Logout BTN, logs user out, brings user to landing page */}
                           <MenuItem onClick={() => dispatch({ type: 'LOGOUT' })}>Logout</MenuItem>
                         </MenuList>
                       </ClickAwayListener>
@@ -121,7 +126,9 @@ function Nav({ children }) {
               </Popper>
             </div>
           ) : (
+            // IF FALSE: displays tool bar with text links
             <Toolbar>
+              {/* Home BTN, brings user home */}
               <Typography
                 className={classes.links}
                 onClick={() => history.push('/')}
@@ -129,6 +136,7 @@ function Nav({ children }) {
               >
                 Home
               </Typography>
+              {/* Profile BTN, brings user to profile */}
               <Typography
                 className={classes.links}
                 onClick={() => history.push('/profile')}
@@ -136,6 +144,7 @@ function Nav({ children }) {
               >
                 Your Profile
               </Typography>
+              {/* Logout BTN, logs user out, brings user to landing page */}
               <Typography
                 className={classes.links}
                 onClick={() => dispatch({ type: 'LOGOUT' })}
