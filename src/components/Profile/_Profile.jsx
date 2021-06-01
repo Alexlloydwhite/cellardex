@@ -6,12 +6,16 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from 'prop-types';
 // MUI
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import {
+  Container,
+  Typography,
+  Avatar,
+  makeStyles,
+  AppBar,
+  Tabs,
+  Tab,
+  Grid
+} from '@material-ui/core';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -37,6 +41,22 @@ const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.paper,
   },
+  avatar: {
+    marginTop: theme.spacing(5),
+    width: 130,
+    height: 130,
+    backgroundColor: '#344959'
+  },
+  header: {
+    marginBottom: theme.spacing(2),
+    textAlign: 'center',
+    display: 'flex',
+    justifyContent: 'center'
+  },
+  headerText: {
+    textAlign: 'center',
+    marginBottom: theme.spacing(2)
+  }
 }));
 
 function a11yProps(index) {
@@ -71,25 +91,34 @@ const Profile = () => {
   useEffect(() => {
     dispatch({ type: 'GET_SAVED_PAIRING' });
     dispatch({ type: 'FETCH_INSIGHTS' });
-  }, [])
+  }, []);
 
   return (
     <div>
       {/* Page Header */}
-      <Container>
-        {/* Greeting */}
-        <Typography
-          id="header"
-          variant="h2"
-          align="center"
-        >
-          Hello, {user.username}!
-      </Typography>
-        {/* User pairing and insight count */}
-        <Typography align="center">
-          {Object.keys(savedPairing).length} Saved Pairings | {insights.length} Insights.
-      </Typography>
-      </Container>
+      <Grid container>
+        <Grid item xs={12} className={classes.header}>
+          <div>
+            <Avatar className={classes.avatar}>
+              <Typography variant="h1">
+                {user.username[0]}
+              </Typography>
+            </Avatar>
+          </div>
+        </Grid>
+        <Grid item xs={12} className={classes.headerText}>
+          <Typography
+            id="header"
+            variant="h4"
+          >
+            Hello, {user.username}!
+        </Typography>
+          {/* User pairing and insight count */}
+          <Typography>
+            {Object.keys(savedPairing).length} Saved Pairings | {insights.length} Insights.
+        </Typography>
+        </Grid>
+      </Grid>
       {/* Page Body */}
       <Container>
         <div className={classes.root}>

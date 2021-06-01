@@ -41,7 +41,7 @@ const UserPairingList = ({ item }) => {
                                 edge="end"
                                 onClick={() => handleClick(item.id)}
                             >
-                                <NoteAddIcon /> create an insight
+                                <NoteAddIcon />
                             </IconButton>
                         </Grid>
                     </ListItemSecondaryAction>

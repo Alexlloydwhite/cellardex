@@ -92,9 +92,9 @@ const LandingPage = () => {
       review: `"I love CellarDex!"`
     },
     {
-      image: 'https://media.wired.com/photos/60a4468ef83409ce52d3c65a/4:3/w_1782,h_1336,c_limit/Opinion-BillGates-Vaccine-1183210462.jpg',
-      name: 'Bill Gates',
-      title: 'CEO Microsoft',
+      image: 'https://scontent.ffcm1-2.fna.fbcdn.net/v/t31.18172-8/10994268_10205683920718604_1512492340651551904_o.jpg?_nc_cat=106&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=o2PnlfGkF1MAX-qNVzv&_nc_ht=scontent.ffcm1-2.fna&oh=94c2601a2ec80b9155814c43f5c6577a&oe=60DA7D5A',
+      name: 'Joel Eckerson',
+      title: 'CEO, Disco Death Records',
       review: `"Innovative"`
     },
     {

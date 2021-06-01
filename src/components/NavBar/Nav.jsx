@@ -44,10 +44,11 @@ function Nav({ children }) {
       <AppBar elevation={0} style={{ background: '#344959' }}>
         <Toolbar>
           {/* page title */}
-          <Avatar src="images/logo-white-background.png" className={classes.avatar} />
           <Typography 
             className={classes.welcome} 
-            variant="h5"
+            component="h1"
+            variant="h3"
+            id="header"
           >
             CellarDex
           </Typography>
@@ -55,18 +56,21 @@ function Nav({ children }) {
           <Typography 
             className={classes.links}
             onClick={() => history.push('/')}
+            id="landingHero"
           >
             Home
           </Typography>
           <Typography 
             className={classes.links}
             onClick={() => history.push('/profile')}
+            id="landingHero"
           >
             Your Profile
           </Typography>
           <Typography 
             className={classes.links}
             onClick={() => dispatch({ type: 'LOGOUT' })}
+            id="landingHero"
           >
             Logout
           </Typography>
