@@ -4,8 +4,6 @@ import {
   Paper,
   Card,
   CardContent,
-  CardMedia,
-  CardHeader,
   makeStyles,
   Typography,
   Container,
@@ -91,19 +89,19 @@ const LandingPage = () => {
       image: 'https://www.whitehouse.gov/wp-content/uploads/2021/01/44_barack_obama.jpg',
       name: 'Barack Obama',
       title: '44th President',
-      review: 'I love CellarDex!'
+      review: `"I love CellarDex!"`
     },
     {
-      image: 'https://image.cnbcfm.com/api/v1/image/106635601-1595938600994SG-Gates-072820-04-jpg?v=1605891431',
+      image: 'https://media.wired.com/photos/60a4468ef83409ce52d3c65a/4:3/w_1782,h_1336,c_limit/Opinion-BillGates-Vaccine-1183210462.jpg',
       name: 'Bill Gates',
       title: 'CEO Microsoft',
-      review: 'Innovative'
+      review: `"Innovative"`
     },
     {
       image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Oprah_in_2014.jpg/220px-Oprah_in_2014.jpg',
       name: 'Oprah Winfrey',
       title: 'Television Host',
-      review: 'I recommend this app'
+      review: `"I recommend this app"`
     },
   ];
 
