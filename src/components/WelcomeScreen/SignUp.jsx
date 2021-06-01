@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const LogIn = () => {
+const SignUp = () => {
     const classes = useStyles();
     const history = useHistory();
     const [username, setUsername] = useState('');
@@ -53,21 +53,18 @@ const LogIn = () => {
     const errors = useSelector(store => store.errors)
     const dispatch = useDispatch();
 
-    const login = (event) => {
+    const registerUser = (event) => {
         event.preventDefault();
 
-        if (username && password) {
-            dispatch({
-                type: 'LOGIN',
-                payload: {
-                    username: username,
-                    password: password,
-                },
-            });
-        } else {
-            dispatch({ type: 'LOGIN_INPUT_ERROR' });
-        }
-    }; // end login
+        dispatch({
+            type: 'REGISTER',
+            payload: {
+                username: username,
+                password: password,
+            },
+        });
+    }; // end registerUser
+
     return (
         <Grid container component="main" className={classes.layout}>
             <Grid item xs={12} component={Paper} variant="outlined">
@@ -84,10 +81,13 @@ const LogIn = () => {
                     <Avatar className={classes.avatar} style={{ alignSelf: 'center' }}>
                         <img src="images/logo-white-background.png" />
                     </Avatar>
-                    <form className={classes.form} onSubmit={login} noValidate>
-                        {errors.loginMessage && (
+                    <Typography variant="h6" style={{ marginTop: 10 }}>
+                        Sign Up to get expertly crafted wine pairings
+                    </Typography>
+                    <form className={classes.form} onSubmit={registerUser} noValidate>
+                        {errors.registrationMessage && (
                             <h3 className="alert" role="alert">
-                                {errors.loginMessage}
+                                {errors.registrationMessage}
                             </h3>
                         )}
                         {/* Input for Username */}
@@ -99,7 +99,6 @@ const LogIn = () => {
                             id="Username"
                             label="Username"
                             name="Username"
-                            autoComplete="email"
                             value={username}
                             onChange={(event) => setUsername(event.target.value)}
                         />
@@ -113,7 +112,6 @@ const LogIn = () => {
                             name="password"
                             label="Password"
                             required
-                            autoComplete="current-password"
                             value={password}
                             onChange={(event) => setPassword(event.target.value)}
                             style={{ marginBottom: 20 }}
@@ -125,7 +123,7 @@ const LogIn = () => {
                             color="primary"
                             fullWidth
                         >
-                            Log In
+                            Sign Up
                         </Button>
                     </form>
                 </div>
@@ -133,12 +131,12 @@ const LogIn = () => {
             <Grid item xs={12}>
                 <Paper className={classes.paper} variant="outlined">
                     <Typography>
-                        Don't have an account?{' '}
+                        Already have an account?{' '}
                         <Link
-                            onClick={() => history.push('/signup')}
+                            onClick={() => history.push('/signin')}
                             style={{ cursor: 'pointed' }}
                         >
-                            Sign Up
+                            Log In
                     </Link>
                     </Typography>
                 </Paper>
@@ -147,4 +145,4 @@ const LogIn = () => {
     );
 }
 
-export default LogIn;
+export default SignUp;
