@@ -81,7 +81,7 @@ const SignUp = () => {
                     <Avatar className={classes.avatar} style={{ alignSelf: 'center' }}>
                         <img src="images/logo-white-background.png" />
                     </Avatar>
-                    <Typography variant="h6" style={{ marginTop: 10 }}>
+                    <Typography variant="h6" style={{ marginTop: 10, textAlign: 'center' }}>
                         Sign Up to get expertly crafted wine pairings
                     </Typography>
                     <form className={classes.form} onSubmit={registerUser} noValidate>
