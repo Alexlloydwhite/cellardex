@@ -1,9 +1,10 @@
 // MUI
-import { 
+import {
     makeStyles,
     Typography,
     CardContent,
     CardMedia,
+    CardHeader,
     IconButton,
     Menu,
     MenuItem
@@ -16,13 +17,9 @@ import DeleteMenuItem from './DeleteMenuItem';
 import EditMenuItem from './EditMenuItem';
 
 const useStyles = makeStyles({
-    cardDetails: {
-        flex: 1,
-    },
-    cardMedia: {
-        width: 160,
-        float: 'left',
-        margin: 10,
+    media: {
+        height: 0,
+        paddingTop: '56.25%', // 16:9
     },
     actions: {
         float: 'right',
@@ -43,39 +40,41 @@ const InsightCardDetails = ({ insight }) => {
 
     return (
         <div className={classes.cardDetail}>
+            <CardHeader
+                title={insight.food}
+                subheader={insight.wine_drank}
+                action={
+                    <IconButton
+                        className={classes.actions}
+                        onClick={handleClick}
+                    >
+                        <MoreVertIcon />
+                    </IconButton>
+                }
+            />
+            <Menu
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={() => handleClose(insight.id)}
+            >
+                <MenuItem onClick={handleClose}>
+                    <EditMenuItem insight={insight} />
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                    <DeleteMenuItem insight={insight} />
+                </MenuItem>
+            </Menu>
             <CardMedia>
-                <img src={insight.image} className={classes.cardMedia} />
+                <img src={insight.image} />
             </CardMedia>
             <CardContent>
-                <Typography component="h2" variant="h5">
-                    {insight.food}{' & '}{insight.wine}
-                </Typography>
-                <Typography variant="subtitle1">
-                    Bottle of wine: {insight.wine_drank}
-                </Typography>
-
-                <IconButton
-                    className={classes.actions}
-                    onClick={handleClick}
+                <Typography
+                    variant="body2"
+                    component="p"
                 >
-                    <MoreVertIcon />
-                </IconButton>
-                <Menu
-                    anchorEl={anchorEl}
-                    keepMounted
-                    open={Boolean(anchorEl)}
-                    onClose={() => handleClose(insight.id)}
-                >
-                    <MenuItem>
-                        View
-                    </MenuItem>
-                    <MenuItem onClick={handleClose}>
-                        <EditMenuItem insight={insight} />
-                    </MenuItem>
-                    <MenuItem onClick={handleClose}>
-                        <DeleteMenuItem insight={insight} />
-                    </MenuItem>
-                </Menu>
+                    {insight.thoughts}
+                </Typography>
             </CardContent>
         </div>
     );
