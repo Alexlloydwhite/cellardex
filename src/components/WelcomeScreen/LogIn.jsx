@@ -1,16 +1,19 @@
-import Paper from '@material-ui/core/Paper';
-import { Typography } from '@material-ui/core/';
-import { makeStyles } from '@material-ui/core';
-import Avatar from '@material-ui/core/Avatar';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+// MUI
+import { 
+    Typography,
+    Paper,
+    makeStyles,
+    Avatar,
+    TextField,
+    Button,
+    Link,
+    Grid
+} from '@material-ui/core/';
+// React
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-
+// Styles
 const useStyles = makeStyles((theme) => ({
     layout: {
         width: 'auto',

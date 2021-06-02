@@ -1,9 +1,13 @@
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Container from '@material-ui/core/Container';
+// MUI
+import { 
+    Typography,
+    Button,
+    Container,
+    Divider
+} from '@material-ui/core';
+// React
 import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import Divider from '@material-ui/core/Divider';
 
 const PairingBody = ({ item }) => {
 

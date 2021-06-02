@@ -1,11 +1,15 @@
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Grid from '@material-ui/core/Grid';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import Divider from '@material-ui/core/Divider';
+// MUI
+import { 
+    ListItem,
+    ListItemText,
+    ListItemSecondaryAction,
+    Grid,
+    Divider,
+    Typography,
+    IconButton
+} from '@material-ui/core';
 import NoteAddIcon from '@material-ui/icons/NoteAdd';
-import IconButton from '@material-ui/core/IconButton';
-import { Typography } from '@material-ui/core/';
+// React
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 

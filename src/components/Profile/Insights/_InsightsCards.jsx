@@ -1,8 +1,13 @@
-import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import { makeStyles } from '@material-ui/core/styles';
+// MUI
+import { 
+    Grid,
+    Card,
+    makeStyles
+} from '@material-ui/core';
+// React
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+// Component
 import InsightCardDetails from './InsightCardDetails';
 
 const useStyles = makeStyles({

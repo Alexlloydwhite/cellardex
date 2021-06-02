@@ -1,10 +1,12 @@
+// React
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
+// Components
 import PairingHeader from './PairingHeader';
 import PairingBody from './PairingBody';
-import { Grid } from '@material-ui/core';
-import Container from '@material-ui/core/Container';
+// MUI
+import { Grid, Container } from '@material-ui/core';
 
 const PairingDescription = () => {
     const dispatch = useDispatch();

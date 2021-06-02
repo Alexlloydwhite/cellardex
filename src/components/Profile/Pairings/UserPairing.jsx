@@ -1,7 +1,6 @@
-import Grid from '@material-ui/core/Grid';
-import List from '@material-ui/core/List';
-
-
+// MUI
+import { Grid, List } from '@material-ui/core';
+// Component
 import UserPairingList from './UserPairingList';
 
 const UserPairing = ({ savedPairing }) => {

@@ -1,10 +1,13 @@
-import { makeStyles } from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import { useHistory } from 'react-router';
+// MUI
+import { 
+    makeStyles,
+    TextField,
+    Button, 
+} from '@material-ui/core';
+// React
+import { useHistory, useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
 
 const useStyles = makeStyles((theme) => ({
     form: {
@@ -21,13 +24,14 @@ const EditInsightForm = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const params = useParams();
+    // Reducer holds data for the insight to edit
     const insightClicked = useSelector(store => store.insightById);
-
+    // Allows the page to persist through refresh
     useEffect(() => {
         dispatch({ type: 'FETCH_INSIGHT_BY_ID', id: params.id });
     }, []);
-
-    // handle form submit
+    // handle form submit. Dispatch edit to post. 
+    // Bring user back to profile view
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch({
@@ -67,13 +71,11 @@ const EditInsightForm = () => {
     }
     return (
         <form className={classes.form} onSubmit={handleSubmit} noValidate>
-            {JSON.stringify(insightClicked)}
-            {JSON.stringify(state)}
             {/* Wine Name */}
             <TextField
                 margin="normal"
                 fullWidth
-                label="Wine Drank"
+                helperText="Wine Drank"
                 name="wine_drank"
                 value={insightClicked.wine_drank}
                 onChange={handleChange}
@@ -85,7 +87,7 @@ const EditInsightForm = () => {
                 fullWidth
                 multiline
                 rows={4}
-                label="Thoughts"
+                helperText="Thoughts"
                 name="thoughts"
                 value={insightClicked.thoughts}
                 onChange={handleChange}
@@ -95,7 +97,7 @@ const EditInsightForm = () => {
             <TextField
                 margin="normal"
                 fullWidth
-                label="Location"
+                helperText="Location"
                 name="location"
                 value={insightClicked.location}
                 onChange={handleChange}
@@ -105,7 +107,7 @@ const EditInsightForm = () => {
             <TextField
                 margin="normal"
                 fullWidth
-                label="Who did you enjoy this with?"
+                helperText="Who did you enjoy this with?"
                 name="enjoyed_with"
                 value={insightClicked.enjoyed_with}
                 onChange={handleChange}
@@ -115,7 +117,7 @@ const EditInsightForm = () => {
             <TextField
                 margin="normal"
                 fullWidth
-                label="Do you have a photo? Enter the image URL here"
+                helperText="Image URL"
                 name="image"
                 value={insightClicked.image}
                 onChange={handleChange}
@@ -137,7 +139,7 @@ const EditInsightForm = () => {
                 variant="contained"
                 type="submit"
             >
-                Submit Insight
+                Save
             </Button>
         </form>
     );

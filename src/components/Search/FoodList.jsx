@@ -1,14 +1,17 @@
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import Divider from '@material-ui/core/Divider';
+// MUI
+import { 
+    ListItem,
+    ListItemText,
+    ListItemSecondaryAction,
+    Divider,
+    IconButton,
+    Grid,
+    Typography
+} from '@material-ui/core';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
-import IconButton from '@material-ui/core/IconButton';
-import Grid from '@material-ui/core/Grid';
+// React
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import { Typography } from '@material-ui/core/';
-
 
 const FoodList = ({ item }) => {
     const dispatch = useDispatch();

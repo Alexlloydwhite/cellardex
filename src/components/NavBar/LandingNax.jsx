@@ -1,7 +1,11 @@
-import Typography from '@material-ui/core/Typography';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import { makeStyles } from "@material-ui/core";
+// MUI
+import { 
+    makeStyles,
+    Typography,
+    AppBar,
+    Toolbar 
+} from "@material-ui/core";
+// React
 import { useHistory } from 'react-router';
 
 const useStyles = makeStyles((theme) => {

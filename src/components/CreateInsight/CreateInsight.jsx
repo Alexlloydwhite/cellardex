@@ -1,8 +1,13 @@
-import { makeStyles } from '@material-ui/core';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Paper from '@material-ui/core/Paper';
-import { Typography } from '@material-ui/core/';
+// MUI
+import { 
+    makeStyles,
+    CssBaseline,
+    Paper,
+    Typography
+} from '@material-ui/core';
+// Components
 import InsightForm from './InsightForm';
+// React
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useParams } from 'react-router';

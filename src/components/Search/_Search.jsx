@@ -1,15 +1,20 @@
-import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
-import { InputAdornment, makeStyles } from "@material-ui/core";
-import CurvyLines from './appCurvyLines.png';
-import TextField from '@material-ui/core/TextField';
+// MUI
+import { 
+    Grid,
+    Container,
+    Typography,
+    InputAdornment,
+    makeStyles,
+    TextField,
+    List
+} from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
+// Components
+import CurvyLines from './appCurvyLines.png';
 import FoodList from './FoodList';
-import List from '@material-ui/core/List';
+// React
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 
 const useStyles = makeStyles((theme) => {
     return {

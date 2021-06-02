@@ -1,6 +1,10 @@
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core';
+// MUI
+import { 
+    makeStyles,
+    Button,
+    TextField
+} from '@material-ui/core';
+// React
 import { useState } from 'react';
 import { useHistory, useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
@@ -99,7 +103,7 @@ const InsightForm = () => {
                 margin="normal"
                 fullWidth
                 required
-                label="Do you have a photo? Enter the image URL here"
+                label="Do you have a photo?"
                 value={photo}
                 onChange={(event) => setPhoto(event.target.value)}
                 variant="outlined"

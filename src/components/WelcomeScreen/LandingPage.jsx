@@ -1,4 +1,4 @@
-// MUI imports
+// MUI 
 import {
   Grid,
   Paper,
@@ -10,12 +10,12 @@ import {
   Divider,
   Avatar
 } from '@material-ui/core';
-// MUI icon imports
+// MUI icons
 import SearchIcon from '@material-ui/icons/Search';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import CreateIcon from '@material-ui/icons/Create';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
-// Local imports
+// Components
 import LandingImage from './landing-image.jpg';
 import LandingNav from '../NavBar/LandingNax';
 import Footer from '../Footer/Footer';

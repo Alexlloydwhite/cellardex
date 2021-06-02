@@ -1,4 +1,11 @@
-import React, { useEffect } from 'react';
+// MUI
+import { 
+  createMuiTheme, 
+  ThemeProvider,
+  CssBaseline
+} from '@material-ui/core';
+// React
+import { useEffect } from 'react';
 import {
   HashRouter as Router,
   Route,
@@ -6,6 +13,7 @@ import {
   Switch,
 } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+// Components
 import Nav from '../NavBar/Nav';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Profile from '../Profile/_Profile';
@@ -15,11 +23,9 @@ import PairingDescription from '../PairingDescription/_PairingDescription';
 import CreateInsight from '../CreateInsight/CreateInsight';
 import EditInsight from '../EditInsight/_EditInsight';
 import './App.css';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import LogIn from '../WelcomeScreen/LogIn';
 import SignUp from '../WelcomeScreen/SignUp';
-
+// App color theme
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -33,14 +39,12 @@ const theme = createMuiTheme({
     }
   }
 })
-
 function App() {
   const dispatch = useDispatch();
-
+  // App fetches user anytime there is a dispatch.
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
   }, [dispatch]);
-
   return (
     <CssBaseline>
       <ThemeProvider theme={theme}>

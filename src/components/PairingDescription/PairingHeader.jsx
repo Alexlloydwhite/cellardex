@@ -1,8 +1,12 @@
-import Typography from '@material-ui/core/Typography';
+// Hero image
 import WineGlasses from './wineglasses.jpg';
-import { Grid } from '@material-ui/core';
-import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
+// MUI
+import { 
+    Grid,
+    Typography,
+    Paper,
+    makeStyles
+} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     mainFeaturedPost: {

@@ -1,3 +1,4 @@
+// MUI
 import {
   makeStyles,
   Typography,
@@ -15,7 +16,7 @@ import {
 } from "@material-ui/core";
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
-
+// React
 import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
@@ -39,7 +40,7 @@ const useStyles = makeStyles((theme) => {
       marginRight: theme.spacing(1)
     },
     links: {
-      marginRight: theme.spacing(2),
+      marginRight: theme.spacing(1),
       cursor: 'pointer'
     }
   }
