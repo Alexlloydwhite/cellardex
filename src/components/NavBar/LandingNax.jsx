@@ -7,7 +7,7 @@ import {
 } from "@material-ui/core";
 // React
 import { useHistory } from 'react-router';
-
+// Styles
 const useStyles = makeStyles((theme) => {
     return {
         page: {

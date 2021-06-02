@@ -6,7 +6,7 @@ import {
 } from '@material-ui/core';
 // Components
 import EditInsightForm from './EditInsightForm';
-
+// Styles
 const useStyles = makeStyles((theme) => ({
     layout: {
         width: 'auto',
@@ -34,6 +34,7 @@ const EditInsight = () => {
     return (
         <main className={classes.layout}>
             <Paper className={classes.paper}>
+                {/* Page Header */}
                 <Typography
                     component="h1"
                     variant="h4"
@@ -42,6 +43,7 @@ const EditInsight = () => {
                 >
                     Edit Insight
                 </Typography>
+                {/* Form component displays here */}
                 <EditInsightForm />
             </Paper>
         </main>

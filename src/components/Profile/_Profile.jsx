@@ -16,27 +16,7 @@ import {
   Tab,
   Grid
 } from '@material-ui/core';
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <>
-          {children}
-        </>
-      )}
-    </div>
-  );
-}
-
+// Styles
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.paper,
@@ -58,6 +38,25 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(2)
   }
 }));
+// Function for tab content display
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <>
+          {children}
+        </>
+      )}
+    </div>
+  );
+}
 
 function a11yProps(index) {
   return {
@@ -65,7 +64,6 @@ function a11yProps(index) {
     'aria-controls': `simple-tabpanel-${index}`,
   };
 }
-
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.any.isRequired,
@@ -87,7 +85,8 @@ const Profile = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
+  // On page load, useEffect hook 
+  // Dispatches to get saved pairings and insights
   useEffect(() => {
     dispatch({ type: 'GET_SAVED_PAIRING' });
     dispatch({ type: 'FETCH_INSIGHTS' });

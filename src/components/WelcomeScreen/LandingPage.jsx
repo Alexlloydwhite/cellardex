@@ -104,7 +104,6 @@ const LandingPage = () => {
       review: `"I recommend this app"`
     },
   ];
-
   return (
     <div>
       {/* Nav Bar */}

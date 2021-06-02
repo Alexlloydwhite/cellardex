@@ -15,7 +15,7 @@ import FoodList from './FoodList';
 // React
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
+// Styles
 const useStyles = makeStyles((theme) => {
     return {
         container: {
@@ -74,12 +74,15 @@ const SearchView = () => {
         // Dispatch to store in real time
         dispatch({ type: 'FETCH_SEARCH', search: searchWord });
     }
-
     useEffect(() => {
+        // On page load, fetch array of pairings
         dispatch({ type: 'FETCH_PAIRING' });
+        // Search is a dependency of this useEffect hook
+        // IF search bar is active, toggle search results
         if (search) {
             setToggleSearch(true);
         } else {
+        // ELSE keep search at default state(false), show all pairings.
             setToggleSearch(false);
         }
     }, [search]);

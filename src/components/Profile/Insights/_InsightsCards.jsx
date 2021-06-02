@@ -29,6 +29,7 @@ const InsightCards = () => {
 
     return (
         <Grid container>
+            {/* Maps insights onto cards */}
             {insights.map(insight => {
                 return <Grid item xs={12} md={6} key={insight.id}>
                     <Card

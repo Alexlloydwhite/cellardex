@@ -8,7 +8,7 @@ import {
 import { useState } from 'react';
 import { useHistory, useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-
+// Styles
 const useStyles = makeStyles((theme) => ({
     form: {
         width: '100%', // Fix IE 11 issue.

@@ -35,26 +35,31 @@ const DeleteMenuItem = ({ insight }) => {
 
     return (
         <div>
+            {/* Menu item displays text "DELETE" */}
             <div onClick={handleOpenClick}>
                 Delete
             </div>
+            {/* Dialog displays over page */}
             <Dialog
                 open={open}
                 onClose={handleClose}
             >
                 <DialogTitle>{"Delete This Insight?"}</DialogTitle>
+                {/* Dialog text informs user of the actions */}
                 <DialogContent>
                     <DialogContentText>
                         Deleting this insight will permanently remove it from you profile.
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
+                    {/* Cancel BTN closes dialog */}
                     <Button
                         onClick={handleClose}
                         color="primary"
                     >
                         Cancel
                     </Button>
+                    {/* Delete BTN deletes the insights */}
                     <Button
                         onClick={() => handleDelete(insight.id)}
                         color="secondary"
