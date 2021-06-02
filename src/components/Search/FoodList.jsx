@@ -1,5 +1,5 @@
 // MUI
-import { 
+import {
     ListItem,
     ListItemText,
     ListItemSecondaryAction,
@@ -30,6 +30,7 @@ const FoodList = ({ item }) => {
     return (
         <Grid container>
             <Grid item xs={12}>
+                <Divider />
                 <ListItem>
                     <Typography
                         variant="h5"
@@ -46,7 +47,6 @@ const FoodList = ({ item }) => {
                         </IconButton>
                     </ListItemSecondaryAction>
                 </ListItem>
-                <Divider />
             </Grid>
         </Grid>
     );
