@@ -45,7 +45,6 @@ const CreateInsight = () => {
     }, []);
 
     const pairingClicked = useSelector(store => store.pairingClick);
-
     return (
         <CssBaseline>
             <main className={classes.layout}>

@@ -57,20 +57,27 @@ const UserPairingList = ({ item }) => {
     }
 
     return (
-        <Grid item xs={12} md={6} lg={3}>
+        <Grid item xs={12} md={3}>
+            {/* Pairing Card */}
             <Card className={classes.root} variant="outlined">
+                {/* Header */}
                 <CardHeader
                     title={item.food}
                     subheader={item.wine}
                 />
+                {/* Line Divides */}
                 <Divider variant="middle" />
+                {/* Action BTNS */}
                 <CardActions disableSpacing>
+                    {/* Delete BTN */}
                     <IconButton>
                         <DeleteOutlineIcon />
                     </IconButton>
-                    <IconButton>
+                    {/* Create BTN */}
+                    <IconButton onClick={() => handleClick(item.id)} >
                         <CreateIcon />
                     </IconButton>
+                    {/* Expand BTN */}
                     <IconButton
                         className={clsx(classes.expand, {
                             [classes.expandOpen]: expanded,
@@ -80,6 +87,7 @@ const UserPairingList = ({ item }) => {
                         <ExpandMoreIcon />
                     </IconButton>
                 </CardActions>
+                {/* Content to show when expanded */}
                 <Collapse in={expanded} timeout="auto" unmountOnEdit>
                     <CardContent>
                         <Typography>

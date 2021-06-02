@@ -15,11 +15,11 @@ import { useState } from 'react';
 // Components
 import DeleteMenuItem from './DeleteMenuItem';
 import EditMenuItem from './EditMenuItem';
-
+// Styles
 const useStyles = makeStyles({
     media: {
-        height: 0,
-        paddingTop: '56.25%', // 16:9
+        height: 350,
+        width: '100%'
     },
     actions: {
         float: 'right',
@@ -40,9 +40,11 @@ const InsightCardDetails = ({ insight }) => {
 
     return (
         <div className={classes.cardDetail}>
+            {/* Card Header */}
             <CardHeader
                 title={insight.food}
                 subheader={insight.wine_drank}
+                // Action is the ellipse menu
                 action={
                     <IconButton
                         className={classes.actions}
@@ -52,22 +54,27 @@ const InsightCardDetails = ({ insight }) => {
                     </IconButton>
                 }
             />
+            {/* Menu displays on click of ellipse */}
             <Menu
                 anchorEl={anchorEl}
                 keepMounted
                 open={Boolean(anchorEl)}
                 onClose={() => handleClose(insight.id)}
             >
+                {/* Edit Option */}
                 <MenuItem onClick={handleClose}>
                     <EditMenuItem insight={insight} />
                 </MenuItem>
+                {/* Delete Option */}
                 <MenuItem onClick={handleClose}>
                     <DeleteMenuItem insight={insight} />
                 </MenuItem>
             </Menu>
+            {/* Insight Image */}
             <CardMedia>
-                <img src={insight.image} />
+                <img src={insight.image} className={classes.media} />
             </CardMedia>
+            {/* Insight Thoughts */}
             <CardContent>
                 <Typography
                     variant="body2"
