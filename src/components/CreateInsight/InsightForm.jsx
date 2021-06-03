@@ -1,13 +1,15 @@
 // MUI
-import { 
+import {
     makeStyles,
     Button,
-    TextField
+    TextField,
+    Input
 } from '@material-ui/core';
 // React
 import { useState } from 'react';
 import { useHistory, useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
+import { uploadFile } from 'react-s3';
 // Styles
 const useStyles = makeStyles((theme) => ({
     form: {
@@ -18,6 +20,18 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(3, 0, 2),
     },
 }));
+// Grabs S3 bucket information from ENV
+const S3_BUCKET = process.env.REACT_APP_AWS_BUCKET_NAME;
+const REGION = process.env.REACT_APP_AWS_BUCKET_REGION;
+const ACCESS_KEY = process.env.REACT_APP_AWS_ACCESS_KEY;
+const SECRET_ACCESS_KEY = process.env.REACT_APP_AWS_SECRET_KEY;
+// Create config object using bucket information
+const config = {
+    bucketName: S3_BUCKET,
+    region: REGION,
+    accessKeyId: ACCESS_KEY,
+    secretAccessKey: SECRET_ACCESS_KEY
+}
 
 const InsightForm = () => {
     const history = useHistory();
@@ -30,19 +44,35 @@ const InsightForm = () => {
     const [location, setLocation] = useState('');
     const [companion, setCompanion] = useState('');
     const [photo, setPhoto] = useState('');
+    const [selectedPhoto, setSelectedPhoto] = useState('');
     // user data from store
     const user = useSelector(store => store.user);
     // pairing clicked data from store
     const pairingClicked = useSelector(store => store.pairingClick);
     // Clicked handle for submit insight
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    const handleFileInput = (e) => {
+        setSelectedPhoto(e.target.files[0]);
+    }
+
+    const handleUpload = (file) => {
+        uploadFile(file, config)
+            .then(data => {
+                console.log(data.location);
+                setPhoto(String(data.location))
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
         // send form data to the postInsight saga
-        dispatch({ 
-            type: 'POST_INSIGHT', 
-            user_id: user.id, 
-            saved_pairing_id: Number(params.id), 
-            wine: wineName, 
+        dispatch({
+            type: 'POST_INSIGHT',
+            user_id: user.id,
+            saved_pairing_id: Number(params.id),
+            wine: wineName,
             thoughts: thoughts,
             location: location,
             enjoyed_with: companion,
@@ -50,12 +80,6 @@ const InsightForm = () => {
         });
         // Bring use to the profile view
         history.push('/profile');
-    }
-
-    const handlePhotoChange = (e) => {
-        const file = e.target.files[0];
-        setPhoto(file);
-        console.log(photo);
     }
 
     return (
@@ -105,25 +129,13 @@ const InsightForm = () => {
                 variant="outlined"
             />
             {/* Photo */}
-            <Button
-                variant="contained"
-                component="label"
-                fullWidth
-                style={{ marginBottom: 10 }}
-            >
-                Upload Photo
-                <input
-                    type='file'
-                    accept='image/*'
-                    hidden
-                    onChange={handlePhotoChange}
-                />
-            </Button>
+            <Input type="file" onChange={handleFileInput} />
+            <Button onClick={() => handleUpload(selectedPhoto)}>Upload</Button>
             {/* cancel BTN, takes user back to profile view */}
             <Button
                 color="secondary"
                 variant="contained"
-                style={{marginRight: 5}}
+                style={{ marginRight: 5 }}
                 onClick={() => history.push('/profile')}
             >
                 Cancel
