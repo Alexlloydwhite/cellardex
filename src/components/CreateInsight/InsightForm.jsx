@@ -52,6 +52,12 @@ const InsightForm = () => {
         history.push('/profile');
     }
 
+    const handlePhotoChange = (e) => {
+        const file = e.target.files[0];
+        setPhoto(file);
+        console.log(photo);
+    }
+
     return (
         // New Insight Form
         <form className={classes.form} onSubmit={handleSubmit} noValidate>
@@ -99,16 +105,20 @@ const InsightForm = () => {
                 variant="outlined"
             />
             {/* Photo */}
-            <TextField
-                margin="normal"
+            <Button
+                variant="contained"
+                component="label"
                 fullWidth
-                required
-                label="Do you have a photo?"
-                value={photo}
-                onChange={(event) => setPhoto(event.target.value)}
-                variant="outlined"
-                style={{marginBottom: 15}}
-            />
+                style={{ marginBottom: 10 }}
+            >
+                Upload Photo
+                <input
+                    type='file'
+                    accept='image/*'
+                    hidden
+                    onChange={handlePhotoChange}
+                />
+            </Button>
             {/* cancel BTN, takes user back to profile view */}
             <Button
                 color="secondary"

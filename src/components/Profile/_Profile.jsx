@@ -14,8 +14,10 @@ import {
   AppBar,
   Tabs,
   Tab,
-  Grid
+  Grid,
+  Badge
 } from '@material-ui/core';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 // Styles
 const useStyles = makeStyles((theme) => ({
   root: {

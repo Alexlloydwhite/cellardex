@@ -9,7 +9,8 @@ import {
     IconButton,
     makeStyles,
     Divider,
-    Typography
+    Typography,
+    Chip
 } from '@material-ui/core';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import CreateIcon from '@material-ui/icons/Create';
@@ -23,7 +24,7 @@ import { useDispatch } from 'react-redux';
 const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 345,
-        margin: theme.spacing(1)
+        margin: theme.spacing(1),
     },
     expand: {
         transform: 'rotate(0deg)',
@@ -55,6 +56,7 @@ const UserPairingList = ({ item }) => {
         // Bring user to Create Insight View
         history.push(`/insights/create/${id}`)
     }
+    const subTitle = `& ${item.wine}`
 
     return (
         <Grid item xs={12} md={3}>
@@ -63,20 +65,26 @@ const UserPairingList = ({ item }) => {
                 {/* Header */}
                 <CardHeader
                     title={item.food}
-                    subheader={item.wine}
+                    subheader={subTitle}
                 />
                 {/* Line Divides */}
                 <Divider variant="middle" />
                 {/* Action BTNS */}
                 <CardActions disableSpacing>
                     {/* Delete BTN */}
-                    <IconButton>
-                        <DeleteOutlineIcon />
-                    </IconButton>
+                    <Chip 
+                        avatar={<DeleteOutlineIcon />}
+                        label="Delete"
+                        variant="outlined"
+                        style={{ marginRight: 10, marginLeft: 5 }}
+                    />
                     {/* Create BTN */}
-                    <IconButton onClick={() => handleClick(item.id)} >
-                        <CreateIcon />
-                    </IconButton>
+                    <Chip 
+                        onClick={() => handleClick(item.id)} 
+                        avatar={<CreateIcon />}
+                        label="Create Insight"
+                        variant="outlined"
+                    />
                     {/* Expand BTN */}
                     <IconButton
                         className={clsx(classes.expand, {

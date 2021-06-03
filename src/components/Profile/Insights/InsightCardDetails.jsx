@@ -7,7 +7,8 @@ import {
     CardHeader,
     IconButton,
     Menu,
-    MenuItem
+    MenuItem,
+    Divider
 } from '@material-ui/core';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 // React
@@ -37,13 +38,13 @@ const InsightCardDetails = ({ insight }) => {
     const handleClose = () => {
         setAnchorEl(null);
     }
-
+    const subTitle = `Pairing: ${insight.wine_drank}`
     return (
         <div className={classes.cardDetail}>
             {/* Card Header */}
             <CardHeader
                 title={insight.food}
-                subheader={insight.wine_drank}
+                subheader={subTitle}
                 // Action is the ellipse menu
                 action={
                     <IconButton

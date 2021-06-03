@@ -143,7 +143,11 @@ const SearchView = () => {
                     :
                     <Grid container>
                         <Grid item>
-                            <Typography align="left">
+                            <Typography 
+                                variant="h6" 
+                                color="secondary" 
+                                align="left"
+                            >
                                 Suggested:
                             </Typography>
                         </Grid>
