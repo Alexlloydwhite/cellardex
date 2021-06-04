@@ -32,7 +32,6 @@ const config = {
     accessKeyId: ACCESS_KEY,
     secretAccessKey: SECRET_ACCESS_KEY
 }
-
 const InsightForm = () => {
     const history = useHistory();
     const classes = useStyles();
@@ -131,6 +130,7 @@ const InsightForm = () => {
             {/* Photo */}
             <Input type="file" onChange={handleFileInput} />
             <Button onClick={() => handleUpload(selectedPhoto)}>Upload</Button>
+            <br />
             {/* cancel BTN, takes user back to profile view */}
             <Button
                 color="secondary"

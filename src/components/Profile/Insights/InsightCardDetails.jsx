@@ -19,8 +19,7 @@ import EditMenuItem from './EditMenuItem';
 // Styles
 const useStyles = makeStyles({
     media: {
-        height: 350,
-        width: '100%'
+        height: "300px",
     },
     actions: {
         float: 'right',
@@ -72,9 +71,13 @@ const InsightCardDetails = ({ insight }) => {
                 </MenuItem>
             </Menu>
             {/* Insight Image */}
-            <CardMedia>
-                <img src={insight.image} className={classes.media} />
-            </CardMedia>
+            <CardMedia
+                component="img"
+                src={insight.image}
+                className={classes.media}
+            />
+                {/* <img src={insight.image} className={classes.media} />
+            </CardMedia> */}
             {/* Insight Thoughts */}
             <CardContent>
                 <Typography

@@ -8,7 +8,7 @@ import {
 import { useHistory, useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-
+// Styles
 const useStyles = makeStyles((theme) => ({
     form: {
         width: '100%', // Fix IE 11 issue.
@@ -18,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(3, 0, 2),
     },
 }));
-
 const EditInsightForm = () => {
     const classes = useStyles();
     const history = useHistory();
