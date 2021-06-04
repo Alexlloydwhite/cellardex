@@ -24,7 +24,7 @@ const PairingBody = ({ item }) => {
     }
 
     return (
-        <Container>
+        <Container style={{ marginBottom: 50 }}>
             {/* Pairing Description */}
             <Typography variant="h3" color="secondary">
                 {item.food}{' & '}<br />
