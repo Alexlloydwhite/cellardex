@@ -25,6 +25,7 @@ import EditInsight from '../EditInsight/_EditInsight';
 import './App.css';
 import LogIn from '../WelcomeScreen/LogIn';
 import SignUp from '../WelcomeScreen/SignUp';
+import About from '../AboutPage/AboutPage';
 // App color theme
 const theme = createMuiTheme({
   palette: {
@@ -53,7 +54,7 @@ function App() {
             <Switch>
               {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
               <Redirect exact from="/" to="/home" />
-
+              {/* USER PROFILE PAGE */}
               <ProtectedRoute
                 exact
                 path="/profile"
@@ -62,7 +63,7 @@ function App() {
                   <Profile />
                 </Nav>
               </ProtectedRoute>
-
+              {/* SEARCH PAGE / LOGGED IN HOME */}
               <ProtectedRoute
                 exact
                 path="/search"
@@ -71,7 +72,7 @@ function App() {
                   <Search />
                 </Nav>
               </ProtectedRoute>
-
+              {/* PAIRING DESCRIPTION PAGE */}
               <ProtectedRoute
                 exact
                 path="/pairing/:id"
@@ -80,7 +81,7 @@ function App() {
                   <PairingDescription />
                 </Nav>
               </ProtectedRoute>
-
+              {/* CREATE INSIGHT PAGE */}
               <ProtectedRoute
                 exact
                 path="/insights/create/:id"
@@ -89,7 +90,7 @@ function App() {
                   <CreateInsight />
                 </Nav>
               </ProtectedRoute>
-
+              {/* EDIT INSIGHT PAGE */}
               <ProtectedRoute
                 exact
                 path="/insights/edit/:id"
@@ -98,37 +99,47 @@ function App() {
                   <EditInsight />
                 </Nav>
               </ProtectedRoute>
-
+              {/* LANDING PAGE */}
               <ProtectedRoute
-                // with authRedirect:
-                // - if logged in, redirects to "/search"
-                // - else shows LandingPage at "/home"
+                // IF logged in, redirects to "/search"
+                // ELSE shows LandingPage at "/home"
                 exact
                 path="/home"
                 authRedirect="/search"
               >
                 <LandingPage />
               </ProtectedRoute>
-
+              {/* LOG IN PAGE */}
               <ProtectedRoute
+                // IF logged in, redirects to "/search"
+                // ELSE shows LogIn page at "/signin"
                 exact
                 path="/signin"
                 authRedirect="/search"
               >
                 <LogIn />
               </ProtectedRoute>
-
+              {/* SIGN UP PAGE */}
               <ProtectedRoute
+                // IF logged in, redirects to "/search"
+                // ELSE shows SignUp page at "/signup"
                 exact
                 path="/signup"
                 authRedirect="/search"
               >
                 <SignUp />
               </ProtectedRoute>
-
+              {/* ABOUT PAGE */}
+              <Route
+                // Shows About page at "/about"
+                exact
+                path='/about'
+              >
+                <About />
+              </Route>
               {/* If none of the other routes matched, we will show a 404. */}
               <Route>
-                <h1>404</h1>
+                <h1>404 | Sorry, the page you are looking for was not found</h1>
               </Route>
             </Switch>
           </div>
