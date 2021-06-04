@@ -34,13 +34,14 @@ const useStyles = makeStyles((theme) => {
     toolbar: theme.mixins.toolbar,
     welcome: {
       flexGrow: 1,
+      marginLeft: theme.spacing(1.5)
     },
     avatar: {
-      marginLeft: theme.spacing(2),
+      marginLeft: theme.spacing(3),
       marginRight: theme.spacing(1)
     },
     links: {
-      marginRight: theme.spacing(1),
+      marginRight: theme.spacing(3),
       cursor: 'pointer'
     }
   }
@@ -84,7 +85,7 @@ function Nav({ children }) {
           <Typography
             className={classes.welcome}
             component="h1"
-            variant="h3"
+            variant="h4"
             id="header"
           >
             CellarDex
