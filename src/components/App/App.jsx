@@ -25,6 +25,7 @@ import EditInsight from '../EditInsight/_EditInsight';
 import './App.css';
 import LogIn from '../WelcomeScreen/LogIn';
 import SignUp from '../WelcomeScreen/SignUp';
+import About from '../AboutPage/AboutPage';
 // App color theme
 const theme = createMuiTheme({
   palette: {
@@ -125,6 +126,13 @@ function App() {
               >
                 <SignUp />
               </ProtectedRoute>
+
+              <Route
+                exact
+                path='/about'
+              >
+                <About />
+              </Route>
 
               {/* If none of the other routes matched, we will show a 404. */}
               <Route>

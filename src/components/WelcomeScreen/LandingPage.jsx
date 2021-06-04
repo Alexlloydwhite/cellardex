@@ -144,8 +144,8 @@ const LandingPage = () => {
             </Grid>
           </div>
         </Paper>
-        {/* Introduction Section */}
       </section>
+      {/* Introduction Section */}
       <section className={classes.root}>
         <Container className={classes.container}>
           <div className={classes.title}>
