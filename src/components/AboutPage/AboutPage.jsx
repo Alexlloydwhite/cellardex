@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core';
 // Images
 import LandingNav from '../NavBar/LandingNax';
-import LandingImage from '../WelcomeScreen/landing-image.jpg';
+import LandingImage from './AboutImages/code.jpg';
 import MuiLogo from './AboutImages/MUI.png';
 import JavascriptLogo from './AboutImages/Javascript.png';
 import NodeLogo from './AboutImages/nodejs.png';
@@ -16,6 +16,8 @@ import ReduxLogo from './AboutImages/redux.png';
 import S3Logo from './AboutImages/s3.png';
 import ReactLogo from './AboutImages/React.png';
 import PostgresLogo from './AboutImages/postgres.png'
+// Local
+import Footer from '../Footer/Footer';
 // Styles
 const useStyles = makeStyles((theme) => ({
   mainFeaturedPost: {
@@ -26,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
-    height: 500,
+    height: 950,
   },
   overlay: {
     position: 'absolute',
@@ -50,17 +52,16 @@ function AboutPage() {
   const classes = useStyles();
   // Array of logos to map over and display
   const logos = [
-    { image: MuiLogo },
     { image: JavascriptLogo },
-    { image: NodeLogo},
-    { image: ReduxLogo },
-    { image: S3Logo },
     { image: ReactLogo },
+    { image: ReduxLogo },
+    { image: NodeLogo },
+    { image: MuiLogo },
+    { image: S3Logo },
     { image: PostgresLogo }
   ];
   return (
     <div>
-      <LandingNav />
       <section>
         <Paper
           className={classes.mainFeaturedPost}
@@ -68,31 +69,21 @@ function AboutPage() {
         >
           {/* Hero Overlay */}
           <div className={classes.overlay}>
-            <Grid container>
-              <Grid item xs={12}>
-                <div className={classes.mainFeaturedPostContent}>
-                  <Typography
-                    variant="h3"
-                    align="center"
-                    marked="center"
-                    id="landingHero"
-                  >
-                    ABOUT
-                  </Typography>
-                </div>
-              </Grid>
+            <Grid 
+              container
+              justify="center"
+              spacing={5}
+            >
+              {logos.map(logo => (
+                <Grid item xs='auto'>
+                  <div className={classes.mainFeaturedPostContent}>
+                    <Avatar src={logo.image} className={classes.largeAvatar} />
+                  </div>
+                </Grid>
+              ))}
             </Grid>
           </div>
         </Paper>
-      </section>
-      <section style={{ marginTop: 15 }}>
-        <Grid container>
-          {logos.map(logo => (
-            <Grid item lg={3} xs={12}>
-              <Avatar src={logo.image} className={classes.largeAvatar} />
-            </Grid>
-          ))}
-        </Grid>
       </section>
     </div>
   );
