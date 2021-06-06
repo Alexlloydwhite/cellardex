@@ -3,7 +3,9 @@ import {
     makeStyles,
     Button,
     TextField,
-    Input
+    Input,
+    CircularProgress,
+    backDrop
 } from '@material-ui/core';
 // React
 import { useState } from 'react';
@@ -48,39 +50,42 @@ const InsightForm = () => {
     const user = useSelector(store => store.user);
     // pairing clicked data from store
     const pairingClicked = useSelector(store => store.pairingClick);
-    // Clicked handle for submit insight
+    // onChange handler for the img select input
     const handleFileInput = (e) => {
         setSelectedPhoto(e.target.files[0]);
     }
-
-    const handleUpload = (file) => {
+    // Handles submit of form.
+    const handleSubmit = (e) => {
+        // prevent refresh
+        e.preventDefault();
+        // file is required argument to uploadFile
+        const file = selectedPhoto;
+        // Upload file to AWS
         uploadFile(file, config)
-            .then(data => {
-                console.log(data.location);
-                setPhoto(String(data.location))
+            // This promise returns data, 
+            // The image URL is available at data.location
+            .then((data) => {
+                dispatch({
+                    type: 'POST_INSIGHT',
+                    user_id: user.id,
+                    saved_pairing_id: Number(params.id),
+                    wine: wineName,
+                    thoughts: thoughts,
+                    location: location,
+                    enjoyed_with: companion,
+                    // Image here!
+                    image: data.location,
+                });
+            })
+            .then(() => {
+                // Bring user to profile view
+                history.push('/profile');
             })
             .catch(err => {
                 console.log(err);
             })
     }
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // send form data to the postInsight saga
-        dispatch({
-            type: 'POST_INSIGHT',
-            user_id: user.id,
-            saved_pairing_id: Number(params.id),
-            wine: wineName,
-            thoughts: thoughts,
-            location: location,
-            enjoyed_with: companion,
-            image: photo,
-        });
-        // Bring use to the profile view
-        history.push('/profile');
-    }
-
+    
     return (
         // New Insight Form
         <form className={classes.form} onSubmit={handleSubmit} noValidate>
@@ -128,9 +133,7 @@ const InsightForm = () => {
                 variant="outlined"
             />
             {/* Photo */}
-            <Input type="file" onChange={handleFileInput} />
-            <Button onClick={() => handleUpload(selectedPhoto)}>Upload</Button>
-            <br />
+            <Input type="file" onChange={handleFileInput} id="image-input" />
             {/* cancel BTN, takes user back to profile view */}
             <Button
                 color="secondary"
