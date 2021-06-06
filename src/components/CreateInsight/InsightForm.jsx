@@ -61,6 +61,7 @@ const InsightForm = () => {
     }
     // Handles submit of form.
     const handleSubmit = (e) => {
+        setLoading(!loading);
         // prevent refresh
         e.preventDefault();
         // file is required argument to uploadFile
@@ -81,7 +82,6 @@ const InsightForm = () => {
                     // Image here!
                     image: data.location,
                 });
-                setLoading(true);
             })
             .then(() => {
                 // Bring user to profile view
@@ -156,9 +156,6 @@ const InsightForm = () => {
                 type="submit"
             >
                 Submit Insight
-            </Button>
-            <Button onClick={() => setLoading(true)}>
-                Loading
             </Button>
             {/* Back drop loading screen */}
             <Backdrop open={loading} className={classes.backdrop}>
