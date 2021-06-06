@@ -14,8 +14,7 @@ CREATE TABLE "pairing" (
 CREATE TABLE "saved_pairing" (
 	id SERIAL PRIMARY KEY,
 	"pairing_id" INT REFERENCES "pairing",
-	"user_id" INT REFERENCES "user",
-	UNIQUE("pairing_id")
+	"user_id" INT REFERENCES "user"
 );
 
 CREATE TABLE "user_insights" (

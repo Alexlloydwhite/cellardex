@@ -15,13 +15,11 @@ import {
   Tabs,
   Tab,
   Grid,
-  Badge
 } from '@material-ui/core';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
 // Styles
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: 'theme.palette.background.paper',
   },
   avatar: {
     marginTop: theme.spacing(5),

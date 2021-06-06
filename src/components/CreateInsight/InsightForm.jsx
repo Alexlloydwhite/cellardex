@@ -3,10 +3,10 @@ import {
     makeStyles,
     Button,
     TextField,
-    Input,
     CircularProgress,
     Backdrop
 } from '@material-ui/core';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 // React
 import { useState } from 'react';
 import { useHistory, useParams } from 'react-router';
@@ -91,6 +91,12 @@ const InsightForm = () => {
                 console.log(err);
             })
     }
+    const insertDummyData = () => {
+        setWineName('Prager Achleiten Smaragd');
+        setThoughts('Incredible pairing made better only by great company');
+        setLocation('Lake of The Isles');
+        setCompanion('Hailey');
+    }
 
     return (
         // New Insight Form
@@ -137,9 +143,25 @@ const InsightForm = () => {
                 value={companion}
                 onChange={(event) => setCompanion(event.target.value)}
                 variant="outlined"
+                style={{ marginBottom: 20 }}
             />
             {/* Photo */}
-            <Input type="file" onChange={handleFileInput} id="image-input" />
+            {/* <Input type="file" onChange={handleFileInput} id="image-input" /> */}
+            <Button 
+                variant="outlined"
+                color="primary"
+                component="label"
+                fullWidth
+                style={{ marginBottom: 20 }}
+                startIcon={<CloudUploadIcon />}
+            >
+                Add Image
+                <input
+                    type="file"
+                    hidden
+                    onChange={handleFileInput}
+                />
+            </Button>
             {/* cancel BTN, takes user back to profile view */}
             <Button
                 color="secondary"
@@ -157,6 +179,7 @@ const InsightForm = () => {
             >
                 Submit Insight
             </Button>
+            <Button onClick={insertDummyData} />
             {/* Back drop loading screen */}
             <Backdrop open={loading} className={classes.backdrop}>
                 <CircularProgress />
