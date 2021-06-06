@@ -5,7 +5,7 @@ import {
     TextField,
     Input,
     CircularProgress,
-    backDrop
+    Backdrop
 } from '@material-ui/core';
 // React
 import { useState } from 'react';
@@ -20,6 +20,10 @@ const useStyles = makeStyles((theme) => ({
     },
     submit: {
         margin: theme.spacing(3, 0, 2),
+    },
+    backdrop: {
+        zIndex: theme.zIndex.drawer + 1,
+        color: '#fff',
     },
 }));
 // Grabs S3 bucket information from ENV
@@ -46,6 +50,7 @@ const InsightForm = () => {
     const [companion, setCompanion] = useState('');
     const [photo, setPhoto] = useState('');
     const [selectedPhoto, setSelectedPhoto] = useState('');
+    const [loading, setLoading] = useState(false);
     // user data from store
     const user = useSelector(store => store.user);
     // pairing clicked data from store
@@ -76,6 +81,7 @@ const InsightForm = () => {
                     // Image here!
                     image: data.location,
                 });
+                setLoading(true);
             })
             .then(() => {
                 // Bring user to profile view
@@ -85,7 +91,7 @@ const InsightForm = () => {
                 console.log(err);
             })
     }
-    
+
     return (
         // New Insight Form
         <form className={classes.form} onSubmit={handleSubmit} noValidate>
@@ -151,6 +157,13 @@ const InsightForm = () => {
             >
                 Submit Insight
             </Button>
+            <Button onClick={() => setLoading(true)}>
+                Loading
+            </Button>
+            {/* Back drop loading screen */}
+            <Backdrop open={loading} className={classes.backdrop}>
+                <CircularProgress />
+            </Backdrop>
         </form>
     );
 }
