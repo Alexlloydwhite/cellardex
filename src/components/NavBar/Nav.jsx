@@ -118,8 +118,6 @@ function Nav({ children }) {
                           <MenuItem onClick={() => history.push('/')}>Home</MenuItem>
                           {/* Profile BTN, brings user to profile */}
                           <MenuItem onClick={() => history.push('/profile')}>Your Profile</MenuItem>
-                          {/* About BTN, brings user to the about page */}
-                          <MenuItem onClick={() => history.push('/about')}>About</MenuItem>
                           {/* Logout BTN, logs user out, brings user to landing page */}
                           <MenuItem onClick={() => dispatch({ type: 'LOGOUT' })}>Logout</MenuItem>
                         </MenuList>
@@ -147,14 +145,6 @@ function Nav({ children }) {
                 id="landingHero"
               >
                 Your Profile
-              </Typography>
-              {/* About BTN, brings user to the about page */}
-              <Typography
-                className={classes.links}
-                onClick={() => history.push('/about')}
-                id="landingHero"
-              >
-                About
               </Typography>
               {/* Logout BTN, logs user out, brings user to landing page */}
               <Typography

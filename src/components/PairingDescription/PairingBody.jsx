@@ -18,7 +18,7 @@ const PairingBody = ({ item }) => {
     const handleAddClick = (id) => {
         console.log('Clicked! Add to my pairings btn');
         // send user to profile view
-        history.push('/profile');
+        history.push('/search');
         // Save pairing to user
         dispatch({ type: 'POST_SAVED_PAIRING', userId: user.id, pairingId: id });
     }

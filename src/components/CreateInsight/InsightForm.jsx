@@ -146,7 +146,6 @@ const InsightForm = () => {
                 style={{ marginBottom: 20 }}
             />
             {/* Photo */}
-            {/* <Input type="file" onChange={handleFileInput} id="image-input" /> */}
             <Button 
                 variant="outlined"
                 color="primary"

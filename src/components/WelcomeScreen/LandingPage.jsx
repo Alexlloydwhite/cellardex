@@ -86,21 +86,21 @@ const LandingPage = () => {
   // Array of reviews to map over w/ cards
   const reviews = [
     {
-      image: 'https://www.whitehouse.gov/wp-content/uploads/2021/01/44_barack_obama.jpg',
-      name: 'Barack Obama',
-      title: '44th President',
+      image: 'https://www.stockvault.net//data/2020/05/15/275471/thumb16.jpg',
+      name: 'Todd Smith',
+      title: 'Wine collector',
       review: `"I love CellarDex!"`
     },
     {
       image: 'https://scontent.ffcm1-2.fna.fbcdn.net/v/t31.18172-8/10994268_10205683920718604_1512492340651551904_o.jpg?_nc_cat=106&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=o2PnlfGkF1MAX-qNVzv&_nc_ht=scontent.ffcm1-2.fna&oh=94c2601a2ec80b9155814c43f5c6577a&oe=60DA7D5A',
       name: 'Joel Eckerson',
-      title: 'CEO, Disco Death Records',
+      title: 'Casual wine drinker',
       review: `"Innovative"`
     },
     {
-      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Oprah_in_2014.jpg/220px-Oprah_in_2014.jpg',
-      name: 'Oprah Winfrey',
-      title: 'Television Host',
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdhv5A7qAMX4JOQECuuUN-kqVH6GLvScM2qA&usqp=CAU',
+      name: 'Jane Doe',
+      title: 'Wine importer',
       review: `"I recommend this app"`
     },
   ];
