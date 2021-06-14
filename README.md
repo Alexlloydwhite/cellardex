@@ -4,7 +4,7 @@
 
 _Duration: 3 Week Sprint_
 
-One Paragraph of project description goes here
+CellarDex is a responsive web application, it is designed to be used on either a desktop or mobile phone. This application recommends food and wine pairings and allows users saved pairings and provide personal insights to each recomendation.
 
 ## Screen Shots
 
@@ -45,7 +45,7 @@ The following packages were utilized:
 
 ## Acknowledgement
 
-Many people helped with this project along the way, but special attention is deserved to the following.
+Many people helped with this project, but special attention is deserved to the following.
 
 [Prime Digital Academy](www.primeacademy.io), with special thanks to Mary Mosman, who equipped and helped me to make this application a reality.
 
