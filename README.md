@@ -6,6 +6,10 @@ _Duration: 3 Week Sprint_
 
 CellarDex is a responsive web application, it is designed to be used on either a desktop or mobile phone. This application recommends food and wine pairings and allows users saved pairings and provide personal insights to each recomendation.
 
+The first week (10 hours) was spent scoping and creating wireframes, ERD, and schedule. [Scope Document](https://docs.google.com/document/d/1IAG9kzpyiUrBTeM6Jlw4kzjVstKT_DsWuwPXNqJ6K4k/edit?usp=sharing)
+
+The next 2 weeks were entirely devoted to coding, testing, bug fixing, and implementing the numerous features.
+
 ## Screen Shots
 
 ![Landing Page](https://user-images.githubusercontent.com/77769682/121894730-15305c00-cce5-11eb-8521-89f228dcfe2e.png)
