@@ -1,9 +1,12 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const {
+  rejectUnauthenticated,
+} = require('../modules/authentication-middleware');
 
 // GET all pairings
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
   // Query to send to db
   const sqlQuery = `SELECT * FROM pairing 
                     ORDER BY Random() 
@@ -19,7 +22,7 @@ router.get('/', (req, res) => {
 });
 
 // Get pairing by ID
-router.get('/:id', (req,res) => {
+router.get('/:id', rejectUnauthenticated, (req,res) => {
   // grab id from request params
   const pairingId = req.params.id;
   console.log(`In get pairing by id router, Id is ${pairingId}`);

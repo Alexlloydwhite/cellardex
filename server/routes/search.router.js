@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
+const {
+    rejectUnauthenticated,
+  } = require('../modules/authentication-middleware');
 
-router.get('/:search', (req,res) => {
+router.get('/:search', rejectUnauthenticated, (req,res) => {
     // grab search form the req params
     const search = req.params.search;
     console.log(`~Searching For~ ${search}`);
