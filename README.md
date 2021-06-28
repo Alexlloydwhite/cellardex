@@ -11,10 +11,13 @@ The first week (10 hours) was spent scoping and creating wireframes, ERD, and sc
 The next 2 weeks were entirely devoted to coding, testing, bug fixing, and implementing the numerous features.
 
 ## Screen Shots
-
+Landing page
 ![Landing Page](https://user-images.githubusercontent.com/77769682/121894730-15305c00-cce5-11eb-8521-89f228dcfe2e.png)
+Home Screen
 ![Search](https://user-images.githubusercontent.com/77769682/121896481-f4690600-cce6-11eb-8ecb-af83cbf5613a.png)
+Form
 ![Mobile View Form](https://user-images.githubusercontent.com/77769682/121894847-3b55fc00-cce5-11eb-8c16-29b235a0759e.png)
+Profile
 ![Profile](https://user-images.githubusercontent.com/77769682/121896567-0e0a4d80-cce7-11eb-80ca-89ec49dc4782.png)
 
 ### Prerequisites
