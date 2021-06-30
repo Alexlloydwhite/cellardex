@@ -2,7 +2,7 @@ import { all, takeEvery } from 'redux-saga/effects';
 import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
-import pairingSaga from './fetchPairing.saga';
+import fetchPairing from './fetchPairing.saga';
 import getPairingById from './fetchPairingById.saga';
 import setSavedPairing from './setSavedPairing.saga';
 import fetchSavedPairing from './fetchSavedPairing.saga';
@@ -20,7 +20,7 @@ export default function* rootSaga() {
   yield takeEvery('DELETE_INSIGHT', deleteInsight);
   yield takeEvery('FETCH_INSIGHTS', fetchInsights);
   yield takeEvery('POST_INSIGHT', postInsight);
-  yield takeEvery('FETCH_PAIRING', pairingSaga);
+  yield takeEvery('FETCH_PAIRING', fetchPairing);
   yield takeEvery('SET_PAIRING_CLICK', getPairingById);
   yield takeEvery('POST_SAVED_PAIRING', setSavedPairing);
   yield takeEvery('GET_SAVED_PAIRING', fetchSavedPairing);

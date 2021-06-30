@@ -1,7 +1,7 @@
 import { put } from 'redux-saga/effects';
 import axios from 'axios';
 
-function* pairingSaga() {
+export default function* fetchPairing() {
     // get all pairings from the database
     try {
         const pairing = yield axios.get('/api/pairing');
@@ -12,5 +12,3 @@ function* pairingSaga() {
         console.log('get all error');
     }
 }
-
-export default pairingSaga;
