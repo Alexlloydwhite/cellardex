@@ -4,11 +4,21 @@
 
 _Duration: 3 Week Sprint_
 
-One Paragraph of project description goes here
+CellarDex is a responsive web application, it is designed to be used on either a desktop or mobile phone. This application recommends food and wine pairings and allows users saved pairings and provide personal insights to each recomendation.
+
+The first week (10 hours) was spent scoping and creating wireframes, ERD, and schedule. [Scope Document](https://docs.google.com/document/d/1IAG9kzpyiUrBTeM6Jlw4kzjVstKT_DsWuwPXNqJ6K4k/edit?usp=sharing)
+
+The next 2 weeks were entirely devoted to coding, testing, bug fixing, and implementing the numerous features.
 
 ## Screen Shots
-
-
+Landing page
+![Landing Page](https://user-images.githubusercontent.com/77769682/121894730-15305c00-cce5-11eb-8521-89f228dcfe2e.png)
+Home Screen
+![Search](https://user-images.githubusercontent.com/77769682/121896481-f4690600-cce6-11eb-8ecb-af83cbf5613a.png)
+Form
+![Mobile View Form](https://user-images.githubusercontent.com/77769682/121894847-3b55fc00-cce5-11eb-8c16-29b235a0759e.png)
+Profile
+![Profile](https://user-images.githubusercontent.com/77769682/121896567-0e0a4d80-cce7-11eb-80ca-89ec49dc4782.png)
 
 ### Prerequisites
 
@@ -42,7 +52,7 @@ The following packages were utilized:
 
 ## Acknowledgement
 
-Many people helped with this project along the way, but special attention is deserved to the following.
+Many people helped with this project, but special attention is deserved to the following.
 
 [Prime Digital Academy](www.primeacademy.io), with special thanks to Mary Mosman, who equipped and helped me to make this application a reality.
 
