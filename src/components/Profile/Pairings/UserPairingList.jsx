@@ -58,7 +58,7 @@ const UserPairingList = ({ item }) => {
     }
 
     const handleDeleteSavedPairingClick = (id) => {
-        dispatch({ type: 'DELETE_SAVED_PAIRING', payload: id });
+        dispatch({ type: 'DELETE_SAVED_PAIRING', id });
     }
 
     return (
