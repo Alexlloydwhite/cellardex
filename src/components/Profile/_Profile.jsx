@@ -162,7 +162,7 @@ const Profile = () => {
               :
               <div style={{ textAlign: 'center', marginTop: 10 }}>
                 <Typography variant="h5">
-                  You have no saved insights.
+                  You have no insights.
                 </Typography>
               </div>
             }
