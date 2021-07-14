@@ -89,10 +89,10 @@ const LandingPage = () => {
       image: 'https://www.stockvault.net//data/2020/05/15/275471/thumb16.jpg',
       name: 'Todd Smith',
       title: 'Wine collector',
-      review: `"I love CellarDex!"`
+      review: `"I love CellarDex"`
     },
     {
-      image: 'https://scontent.ffcm1-2.fna.fbcdn.net/v/t31.18172-8/10994268_10205683920718604_1512492340651551904_o.jpg?_nc_cat=106&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=o2PnlfGkF1MAX-qNVzv&_nc_ht=scontent.ffcm1-2.fna&oh=94c2601a2ec80b9155814c43f5c6577a&oe=60DA7D5A',
+      image: 'https://avatars.githubusercontent.com/u/74157589?v=4',
       name: 'Joel Eckerson',
       title: 'Casual wine drinker',
       review: `"Innovative"`
@@ -210,7 +210,7 @@ const LandingPage = () => {
           <Grid container spacing={5} alignItems="flex-end">
             {reviews.map((review) => (
               <Grid item key={review.title} xs={12} sm={6} md={4}>
-                <Card>
+                <Card variant="outlined">
                   <CardContent align="center">
                     <Avatar className={classes.avatar}>
                       <img src={review.image} />

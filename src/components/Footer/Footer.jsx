@@ -30,7 +30,7 @@ const Footer = () => {
     return (
         <footer className={classes.footer}>
             <Container maxWidth="sm">
-                <Typography>
+                <Typography style={{textAlign:'center'}}>
                     Questions? <Link style={{ cursor: 'pointer' }}>Contact us.</Link>
                 </Typography>
             </Container>
