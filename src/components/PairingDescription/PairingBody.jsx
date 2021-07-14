@@ -78,7 +78,7 @@ const PairingBody = ({ item }) => {
                     variant="contained"
                     disabled
                 >
-                    pairing already saved
+                    Pairing already saved
                 </Button>
                 :
                 /* Btn adds pairing to user's saved pairings, sends user to profile view */
