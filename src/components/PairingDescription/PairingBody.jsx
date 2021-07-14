@@ -11,21 +11,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 
 const PairingBody = ({ item }) => {
-    console.log(item);
     const history = useHistory();
     const dispatch = useDispatch();
     const user = useSelector(store => store.user);
     const savedPairing = useSelector(store => store.savedPairing);
-    console.log(savedPairing);
     const [isSaved, setIsSaved] = useState(false);
 
+    // Get saved pairing data for user
+    // Check if the pairing clicked if saved
+    // Set state to true if pairing is saved
     useEffect(() => {
         dispatch({ type: 'GET_SAVED_PAIRING' });
         for (let i = 0; i < savedPairing.length; i++) {
-            console.log('in loop');
             if (savedPairing[i].id === item.id) {
                 setIsSaved(true);
-                console.log('in if');
             }
         }
     }, []);
