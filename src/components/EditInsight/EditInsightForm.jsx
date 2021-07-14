@@ -40,7 +40,6 @@ const EditInsightForm = () => {
             thoughts: insightClicked.thoughts,
             location: insightClicked.location,
             enjoyed_with: insightClicked.enjoyed_with,
-            image: insightClicked.image
         });
         history.push('/profile');
     }
@@ -50,7 +49,6 @@ const EditInsightForm = () => {
         thoughts: insightClicked.thoughts,
         location: insightClicked.location,
         enjoyed_with: insightClicked.enjoyed_with,
-        image: insightClicked.image
     });
     // Handles change of inputs
     const handleChange = (e) => {
@@ -111,17 +109,6 @@ const EditInsightForm = () => {
                 value={insightClicked.enjoyed_with}
                 onChange={handleChange}
                 variant="outlined"
-            />
-            {/* Photo */}
-            <TextField
-                margin="normal"
-                fullWidth
-                helperText="Image URL"
-                name="image"
-                value={insightClicked.image}
-                onChange={handleChange}
-                variant="outlined"
-                style={{ marginBottom: 15 }}
             />
             {/* cancel BTN, takes user back to profile view */}
             <Button

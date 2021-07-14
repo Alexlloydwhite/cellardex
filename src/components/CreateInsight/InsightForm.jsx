@@ -48,7 +48,6 @@ const InsightForm = () => {
     const [thoughts, setThoughts] = useState('');
     const [location, setLocation] = useState('');
     const [companion, setCompanion] = useState('');
-    const [photo, setPhoto] = useState('');
     const [selectedPhoto, setSelectedPhoto] = useState('');
     const [loading, setLoading] = useState(false);
     // user data from store
@@ -90,12 +89,6 @@ const InsightForm = () => {
             .catch(err => {
                 console.log(err);
             })
-    }
-    const insertDummyData = () => {
-        setWineName('Prager Achleiten Smaragd');
-        setThoughts('Incredible pairing made better only by great company');
-        setLocation('Lake of The Isles');
-        setCompanion('Hailey');
     }
 
     return (
@@ -178,7 +171,6 @@ const InsightForm = () => {
             >
                 Submit Insight
             </Button>
-            <Button onClick={insertDummyData} />
             {/* Back drop loading screen */}
             <Backdrop open={loading} className={classes.backdrop}>
                 <CircularProgress />
