@@ -10,6 +10,8 @@ The first week (10 hours) was spent scoping and creating wireframes, ERD, and sc
 
 The next 2 weeks were entirely devoted to coding, testing, bug fixing, and implementing the numerous features.
 
+[Deployed version of app](https://cellar-dex.herokuapp.com/). Please note that this is hosted on Heroku and will take a couple of minutes to "warm up".
+
 ## Screen Shots
 Landing page
 ![Landing Page](https://user-images.githubusercontent.com/77769682/121894730-15305c00-cce5-11eb-8521-89f228dcfe2e.png)
