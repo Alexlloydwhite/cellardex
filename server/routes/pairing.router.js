@@ -18,6 +18,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     })
     .catch(err => {
       console.log(`IN pairing get router: ${err}`);
+      res.sendStatus(500);
     })
 });
 
@@ -36,6 +37,19 @@ router.get('/:id', rejectUnauthenticated, (req,res) => {
     })
     .catch(err => {
       console.log(`error making sql query ${sqlQuery}: ${err}`);
+      res.sendStatus(500);
+    })
+});
+
+router.delete('delete-pairing/:id', rejectUnauthenticated, (req,res) => {
+  const pairingId = req.params.id;
+  const userId = req.user.id;
+  const sqlQuery = `DELETE FROM saved_pairing WHERE pairing_id = $1 AND user_id = $2;`;
+  pool.query(sqlQuery, [pairingId, userId])
+    .then(() => res.sendStatus(200))
+    .catch((err) => {
+      console.log(`IN api/pairing/delete-pairing, ${err}`);
+      res.sendStatus(500);
     })
 });
 

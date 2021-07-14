@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const {
     rejectUnauthenticated,
-  } = require('../modules/authentication-middleware');
+} = require('../modules/authentication-middleware');
 
 // GET insights
 router.get('/', rejectUnauthenticated, (req, res) => {
@@ -102,6 +102,7 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
         .then(() => res.sendStatus(201))
         .catch(err => {
             console.log(`IN insight PUT router. Editing id ${insightId}. !ERROR! ${err}`);
+            res.sendStatus(500);
         });
 });
 

@@ -3,9 +3,9 @@ const router = express.Router();
 const pool = require('../modules/pool');
 const {
     rejectUnauthenticated,
-  } = require('../modules/authentication-middleware');
+} = require('../modules/authentication-middleware');
 
-router.get('/:search', rejectUnauthenticated, (req,res) => {
+router.get('/:search', rejectUnauthenticated, (req, res) => {
     // grab search form the req params
     const search = req.params.search;
     console.log(`~Searching For~ ${search}`);
@@ -19,6 +19,7 @@ router.get('/:search', rejectUnauthenticated, (req,res) => {
         .then((result) => res.send(result.rows))
         .catch(err => {
             console.log(`IN search router. !~ERROR~! ${err}`);
+            res.sendStatus(500);
         });
 });
 
