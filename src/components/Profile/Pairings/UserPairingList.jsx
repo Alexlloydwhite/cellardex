@@ -42,6 +42,7 @@ const UserPairingList = ({ item }) => {
     const classes = useStyles();
     const history = useHistory();
     const dispatch = useDispatch();
+    const subTitle = `& ${item.wine}`
     // State for expanding card
     const [expanded, setExpanded] = useState(false);
     // Click handler for expanding card content
@@ -49,14 +50,16 @@ const UserPairingList = ({ item }) => {
         setExpanded(!expanded);
     }
     // Handles click for creating insight
-    const handleClick = (id) => {
-        console.log(`clicked!`, id);
-        // Dispatch store to set the pairing click to the id of click
+    // Dispatch store to set the pairing click to the id of click
+    // Bring user to Create Insight View
+    const handleCreateInsightClick = (id) => {
         dispatch({ type: 'SET_PAIRING_CLICK', payload: id });
-        // Bring user to Create Insight View
         history.push(`/insights/create/${id}`)
     }
-    const subTitle = `& ${item.wine}`
+
+    const handleDeleteSavedPairingClick = (id) => {
+        dispatch({ type: 'DELETE_SAVED_PAIRING', payload: id });
+    }
 
     return (
         <Grid item xs={12} md={3}>
@@ -72,15 +75,16 @@ const UserPairingList = ({ item }) => {
                 {/* Action BTNS */}
                 <CardActions disableSpacing>
                     {/* Delete BTN */}
-                    <Chip 
+                    <Chip
+                        onClick={() => handleDeleteSavedPairingClick(item.id)}
                         avatar={<DeleteOutlineIcon />}
                         label="Delete"
                         variant="outlined"
                         style={{ marginRight: 10, marginLeft: 5 }}
                     />
                     {/* Create BTN */}
-                    <Chip 
-                        onClick={() => handleClick(item.id)} 
+                    <Chip
+                        onClick={() => handleCreateInsightClick(item.id)}
                         avatar={<CreateIcon />}
                         label="Create Insight"
                         variant="outlined"
