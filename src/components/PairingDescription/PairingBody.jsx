@@ -22,9 +22,9 @@ const PairingBody = ({ item }) => {
     // Set state to true if pairing is saved
     useEffect(() => {
         dispatch({ type: 'GET_SAVED_PAIRING' });
-        for (let i = 0; i < savedPairing.length; i++) {
-            savedPairing[i].id === item.id ? setIsSaved(true) : null;
-        }
+        savedPairing.map((pairing) => (
+            pairing.id === item.id ? setIsSaved(true) : null
+        ));
     }, []);
 
     // Send user to profile view
