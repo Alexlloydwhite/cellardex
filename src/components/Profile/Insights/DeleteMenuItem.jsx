@@ -48,7 +48,7 @@ const DeleteMenuItem = ({ insight }) => {
                 {/* Dialog text informs user of the actions */}
                 <DialogContent>
                     <DialogContentText>
-                        Deleting this insight will permanently remove it from you profile.
+                        Deleting this insight will permanently remove it from your profile.
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>

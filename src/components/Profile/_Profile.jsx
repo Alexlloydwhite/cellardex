@@ -85,6 +85,7 @@ const Profile = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  const numberOfSavedPairings = Object.keys(savedPairing).length;
   // On page load, useEffect hook 
   // Dispatches to get saved pairings and insights
   useEffect(() => {
@@ -111,11 +112,25 @@ const Profile = () => {
             variant="h4"
           >
             Hello, {user.username}!
-        </Typography>
-          {/* User pairing and insight count */}
-          <Typography>
-            {Object.keys(savedPairing).length} Saved Pairings | {insights.length} Insights.
-        </Typography>
+          </Typography>
+          {numberOfSavedPairings === 1 ?
+            <Typography>
+              {numberOfSavedPairings} Saved Pairing
+            </Typography>
+            :
+            <Typography>
+              {numberOfSavedPairings} Saved Pairings
+            </Typography>
+          }
+          {insights.length === 1 ?
+            <Typography>
+              {insights.length} Insight
+            </Typography>
+            :
+            <Typography>
+              {insights.length} Insights
+            </Typography>
+          }
         </Grid>
       </Grid>
       {/* Page Body */}
@@ -130,11 +145,27 @@ const Profile = () => {
           </AppBar>
           {/* Tab index 0 contains saved pairings */}
           <TabPanel value={value} index={0}>
-            <UserPairing savedPairing={savedPairing} />
+            {savedPairing.length > 0 ?
+              <UserPairing savedPairing={savedPairing} />
+              :
+              <div style={{ textAlign: 'center', marginTop: 10 }}>
+                <Typography variant="h5">
+                  You have no saved pairings.
+                </Typography>
+              </div>
+            }
           </TabPanel>
           {/* Tab index 1 contains insights */}
           <TabPanel value={value} index={1}>
-            <UserInsights />
+            {insights.length > 0 ?
+              <UserInsights />
+              :
+              <div style={{ textAlign: 'center', marginTop: 10 }}>
+                <Typography variant="h5">
+                  You have no saved insights.
+                </Typography>
+              </div>
+            }
           </TabPanel>
         </div>
       </Container>

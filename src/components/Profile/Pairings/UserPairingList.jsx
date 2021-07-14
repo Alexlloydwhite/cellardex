@@ -10,7 +10,13 @@ import {
     makeStyles,
     Divider,
     Typography,
-    Chip
+    Chip,
+    Dialog,
+    DialogActions, 
+    DialogContent,
+    DialogContentText,
+    DialogTitle,
+    Button
 } from '@material-ui/core';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import CreateIcon from '@material-ui/icons/Create';
@@ -42,7 +48,8 @@ const UserPairingList = ({ item }) => {
     const classes = useStyles();
     const history = useHistory();
     const dispatch = useDispatch();
-    const subTitle = `& ${item.wine}`
+    const subTitle = `& ${item.wine}`;
+    const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
     // State for expanding card
     const [expanded, setExpanded] = useState(false);
     // Click handler for expanding card content
@@ -76,12 +83,41 @@ const UserPairingList = ({ item }) => {
                 <CardActions disableSpacing>
                     {/* Delete BTN */}
                     <Chip
-                        onClick={() => handleDeleteSavedPairingClick(item.id)}
+                        onClick={() => setOpenDeleteDialog(true)}
                         avatar={<DeleteOutlineIcon />}
                         label="Delete"
                         variant="outlined"
                         style={{ marginRight: 10, marginLeft: 5 }}
                     />
+                    {/* Dialog displays over page */}
+                    <Dialog
+                        open={openDeleteDialog}
+                        onClose={() => setOpenDeleteDialog(false)}
+                    >
+                        <DialogTitle>{"Delete This Saved Pairing?"}</DialogTitle>
+                        {/* Dialog text informs user of the actions */}
+                        <DialogContent>
+                            <DialogContentText>
+                                Deleting this saved pairing will permanently remove it from your profile.
+                            </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                            {/* Cancel BTN closes dialog */}
+                            <Button
+                                onClick={() => setOpenDeleteDialog(false)}
+                                color="primary"
+                            >
+                                Cancel
+                            </Button>
+                            {/* Delete BTN deletes the insights */}
+                            <Button
+                                onClick={() => handleDeleteSavedPairingClick(item.id)}
+                                color="secondary"
+                            >
+                                Delete Saved Pairing
+                            </Button>
+                        </DialogActions>
+                    </Dialog>
                     {/* Create BTN */}
                     <Chip
                         onClick={() => handleCreateInsightClick(item.id)}
