@@ -23,9 +23,7 @@ const PairingBody = ({ item }) => {
     useEffect(() => {
         dispatch({ type: 'GET_SAVED_PAIRING' });
         for (let i = 0; i < savedPairing.length; i++) {
-            if (savedPairing[i].id === item.id) {
-                setIsSaved(true);
-            }
+            savedPairing[i].id === item.id ? setIsSaved(true) : null;
         }
     }, []);
 
