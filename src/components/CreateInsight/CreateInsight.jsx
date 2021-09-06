@@ -49,9 +49,9 @@ const CreateInsight = () => {
           New Insight
         </Typography>
         {/* 
-                        Pairing clicked is an array
-                        So we map over it to display the data
-                    */}
+          Pairing clicked is an array
+          So we map over it to display the data
+        */}
         {pairingClicked.map((i) => {
           return (
             <Typography component="h2" variant="h6" align="center">
