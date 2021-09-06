@@ -1,50 +1,46 @@
 // MUI
-import { 
-  createMuiTheme, 
-  ThemeProvider,
-  CssBaseline
-} from '@material-ui/core';
+import { createMuiTheme, ThemeProvider, CssBaseline } from "@material-ui/core";
 // React
-import { useEffect } from 'react';
+import { useEffect } from "react";
 import {
   HashRouter as Router,
   Route,
   Redirect,
   Switch,
-} from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+} from "react-router-dom";
+import { useDispatch } from "react-redux";
 // Components
-import Nav from '../NavBar/Nav';
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-import Profile from '../Profile/_Profile';
-import LandingPage from '../WelcomeScreen/LandingPage';
-import Search from '../Search/_Search';
-import PairingDescription from '../PairingDescription/_PairingDescription';
-import CreateInsight from '../CreateInsight/CreateInsight';
-import EditInsight from '../EditInsight/_EditInsight';
-import './App.css';
-import LogIn from '../WelcomeScreen/LogIn';
-import SignUp from '../WelcomeScreen/SignUp';
-import About from '../AboutPage/AboutPage';
+import Nav from "../NavBar/Nav";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import Profile from "../Profile/_Profile";
+import LandingPage from "../WelcomeScreen/LandingPage";
+import Search from "../Search/_Search";
+import PairingDescription from "../PairingDescription/_PairingDescription";
+import CreateInsight from "../CreateInsight/CreateInsight";
+import EditInsight from "../EditInsight/_EditInsight";
+import "./App.css";
+import LogIn from "../WelcomeScreen/LogIn";
+import SignUp from "../WelcomeScreen/SignUp";
+import About from "../AboutPage/AboutPage";
 // App color theme
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#344959'
+      main: "#344959",
     },
     secondary: {
-      main: '#b85556'
+      main: "#b85556",
     },
     textSecondary: {
-      main: '#FFFFFF'
-    }
-  }
-})
+      main: "#FFFFFF",
+    },
+  },
+});
 function App() {
   const dispatch = useDispatch();
   // App fetches user anytime there is a dispatch.
   useEffect(() => {
-    dispatch({ type: 'FETCH_USER' });
+    dispatch({ type: "FETCH_USER" });
   }, [dispatch]);
   return (
     <CssBaseline>
@@ -55,46 +51,31 @@ function App() {
               {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
               <Redirect exact from="/" to="/home" />
               {/* USER PROFILE PAGE */}
-              <ProtectedRoute
-                exact
-                path="/profile"
-              >
+              <ProtectedRoute exact path="/profile">
                 <Nav>
                   <Profile />
                 </Nav>
               </ProtectedRoute>
               {/* SEARCH PAGE / LOGGED IN HOME */}
-              <ProtectedRoute
-                exact
-                path="/search"
-              >
+              <ProtectedRoute exact path="/search">
                 <Nav>
                   <Search />
                 </Nav>
               </ProtectedRoute>
               {/* PAIRING DESCRIPTION PAGE */}
-              <ProtectedRoute
-                exact
-                path="/pairing/:id"
-              >
+              <ProtectedRoute exact path="/pairing/:id">
                 <Nav>
                   <PairingDescription />
                 </Nav>
               </ProtectedRoute>
               {/* CREATE INSIGHT PAGE */}
-              <ProtectedRoute
-                exact
-                path="/insights/create/:id"
-              >
+              <ProtectedRoute exact path="/insights/create/:id">
                 <Nav>
                   <CreateInsight />
                 </Nav>
               </ProtectedRoute>
               {/* EDIT INSIGHT PAGE */}
-              <ProtectedRoute
-                exact
-                path="/insights/edit/:id"
-              >
+              <ProtectedRoute exact path="/insights/edit/:id">
                 <Nav>
                   <EditInsight />
                 </Nav>
@@ -133,7 +114,7 @@ function App() {
               <Route
                 // Shows About page at "/about"
                 exact
-                path='/about'
+                path="/about"
               >
                 <About />
               </Route>

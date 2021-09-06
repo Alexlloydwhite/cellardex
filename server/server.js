@@ -1,18 +1,18 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-require('dotenv').config();
+const express = require("express");
+const bodyParser = require("body-parser");
+require("dotenv").config();
 
 const app = express();
 
-const sessionMiddleware = require('./modules/session-middleware');
-const passport = require('./strategies/user.strategy');
+const sessionMiddleware = require("./modules/session-middleware");
+const passport = require("./strategies/user.strategy");
 
 // Route includes
-const userRouter = require('./routes/user.router');
-const pairingRouter = require('./routes/pairing.router');
-const savedPairingRouter = require('./routes/savedPairing.router');
-const insightRouter = require('./routes/insight.router');
-const searchRouter = require('./routes/search.router');
+const userRouter = require("./routes/user.router");
+const pairingRouter = require("./routes/pairing.router");
+const savedPairingRouter = require("./routes/savedPairing.router");
+const insightRouter = require("./routes/insight.router");
+const searchRouter = require("./routes/search.router");
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -26,14 +26,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 /* Routes */
-app.use('/api/user', userRouter);
-app.use('/api/pairing', pairingRouter);
-app.use('/api/savedpairing', savedPairingRouter);
-app.use('/api/insight', insightRouter);
-app.use('/api/search', searchRouter);
+app.use("/api/user", userRouter);
+app.use("/api/pairing", pairingRouter);
+app.use("/api/savedpairing", savedPairingRouter);
+app.use("/api/insight", insightRouter);
+app.use("/api/search", searchRouter);
 
 // Serve static files
-app.use(express.static('build'));
+app.use(express.static("build"));
 
 // App Set //
 const PORT = process.env.PORT || 5000;

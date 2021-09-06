@@ -1,51 +1,45 @@
 // MUI
-import {
-  Paper,
-  makeStyles,
-  Grid,
-  Typography,
-  Avatar
-} from '@material-ui/core';
+import { Paper, makeStyles, Grid, Typography, Avatar } from "@material-ui/core";
 // Images
-import LandingNav from '../NavBar/LandingNax';
-import LandingImage from './AboutImages/code.jpg';
-import MuiLogo from './AboutImages/MUI.png';
-import JavascriptLogo from './AboutImages/Javascript.png';
-import NodeLogo from './AboutImages/nodejs.png';
-import ReduxLogo from './AboutImages/redux.png';
-import S3Logo from './AboutImages/s3.png';
-import ReactLogo from './AboutImages/React.png';
-import PostgresLogo from './AboutImages/postgres.png'
+import LandingNav from "../NavBar/LandingNax";
+import LandingImage from "./AboutImages/code.jpg";
+import MuiLogo from "./AboutImages/MUI.png";
+import JavascriptLogo from "./AboutImages/Javascript.png";
+import NodeLogo from "./AboutImages/nodejs.png";
+import ReduxLogo from "./AboutImages/redux.png";
+import S3Logo from "./AboutImages/s3.png";
+import ReactLogo from "./AboutImages/React.png";
+import PostgresLogo from "./AboutImages/postgres.png";
 // Local
-import Footer from '../Footer/Footer';
+import Footer from "../Footer/Footer";
 // Styles
 const useStyles = makeStyles((theme) => ({
   mainFeaturedPost: {
-    position: 'relative',
+    position: "relative",
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
     backgroundImage: `url(${LandingImage})`,
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
     height: 950,
   },
   overlay: {
-    position: 'absolute',
+    position: "absolute",
     top: 0,
     bottom: 0,
     right: 0,
     left: 0,
-    backgroundColor: 'rgba(0,0,0,.3)',
+    backgroundColor: "rgba(0,0,0,.3)",
   },
   mainFeaturedPostContent: {
-    position: 'relative',
+    position: "relative",
     marginTop: theme.spacing(25),
   },
   largeAvatar: {
     width: theme.spacing(20),
-    height: theme.spacing(20)
-  }
+    height: theme.spacing(20),
+  },
 }));
 
 function AboutPage() {
@@ -58,7 +52,7 @@ function AboutPage() {
     { image: NodeLogo },
     { image: MuiLogo },
     { image: S3Logo },
-    { image: PostgresLogo }
+    { image: PostgresLogo },
   ];
   return (
     <div>
@@ -69,13 +63,9 @@ function AboutPage() {
         >
           {/* Hero Overlay */}
           <div className={classes.overlay}>
-            <Grid 
-              container
-              justify="center"
-              spacing={5}
-            >
-              {logos.map(logo => (
-                <Grid item xs='auto'>
+            <Grid container justify="center" spacing={5}>
+              {logos.map((logo) => (
+                <Grid item xs="auto">
                   <div className={classes.mainFeaturedPostContent}>
                     <Avatar src={logo.image} className={classes.largeAvatar} />
                   </div>

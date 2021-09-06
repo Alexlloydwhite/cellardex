@@ -1,7 +1,7 @@
-import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
-import LandingPage from '../WelcomeScreen/LandingPage';
-import {useSelector} from 'react-redux';
+import React from "react";
+import { Route, Redirect } from "react-router-dom";
+import LandingPage from "../WelcomeScreen/LandingPage";
+import { useSelector } from "react-redux";
 
 // A Custom Wrapper Component -- This will keep our code DRY.
 // Responsible for watching redux state, and returning an appropriate component
@@ -39,7 +39,6 @@ function ProtectedRoute(props) {
     ComponentToShow = LandingPage;
   }
 
-
   // redirect a logged in user if an authRedirect prop has been provided
   if (user.id && authRedirect != null) {
     return <Redirect exact from={otherProps.path} to={authRedirect} />;
@@ -56,7 +55,6 @@ function ProtectedRoute(props) {
     >
       <ComponentToShow />
     </Route>
-
   );
 }
 

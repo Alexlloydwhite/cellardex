@@ -1,36 +1,38 @@
-import Avatar from '@material-ui/core/Avatar';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import LandingImage from './landing-image.jpg'
-import LoginForm from './LoginForm';
-import Link from '@material-ui/core/Link';
-import { useState } from 'react';
-import RegisterForm from './RegisterForm';
+import Avatar from "@material-ui/core/Avatar";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import LandingImage from "./landing-image.jpg";
+import LoginForm from "./LoginForm";
+import Link from "@material-ui/core/Link";
+import { useState } from "react";
+import RegisterForm from "./RegisterForm";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '100vh',
+    height: "100vh",
   },
   image: {
     backgroundImage: `url(${LandingImage})`,
-    backgroundRepeat: 'no-repeat',
+    backgroundRepeat: "no-repeat",
     backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
+      theme.palette.type === "light"
+        ? theme.palette.grey[50]
+        : theme.palette.grey[900],
+    backgroundSize: "cover",
+    backgroundPosition: "center",
   },
   paper: {
     margin: theme.spacing(8, 4),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   avatar: {
     margin: theme.spacing(1),
     width: 200,
-    height: 200
+    height: 200,
   },
 }));
 
@@ -52,35 +54,41 @@ function Entry() {
           <Typography component="h1" variant="h6">
             Empowering Your Meals
           </Typography>
-          {toggle ?
+          {toggle ? (
             <div>
               <LoginForm />
               <Grid container>
                 <Grid item>
                   <Typography>
-                    Don't have an account?{' '}
-                    <Link onClick={() => setToggle(false)} style={{ cursor: 'pointer' }}>
+                    Don't have an account?{" "}
+                    <Link
+                      onClick={() => setToggle(false)}
+                      style={{ cursor: "pointer" }}
+                    >
                       {"Create an account"}
                     </Link>
                   </Typography>
                 </Grid>
               </Grid>
             </div>
-            :
+          ) : (
             <div>
               <RegisterForm />
               <Grid container>
                 <Grid item>
                   <Typography>
-                    Already have an account?{' '}
-                    <Link onClick={() => setToggle(true)} style={{ cursor: 'pointer' }}>
+                    Already have an account?{" "}
+                    <Link
+                      onClick={() => setToggle(true)}
+                      style={{ cursor: "pointer" }}
+                    >
                       {"Login"}
                     </Link>
                   </Typography>
                 </Grid>
               </Grid>
             </div>
-          }
+          )}
         </div>
       </Grid>
     </Grid>

@@ -12,10 +12,10 @@ import {
   MenuItem,
   ClickAwayListener,
   Grow,
-  Paper
+  Paper,
 } from "@material-ui/core";
-import MenuIcon from '@material-ui/icons/Menu';
-import CloseIcon from '@material-ui/icons/Close';
+import MenuIcon from "@material-ui/icons/Menu";
+import CloseIcon from "@material-ui/icons/Close";
 // React
 import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -25,27 +25,27 @@ import { useHistory } from "react-router";
 const useStyles = makeStyles((theme) => {
   return {
     page: {
-      background: '#f9f9f9',
-      width: '100%',
+      background: "#f9f9f9",
+      width: "100%",
     },
     root: {
-      display: 'flex'
+      display: "flex",
     },
     toolbar: theme.mixins.toolbar,
     welcome: {
       flexGrow: 1,
-      marginLeft: theme.spacing(1.5)
+      marginLeft: theme.spacing(1.5),
     },
     avatar: {
       marginLeft: theme.spacing(3),
-      marginRight: theme.spacing(1)
+      marginRight: theme.spacing(1),
     },
     links: {
       marginRight: theme.spacing(3),
-      cursor: 'pointer'
-    }
-  }
-})
+      cursor: "pointer",
+    },
+  };
+});
 
 function Nav({ children }) {
   // hook for using custom classes
@@ -54,7 +54,7 @@ function Nav({ children }) {
   const history = useHistory();
   // Toggle the hamburger menu on mobile devices
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const anchorRef = useRef(null);
   // State for menu icon
   const [open, setOpen] = useState(false);
@@ -70,7 +70,7 @@ function Nav({ children }) {
     setOpen(false);
   };
   function handleListKeyDown(event) {
-    if (event.key === 'Tab') {
+    if (event.key === "Tab") {
       event.preventDefault();
       setOpen(false);
     }
@@ -79,7 +79,7 @@ function Nav({ children }) {
   return (
     <div className={classes.root}>
       {/* App Bar! */}
-      <AppBar elevation={0} style={{ background: '#344959' }}>
+      <AppBar elevation={0} style={{ background: "#344959" }}>
         <Toolbar>
           {/* page title */}
           <Typography
@@ -96,7 +96,11 @@ function Nav({ children }) {
             <div>
               <IconButton onClick={handleToggle} ref={anchorRef}>
                 {/* Toggles between hamburger icon and X icon */}
-                {open ? <CloseIcon style={{ color: 'white' }} /> : <MenuIcon style={{ color: 'white' }} />}
+                {open ? (
+                  <CloseIcon style={{ color: "white" }} />
+                ) : (
+                  <MenuIcon style={{ color: "white" }} />
+                )}
               </IconButton>
               <Popper
                 open={open}
@@ -108,18 +112,33 @@ function Nav({ children }) {
                 {({ TransitionProps, placement }) => (
                   <Grow
                     {...TransitionProps}
-                    style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+                    style={{
+                      transformOrigin:
+                        placement === "bottom" ? "center top" : "center bottom",
+                    }}
                   >
                     <Paper>
                       <ClickAwayListener onClickAway={handleClose}>
                         {/* Menu displays options */}
-                        <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
+                        <MenuList
+                          autoFocusItem={open}
+                          id="menu-list-grow"
+                          onKeyDown={handleListKeyDown}
+                        >
                           {/* Home BTN, brings user home */}
-                          <MenuItem onClick={() => history.push('/')}>Home</MenuItem>
+                          <MenuItem onClick={() => history.push("/")}>
+                            Home
+                          </MenuItem>
                           {/* Profile BTN, brings user to profile */}
-                          <MenuItem onClick={() => history.push('/profile')}>Your Profile</MenuItem>
+                          <MenuItem onClick={() => history.push("/profile")}>
+                            Your Profile
+                          </MenuItem>
                           {/* Logout BTN, logs user out, brings user to landing page */}
-                          <MenuItem onClick={() => dispatch({ type: 'LOGOUT' })}>Logout</MenuItem>
+                          <MenuItem
+                            onClick={() => dispatch({ type: "LOGOUT" })}
+                          >
+                            Logout
+                          </MenuItem>
                         </MenuList>
                       </ClickAwayListener>
                     </Paper>
@@ -133,7 +152,7 @@ function Nav({ children }) {
               {/* Home BTN, brings user home */}
               <Typography
                 className={classes.links}
-                onClick={() => history.push('/')}
+                onClick={() => history.push("/")}
                 id="landingHero"
               >
                 Home
@@ -141,7 +160,7 @@ function Nav({ children }) {
               {/* Profile BTN, brings user to profile */}
               <Typography
                 className={classes.links}
-                onClick={() => history.push('/profile')}
+                onClick={() => history.push("/profile")}
                 id="landingHero"
               >
                 Your Profile
@@ -149,7 +168,7 @@ function Nav({ children }) {
               {/* Logout BTN, logs user out, brings user to landing page */}
               <Typography
                 className={classes.links}
-                onClick={() => dispatch({ type: 'LOGOUT' })}
+                onClick={() => dispatch({ type: "LOGOUT" })}
                 id="landingHero"
               >
                 Logout
@@ -165,7 +184,7 @@ function Nav({ children }) {
         {children}
       </div>
     </div>
-  )
+  );
 }
 
 export default Nav;
