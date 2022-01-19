@@ -62,7 +62,7 @@ const SearchView = () => {
   const [ search, setSearch ] = useState("");
   const [ debouncedSearch, setDebouncedSearch ] = useState(search);
   const [ toggleSearch, setToggleSearch ] = useState(false);
-
+  
   useEffect(() => {
     const timerId = setTimeout(() => {
       setDebouncedSearch(search);
@@ -149,6 +149,15 @@ const SearchView = () => {
             </Grid>
           </Grid>
         )}
+         {toggleSearch && searchResults.length === 0 && 
+          <Grid container>
+            <Grid item xs={12}>
+              <Typography variant="h5" align="center">
+                No results found.
+              </Typography>
+            </Grid>
+          </Grid>
+        }
       </section>
     </div>
   );
