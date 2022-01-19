@@ -53,39 +53,36 @@ const useStyles = makeStyles((theme) => {
 });
 
 const SearchView = () => {
-  // hook for using custom classes
   const classes = useStyles();
   const dispatch = useDispatch();
-  // array of pairings from store
-  const pairing = useSelector((store) => store.pairing);
-  // Search results from reducer
-  const searchResults = useSelector((store) => store.search);
-  // State for search input
-  const [search, setSearch] = useState("");
-  // State for toggling search and conditional render
-  const [toggleSearch, setToggleSearch] = useState(false);
-  // Function to send search input.
-  // This will continue to send dispatches as the search bar content changes
-  const handleSearch = (e) => {
-    const searchWord = e.target.value;
-    console.log(`IN handleSearch - searching for ${searchWord}`);
-    // Set state of search to the value of the search input
-    setSearch(searchWord);
-    // Dispatch to store in real time
-    dispatch({ type: "FETCH_SEARCH", search: searchWord });
-  };
+
+  const pairing = useSelector(store => store.pairing);
+  const searchResults = useSelector(store => store.search);
+
+  const [ search, setSearch ] = useState("");
+  const [ debouncedSearch, setDebouncedSearch ] = useState(search);
+  const [ toggleSearch, setToggleSearch ] = useState(false);
+
   useEffect(() => {
-    // On page load, fetch array of pairings
+    const timerId = setTimeout(() => {
+      setDebouncedSearch(search);
+    }, 600);
+
+    return () => {
+      clearTimeout(timerId);
+    }
+  }, [ search ])
+
+  useEffect(() => {
     dispatch({ type: "FETCH_PAIRING" });
-    // Search is a dependency of this useEffect hook
-    // IF search bar is active, toggle search results
     if (search) {
       setToggleSearch(true);
     } else {
-      // ELSE keep search at default state(false), show all pairings.
       setToggleSearch(false);
     }
-  }, [search]);
+
+    dispatch({ type: "FETCH_SEARCH", search });
+  }, [ debouncedSearch ]);
 
   return (
     <div className={classes.layout}>
@@ -104,7 +101,7 @@ const SearchView = () => {
                 <TextField
                   value={search}
                   className={classes.margin}
-                  onChange={(e) => handleSearch(e)}
+                  onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search our collection of pairings"
                   variant="outlined"
                   type="search"

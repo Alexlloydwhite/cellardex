@@ -5,10 +5,10 @@ import { Provider } from "react-redux";
 import createSagaMiddleware from "redux-saga";
 import logger from "redux-logger";
 
-import rootReducer from "./redux/reducers/_root.reducer"; // imports ./redux/reducers/index.js
-import rootSaga from "./redux/sagas/_root.saga"; // imports ./redux/sagas/index.js
+import rootReducer from "./main/redux/reducers/_root.reducer"; 
+import rootSaga from "./main/redux/sagas/_root.saga"; 
 
-import App from "./components/App/App";
+import App from "./main/components/App/App";
 
 const sagaMiddleware = createSagaMiddleware();
 
