@@ -1,16 +1,33 @@
 import LogOutButton from "../../main/components/LogOutButton/LogOutButton";
-import TestRenderer from 'react-test-renderer';
+import { create } from 'react-test-renderer';
 import * as ReactRedux from 'react-redux';
 
 describe("Logout Button", () => {
-    it("sets class name to given className prop", () => {
+    it("renders as expected", () => {
         // GIVEN:
-        let logoutFn = jest.fn();
+        const props = {
+            className: 'someClassName'
+        }
+        const logoutFn = jest.fn();
+        jest.spyOn(ReactRedux, 'useDispatch').mockImplementationOnce(() => logoutFn);
+
+
+        // WHEN:
+        const logOutButton = create(<LogOutButton {...props} />).root;
+        const button = logOutButton.findByType('button');
+
+        // THEN:
+        expect(button.props.className.includes('someClassName')).toBe(true);
+        expect(button.props.children).toEqual('Log Out')
+    });
+
+    it("logout button calls dispatch to logout", () => {
+        // GIVEN:
+        const logoutFn = jest.fn();
         jest.spyOn(ReactRedux, 'useDispatch').mockImplementationOnce(() => logoutFn);
 
         // WHEN:
-        const testRenderer = TestRenderer.create(<LogOutButton />);
-        const logOutButton = testRenderer.root;
+        const logOutButton = create(<LogOutButton />).root;
         logOutButton.findByType('button').props.onClick();
 
         // THEN:
